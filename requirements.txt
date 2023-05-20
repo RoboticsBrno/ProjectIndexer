@@ -1,0 +1,4 @@
+PyGithub
+django-bakery
+django
+python-decouple
