@@ -12,8 +12,8 @@ def cli():
 
 @click.command(help='Save repos from RoboticsBrno organization to file')
 @click.option('--github-token', default=None, help='Github token (default is in .env file)')
-@click.option('--output-file', default='data/repos.json', help='Output file (default is repos.json)')
-@click.option('--verbose', default=False, help='Verbose output')
+@click.option('--output-file', '-o', default='data/repos.json', help='Output file (default is repos.json)')
+@click.option('--verbose', default=False, is_flag=True, help='Verbose output')
 def fetch_github(github_token, output_file, verbose):
     fetch_data = FetchData(github_token, output_file)
     start = time()

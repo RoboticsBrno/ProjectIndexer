@@ -28,7 +28,7 @@ class FetchData:
         """
         data_to_write = []
         index = 0
-        for repo, in repos:
+        for repo in repos:
             if verbose:
                 print(f"Saving repo {index} - {repo.full_name}")
             data_to_write.append(repo.raw_data)
