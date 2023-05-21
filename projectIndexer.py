@@ -18,6 +18,9 @@ def fetch_github(github_token, output_file, verbose):
     fetch_data = FetchData(github_token, output_file)
     start = time()
     repos = fetch_data.fetch_repos()
+    if repos is None:
+        print("No repos fetched")
+        return
     repos_count = fetch_data.save_to_file(repos, verbose=verbose)
     print(f"Fetched {repos_count} repos in {time() - start:.2f} seconds")
 

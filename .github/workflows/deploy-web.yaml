@@ -32,10 +32,10 @@ jobs:
       - name: Fetch repos
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 projectIndexer.py fetch-github
+        run: python3 projectIndexer.py fetch-github --github-token ${{ secrets.MY_GITHUB_TOKEN }}
 
       - name: Generate web
-        run: python3 projectIndexer.py generate --hide-private True
+        run: python3 projectIndexer.py generate --hide-private True  --github-token ${{ secrets.MY_GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
