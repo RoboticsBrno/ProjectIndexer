@@ -1,0 +1,11 @@
+{
+  "name": "ProjectIndexer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:RoboticsBrno/ProjectIndexer.git",
+  "author": "RoboticsBrno",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}

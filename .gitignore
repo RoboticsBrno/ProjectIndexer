@@ -142,7 +142,7 @@ sftp-config.json
 # Package control specific files Package
 Control.last-run
 Control.ca-list
-Control.ca-bundle 
+Control.ca-bundle
 Control.system-ca-bundle
 GitHub.sublime-settings
 
@@ -153,3 +153,7 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+data/
+node_modules/
+output/
+

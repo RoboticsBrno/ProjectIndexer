@@ -2,3 +2,6 @@ PyGithub
 django-bakery
 django
 python-decouple
+Jinja2
+click
+livereload

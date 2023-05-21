@@ -1,3 +1,17 @@
-{% for repo in repos %}
-    <h2><a href="{{ repo.name }}">{{ repo.name }}</a></h2>
-{% endfor %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Repositories</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Repositories</h1>
+<p>Listed {{ repos|length }} repositories.</p>
+<ul>
+    {% for repo in repos %}
+
+        <li><a href="{{ repo.name }}">{{ repo.name }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>

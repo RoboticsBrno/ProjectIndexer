@@ -1,3 +1,15 @@
-<h1>{{ repo.name }}</h1>
-<p>{{ repo.description }}</p>
-<!-- add more fields as per your requirement -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ repo.name }}</title>
+</head>
+    <body>
+    <h1>{{ repo.name }}</h1>
+    <p>{% if repo.description %}{{ repo.description }}{% else %}No description{% endif %}</p>
+    <p>Language: {{ repo.language }}</p>
+    <p>Created: {{ repo.created_at.strftime('%d.%m.%Y') }}</p>
+    <p>Updated: {{ repo.updated_at.strftime('%d.%m.%Y') }}</p>
+    <p>Stars: {{ repo.stargazers_count }}</p>
+    <a href="{{ repo.html_url }}">Visit on GitHub</a>
+    </body>
+</html>
