@@ -1,14 +1,19 @@
+from os import environ
 from github import Github, PaginatedList, Repository
 import json
-from decouple import config
+from dotenv import load_dotenv
 
 class FetchData:
     def __init__(self, github_token:str=None, io_file:str='data/repos.json'):
+        load_dotenv()
         if github_token is None:
-            github_token = config('MY_GITHUB_TOKEN')
-        self.g = Github(github_token)
-        self.io_file = io_file
-        self.organization = self.g.get_organization("RoboticsBrno")
+            github_token = environ.get('MY_GITHUB_TOKEN')
+        if github_token is not None:
+            self.g = Github(github_token)
+            self.io_file = io_file
+            self.organization = self.g.get_organization("RoboticsBrno")
+            return
+        raise Exception('MY_GITHUB_TOKEN not found in .env file or system path')
 
     def fetch_repos(self):
         return self.organization.get_repos()

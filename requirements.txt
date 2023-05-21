@@ -5,3 +5,4 @@ python-decouple
 Jinja2
 click
 livereload
+python-dotenv
