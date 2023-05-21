@@ -3,6 +3,10 @@ from os import path, makedirs
 from github import Repository
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from shutil import copytree, copy2
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class GenerateWeb:
     def __init__(
@@ -11,12 +15,14 @@ class GenerateWeb:
             output_dir: str = 'output',
             template_dir: path = 'templates',
             static_dir: path = 'static',
-            hide_private: bool = False
+            hide_private: bool = False,
+            verbose: bool = False,
     ):
         self.repos = repos
         self.static_dir = static_dir
         self.output_dir = output_dir
         self.hide_private = hide_private
+        self.verbose = verbose
         if not path.exists(self.output_dir):
             makedirs(self.output_dir)
 
@@ -43,6 +49,8 @@ class GenerateWeb:
             data = self.repos
         # data.sort(key=lambda repo: repo.name)
         with open(f'{self.output_dir}/index.html', 'w') as f:
+            if self.verbose:
+                logger.info(f"Generating {self.output_dir}/index.html")
             f.write(list_template.render(repos=data))
 
     def generate_detail_repos(self):
@@ -53,4 +61,6 @@ class GenerateWeb:
             if not path.exists(f'{self.output_dir}/{repo.name}'):
                 makedirs(f'{self.output_dir}/{repo.name}')
             with open(f'{self.output_dir}/{repo.name}/index.html', 'w') as f:
+                if self.verbose:
+                    logger.info(f"Generating {self.output_dir}/{repo.name}/index.html")
                 f.write(detail_template.render(repo=repo))

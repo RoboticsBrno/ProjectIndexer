@@ -5,6 +5,10 @@ from src.fetch_data import FetchData
 from src.generate_web import GenerateWeb
 from pprint import pprint
 from time import time
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @click.group()
 def cli():
@@ -19,10 +23,10 @@ def fetch_github(github_token, output_file, verbose):
     start = time()
     repos = fetch_data.fetch_repos()
     if repos is None:
-        print("No repos fetched")
+        logger.error("No repos fetched")
         return
     repos_count = fetch_data.save_to_file(repos, verbose=verbose)
-    print(f"Fetched {repos_count} repos in {time() - start:.2f} seconds")
+    logger.info(f"Fetched {repos_count} repos in {time() - start:.2f} seconds")
 
 @click.command(help='List repos from file - for debugging')
 @click.option('--github-token', default=None, help='Github token (default is in .env file)')
@@ -30,21 +34,31 @@ def fetch_github(github_token, output_file, verbose):
 def list(github_token, input_file):
     fetch_data = FetchData(github_token, input_file)
     repos = fetch_data.load_from_file()
+    if not repos:
+        raise Exception("No repos loaded")
+
     print(f"Loaded {len(repos)} repos")
     pprint(repos)
 
 @click.command(help='Generate web from repos')
 @click.option('--github-token', default=None, help='Github token (default is in .env file)')
+@click.option('--fetch-directly', default=False, is_flag=True, help='Fetch repos directly from github')
 @click.option('--input-file', default='data/repos.json', help='Input file (default is repos.json)')
 @click.option('--output-dir', '-o', default='output', help='Output directory (default is output)')
 @click.option('--template-dir', '-t', default='templates', help="Template directory (default is 'templates')")
 @click.option('--static-dir', default='static', help="Static directory (default is 'static')")
 @click.option('--hide-private', default=False, is_flag=True, help="Hide private repos")
-def generate(github_token: str, input_file: str, output_dir: str, template_dir: str, static_dir: str, hide_private: bool):
-    fetch_data = FetchData(github_token, input_file)
-    repos = fetch_data.load_from_file()
+@click.option('--verbose', default=False, is_flag=True, help='Verbose output')
+def generate(github_token: str, fetch_directly: bool, input_file: str, output_dir: str, template_dir: str, static_dir: str, hide_private: bool, verbose: bool):
+    fetch_data = FetchData(github_token)
+    if fetch_directly:
+        repos = fetch_data.fetch_repos()
+    else:
+        repos = fetch_data.load_from_file()
+    if not repos:
+        raise Exception("No repos loaded")
 
-    generate_web = GenerateWeb(repos, output_dir, path.abspath(template_dir), static_dir, hide_private)
+    generate_web = GenerateWeb(repos, output_dir, path.abspath(template_dir), static_dir, hide_private, verbose)
 
     start = time()
     generate_web.generate()
