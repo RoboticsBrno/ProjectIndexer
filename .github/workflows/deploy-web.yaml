@@ -9,6 +9,8 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
