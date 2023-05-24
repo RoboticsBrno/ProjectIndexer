@@ -98,6 +98,7 @@ class GenerateWeb:
 
     def generate_repos_list(self):
         self.render_page('repos.html', 'repos/index.html', repos=self.repos)
+        self.render_page('repos.html', 'index.html', repos=self.repos)
 
     def generate_repos_detail(self):
         for repo in self.repos:
