@@ -1,0 +1,87 @@
+{% set title = "Repositories RobotocsBrno" %}
+{% set description = "A list of all my public repositories on GitHub." %}
+{% set keywords = "github, repositories" %}
+{% set active = "repos" %}
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Repositories</h1>
+    <p>Listed {{ repos|length }} repositories.</p>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        {% for repo in repos %}
+            <!-- Repository Card 1 -->
+        <a class="dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between mx-auto w-full min-w-0 max-w-xl h-full" href="{{ repo.name }}/">
+            <div class="flex-grow">
+    {#          <div class="dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto">#}
+                <h2 class="dark:text-white text-xl font-bold text-gray-800 mb-1">{{ repo.name }}</h2>
+                <p class="dark:text-gray-300 text-gray-600 mb-2">{{ repo.description }}</p>
+
+                <div class="mb-4">
+                    {% for topic in repo.topics %}
+                        {#                        <span class="dark:bg-gray-700 bg-gray-200 text-gray-700 dark:text-gray-300 text-sm font-semibold py-1 px-2 rounded-full mr-2">{{ topic }}</span>#}
+{#                        <a href="https://github.com/topics/{{ topic }}">#}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium {{ topic|colorize }}">
+                                  {{ topic }}
+                            </span>
+{#                        </a>#}
+                    {% endfor %}
+                </div>
+
+
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 dark:text-gray-300 text-gray-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 4 4 0 013.446-6.032 1 1 0 011.868.828 4 4 0 01-.893 4.26A3.5 3.5 0 0110 18v-2a1.5 1.5 0 00-1.14-1.446A4 4 0 016 12a4 4 0 100-8 1 1 0 11-2 0 6 6 0 116 6v-1.928A1.5 1.5 0 0010 2z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="ml-2 dark:text-gray-300 text-gray-700">{{ repo.stargazers_count }} Stars</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 dark:text-gray-300 text-gray-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h4a2 2 0 012 2v1h4a2 2 0 012 2v5a2 2 0 01-2 2h-4v1a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm10 1H8v1H4v5h4v-1h4V6z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="ml-2 dark:text-gray-300 text-gray-700">{{ repo.forks_count }} Forks</span>
+                        </div>
+                    </div>
+{#                </div>#}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+<div class="dark:bg-gray-800 flex flex-col justify-between bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto">
+    <div>
+        <h2 class="dark:text-white text-xl font-bold text-gray-800 mb-1">Repository Name</h2>
+        <p class="dark:text-gray-300 text-gray-600 mb-2">Repository description goes here...</p>
+
+        <div class="mb-4">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">Tag 1</span>
+            <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-md text-sm font-medium bg-green-100 text-green-800">Tag 2</span>
+            <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-md text-sm font-medium bg-yellow-100 text-yellow-800">Tag 3</span>
+        </div>
+
+        <div class="flex justify-between mt-4">
+            <p class="dark:text-gray-300 text-gray-700">CSS</p>
+            <p class="dark:text-gray-300 text-gray-700">MIT License</p>
+        </div>
+
+        <p class="mt-4 dark:text-gray-300 text-gray-700">Last updated: 4 days ago</p>
+    </div>
+
+    <div class="flex items-center justify-between mt-4">
+        <div class="flex items-center">
+            <svg class="w-4 h-4 dark:text-gray-300 text-gray-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 4 4 0 013.446-6.032 1 1 0 011.868.828 4 4 0 01-.893 4.26A3.5 3.5 0 0110 18v-2a1.5 1.5 0 00-1.14-1.446A4 4 0 016 12a4 4 0 100-8 1 1 0 11-2 0 6 6 0 116 6v-1.928A1.5 1.5 0 0010 2z" clip-rule="evenodd" />
+            </svg>
+            <span class="ml-2 dark:text-gray-300 text-gray-700">100 Stars</span>
+        </div>
+
+        <div class="flex items-center">
+            <svg class="w-4 h-4 dark:text-gray-300 text-gray-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h4a2 2 0 012 2v1h4a2 2 0 012 2v5a2 2 0 01-2 2h-4v1a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm10 1H8v1H4v5h4v-1h4V6z" clip-rule="evenodd" />
+            </svg>
+            <span class="ml-2 dark:text-gray-300 text-gray-700">20 Forks</span>
+        </div>
+    </div>
+</div>

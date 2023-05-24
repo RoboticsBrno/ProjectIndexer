@@ -27,7 +27,7 @@ jobs:
           path: .cache
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: make install
 
       - name: Generate web
         run: python3 projectIndexer.py generate --fetch-directly --hide-private --verbose --github-token ${{ secrets.MY_GITHUB_TOKEN }}
@@ -36,4 +36,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
+          publish_dir: ./build

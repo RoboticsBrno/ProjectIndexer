@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ repo.name }}</title>
-</head>
-    <body>
+{% extends "base.html" %}
+
+{% block content %}
     <h1>{{ repo.name }}</h1>
     <p>{% if repo.description %}{{ repo.description }}{% else %}No description{% endif %}</p>
     <p>Language: {{ repo.language }}</p>
@@ -11,5 +8,9 @@
     <p>Updated: {{ repo.updated_at.strftime('%d.%m.%Y') }}</p>
     <p>Stars: {{ repo.stargazers_count }}</p>
     <a href="{{ repo.html_url }}">Visit on GitHub</a>
-    </body>
-</html>
+
+    <h2>Readme</h2>
+    <div class="readme">
+        {{ readme | safe }}
+    </div>
+{% endblock %}

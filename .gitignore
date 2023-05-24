@@ -155,5 +155,6 @@ GitHub.sublime-settings
 .history
 data/
 node_modules/
-output/
+build/
 
+tests/_trial_temp

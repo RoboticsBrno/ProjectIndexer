@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head class="dark:bg-gray-800 bg-gray-200">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'includes.html' %}
+    <title>{{ title }}</title>
+</head>
+<body class="flex flex-col min-h-screen">
+    {% include 'header.html' %}
+{#    padding for floating nav#}
+    <div class="pt-16">
+        {% block content %}{% endblock %}
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
