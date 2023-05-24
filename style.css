@@ -690,8 +690,8 @@ video {
   min-height: 100vh;
 }
 
-.w-10 {
-  width: 2.5rem;
+.w-12 {
+  width: 3rem;
 }
 
 .w-2 {
@@ -978,6 +978,14 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
+.pr-5 {
+  padding-right: 1.25rem;
+}
+
 .pt-16 {
   padding-top: 4rem;
 }
@@ -1173,6 +1181,11 @@ video {
 .hover\:text-amber-400:hover {
   --tw-text-opacity: 1;
   color: rgb(251 191 36 / var(--tw-text-opacity));
+}
+
+.hover\:text-blue-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
 .hover\:text-blue-700:hover {
