@@ -1,9 +1,179 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>SOC-2016-Nadstavbov-deska-pro-robota-Pololu-3pi</title>
+<html lang="en">
+<head class="dark:bg-gray-800 bg-gray-200">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<script src="/assets/js/preline.js"></script>
+
+
+    <title></title>
 </head>
-    <body>
+<body class="flex flex-col min-h-screen">
+    <header class="fixed top-0 md:justify-start md:flex-nowrap z-50 w-full text-sm">
+    <nav class="mt-6 relative max-w-7xl w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white" href="/">
+                <img class="w-10 h-auto" src="/assets/logo.png" alt="Logo">
+                Robotics Brno
+            </a>
+            <div class="md:hidden">
+                <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
+                    <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+            <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+                <a class="font-medium text-blue-600 md:py-6 dark:text-blue-500" href="#" aria-current="page">Landing</a>
+                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Account</a>
+                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Work</a>
+                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Blog</a>
+
+                <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
+                    <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
+                        Dropdown
+                        <svg class="ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                    </button>
+
+                    <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full md:border before:-top-5 before:left-0 before:w-full before:h-5">
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                            About
+                        </a>
+                        <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+                            <button type="button" class="w-full flex justify-between w-full items-center text-sm text-gray-800 rounded-md py-2 px-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                                Sub Menu
+                                <svg class="md:-rotate-90 ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                </svg>
+                            </button>
+
+                            <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute md:border before:-right-5 before:top-0 before:h-full before:w-5 top-0 right-full !mx-[10px]">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                                    About
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                                    Downloads
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                                    Team Account
+                                </a>
+                            </div>
+                        </div>
+
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                            Downloads
+                        </a>
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                            Team Account
+                        </a>
+                    </div>
+                </div>
+
+                <a class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500" href="#">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                    Log in
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="pt-16">
+        
     <h1>SOC-2016-Nadstavbov-deska-pro-robota-Pololu-3pi</h1>
     <p>No description</p>
     <p>Language: None</p>
@@ -11,5 +181,63 @@
     <p>Updated: 27.10.2018</p>
     <p>Stars: 0</p>
     <a href="https://github.com/RoboticsBrno/SOC-2016-Nadstavbov-deska-pro-robota-Pololu-3pi">Visit on GitHub</a>
-    </body>
+
+    <h2>Readme</h2>
+    <div class="readme">
+        <h1>SOČ 2016 - Nadstavbová deska pro robota Pololu 3pi</h1>
+<p><strong>Autor:</strong> Petr Bobčík</p>
+<p>Vítejte v příloze mé práce Nadstavbová deska pro robota Pololu 3pi</p>
+<h4>V této příloze naleznete:</h4>
+<p>1) Dokumenty
+1) Eagle
+1) Obhajoba
+1) Použité obrázky
+1) SolidWorks</p>
+<h4>Podrobnější obsah jednotlivých složek:</h4>
+<p>1) Přehled projektu s grafm pro IR senzor, obrázek s konceptem zapojení a tabulku potřebných součástek na pájení.
+2) Finální verze desky a schéma k ní v programu Eagle + schéma s deskou k nárazovému senzoru.
+3) Text samotné sočky a prezentaci k ní.
+4) Veškeré obrázky použity jak v prezentaci, tak v textové práci.
+5) Kompletní 3D model robota Pololu 3pi s přídavným shieldem.</p>
+<h2>Cíl práce</h2>
+<p>Cílem této práce byl návrh nadstavbové desky (shieldu) pro robota Pololu 3pi. Konstrukce robota je od výrobce optimalizována
+na soutěžní disciplínu „sledování čáry“, kde robot dosahuje výborných výsledků a nemá mezi komerčně dostupnými produkty konkurenci. Ovšem při složitější variantě této disciplíny “najdi čáru“, konající se na Robotickém dni v Praze, kde dráha obsahuje rozpojky, odbočky, nebo překážky, není možné s ním závodit. Můj shield může posloužit, kromě možné účasti na soutěžích, také ve výuce. V ní si student může
+robota sám naprogramovat. Přidáním funkcí a senzorů bude robot univerzálnější než doposud.</p>
+
+<p><img alt="Robot Pololu 3pi" src="Pou%C5%BEit%C3%A9%20obr%C3%A1zky/C%C3%ADl%20pr%C3%A1ce.png" /></p>
+<p>Práce řeší rozšíření možností využití robota Pololu 3pi návrhem nadstavby s doplňkovými funkcemi.
+Přidané funkce umožňují robotovi snímat podněty ze svého okolí. Další navrženou částí je nárazník pro ochranu před mechanickým poškozením, ke kterému v praxi velmi často dochází. Tyto nárazy způsobovli nefunkčnost senzorů odrazivosti nebo dokonce i jejich odlomení od desky.</p>
+
+<p>Můj přídavný shield je také pinově kompatibilní s bastlířskými deskami, jako je <strong>Arduino Uno</strong>, <strong>FRDM-KL25Z</strong>, <strong>FRDM-KL46Z</strong> a <strong>FRDM-K64F</strong>. Je tedy možné a plánované, že pro přidání dalších funkcí, které můj shield neobsahuje, je možné připevnit jednu ze zmíněných desek, nebo desku, která má shodný pinout. Mikrokontroler, ATmega328P, který je na základním modelu robota se využívá jako MCU pro motory a hlavní řídící mikrokontroler je AVR XMEGu A1, který se nachází na mém shieldu. Ten mi poskytuje velký počet pinů s potřebnými periferiemi. </p>
+<h2>Jaké funkce jsou prostřednictvím shieldu přidány?</h2>
+<p>Tato práce přidává robotovi Pololu 3pi schopnost detekovat překážku pomocí IR senzorů, kterých je na shieldu celkem 8 po 45° nebo pomocí nárazového senzoru, upevněného na mnou navržený nárazník. Dále také k orientaci v prostoru je přidáno IMU (inerciální pohybová jednotka), která obsahuje gyroskop, magnetometr a akcelerometr v jednom pouzdře. Posledním senzorem je enkodér, pomocí kterého můžeme měřit ujetou vzdálenost, zajišťuje přesnější otáčení okolo osi a umožňuje také měřit rychlost.</p>
+<p>Na desce je přidán také chip pro nabíjení baterií, takže není zapotřebí vytahovat tužkové baterie, které se na základní verzi robota nacházejí. Pouzdra s tužkovými bateriemi je tedy možné vytáhnout a tím snížit váhu. Shield také obsahuje obvod pro měření baterie a to jak napětí, tak proudu. Tímto měřením je možné hlídat úroveň nabití baterie nebo dokonce detekovat, zda baterie není poškozená.</p>
+
+<h2>Co je vlastě Pololu 3pi? <img alt="Robot Pololu 3pi" src="Pou%C5%BEit%C3%A9%20obr%C3%A1zky/Pololu%203pi.png" /></h2>
+<p>Je to velmi rychlý komerčně dostupný soutěžní robot, určený na disciplínu s názvem sledování čáry, která je v České republice velmi populární (tato disciplína je více popsaná níže). Jeho průměr je 95 mm (odtud dostal název 3pi) a hmotnost 83 g (bez baterií). Jeho rychlost se pohybuje okolo 1m/s. Hlavním mozkem celého robota je mikrokontrolér ATmega328P, který se nachází například u Arduino Nano. Tento robot je vhodný pro začínající programátory, kteří se chtějí od začátečních robotů, jako například legových ze stavebnice Mindstorm, posunout o kousek dále a chtějí se naučit programovací.</p>
+
+<h2>Sledování čáry</h2>
+<p></p>Úkolem robota je, aby následoval černou čářu, která se pod ním nachází. Nejprve šlo jen o jízdu po čáře, ale v poslední době se zmíněná disciplína výrazně ztížila, přidáním rozdvojení, křižovatky, přerušení a překážky. Pololu 3pi nedokáže tyto nové prvky řešit, a proto jsem se rozhodl přidat potřebné funkce, které to zajistí.<p></p>
+<p><img alt="Pololu 3pi s mým shieldem" src="https://github.com/RoboticsBrno/SO-2016-Nadstavbov-deska-pro-robota-Pololu-3pi/blob/master/Pou%C5%BEit%C3%A9%20obr%C3%A1zky/3D%20blokov%C3%A9%20sch%C3%A9ma%20s%20popisky.png" /></p>
+<h4><a href="https://www.robotikabrno.cz/robotarna/projekty-a-socky/soc-2017-petr-bobcik-nadstavbova-deska-pro-robota-pololu-3pi">Více informací naleznete na stránkách Robotárny k mojí SOČ</a>.</h4>
+<p>Tato práce byla vypracována společně s <a href="www.robotarna.cz">Robotárnou</a> a <a href="www.spssbrno.cz">SPŠ a VOŠ Sokolská Brno</a>.</p>
+    </div>
+
+    </div>
+    <!-- Footer -->
+<footer class="dark:bg-gray-800 bg-white py-6 px-6">
+    <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+            <div class="text-center md:text-left text-gray-600 dark:text-gray-300">
+                <h5 class="text-lg font-semibold">RoboticsBrno</h5>
+                <p class="py-2">© 2023 All rights reserved.</p>
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Terms of Service</a>
+                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
 </html>

@@ -1,9 +1,179 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>circuitpython</title>
+<html lang="en">
+<head class="dark:bg-gray-800 bg-gray-200">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<script src="/assets/js/preline.js"></script>
+
+
+    <title></title>
 </head>
-    <body>
+<body class="flex flex-col min-h-screen">
+    <header class="fixed top-0 md:justify-start md:flex-nowrap z-50 w-full text-sm">
+    <nav class="mt-6 relative max-w-7xl w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white" href="/">
+                <img class="w-10 h-auto" src="/assets/logo.png" alt="Logo">
+                Robotics Brno
+            </a>
+            <div class="md:hidden">
+                <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
+                    <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+            <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+                <a class="font-medium text-blue-600 md:py-6 dark:text-blue-500" href="#" aria-current="page">Landing</a>
+                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Account</a>
+                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Work</a>
+                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Blog</a>
+
+                <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
+                    <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
+                        Dropdown
+                        <svg class="ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                    </button>
+
+                    <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full md:border before:-top-5 before:left-0 before:w-full before:h-5">
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                            About
+                        </a>
+                        <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+                            <button type="button" class="w-full flex justify-between w-full items-center text-sm text-gray-800 rounded-md py-2 px-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                                Sub Menu
+                                <svg class="md:-rotate-90 ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                </svg>
+                            </button>
+
+                            <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute md:border before:-right-5 before:top-0 before:h-full before:w-5 top-0 right-full !mx-[10px]">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                                    About
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                                    Downloads
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                                    Team Account
+                                </a>
+                            </div>
+                        </div>
+
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                            Downloads
+                        </a>
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                            Team Account
+                        </a>
+                    </div>
+                </div>
+
+                <a class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500" href="#">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                    Log in
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="pt-16">
+        
     <h1>circuitpython</h1>
     <p>CircuitPython - a Python implementation for teaching coding with microcontrollers</p>
     <p>Language: None</p>
@@ -11,5 +181,268 @@
     <p>Updated: 02.05.2023</p>
     <p>Stars: 0</p>
     <a href="https://github.com/RoboticsBrno/circuitpython">Visit on GitHub</a>
-    </body>
+
+    <h2>Readme</h2>
+    <div class="readme">
+        <h1>CircuitPython</h1>
+<p>.. image:: https://s3.amazonaws.com/adafruit-circuit-python/CircuitPython_Repo_header_logo.png</p>
+<p>|Build Status| |Doc Status| |License| |Discord| |Weblate|</p>
+<p><code>circuitpython.org &lt;https://circuitpython.org&gt;</code><strong> \| <code>Get CircuitPython &lt;#get-circuitpython&gt;</code></strong> \|
+<code>Documentation &lt;#documentation&gt;</code><strong> \| <code>Contributing &lt;#contributing&gt;</code></strong> \|
+<code>Branding &lt;#branding&gt;</code><strong> \| <code>Differences from Micropython &lt;#differences-from-micropython&gt;</code></strong> \|
+<code>Project Structure &lt;#project-structure&gt;</code>__</p>
+<p><strong>CircuitPython</strong> is a <em>beginner friendly</em>, open source version of Python for tiny, inexpensive
+computers called microcontrollers. Microcontrollers are the brains of many electronics including a
+wide variety of development boards used to build hobby projects and prototypes. CircuitPython in
+electronics is one of the best ways to learn to code because it connects code to reality. Simply
+install CircuitPython on a supported USB board usually via drag and drop and then edit a <code>code.py</code>
+file on the CIRCUITPY drive. The code will automatically reload. No software installs are needed
+besides a text editor (we recommend <code>Mu &lt;https://codewith.mu/&gt;</code>_ for beginners.)</p>
+<p>Starting with CircuitPython 7.0.0, some boards may only be connectable over Bluetooth Low Energy
+(BLE). Those boards provide serial and file access over BLE instead of USB using open protocols.
+(Some boards may use both USB and BLE.) BLE access can be done from a variety of apps including
+<code>code.circuitpython.org &lt;https://code.circuitpython.org&gt;</code>_.</p>
+<p>CircuitPython features unified Python core APIs and a growing list of 300+ device libraries and
+drivers that work with it. These libraries also work on single board computers with regular
+Python via the <code>Adafruit Blinka Library &lt;https://github.com/adafruit/Adafruit_Blinka&gt;</code>_.</p>
+<p>CircuitPython is based on <code>MicroPython &lt;https://micropython.org&gt;</code><em>. See
+<code>below &lt;#differences-from-micropython&gt;</code></em> for differences. Most, but not all, CircuitPython
+development is sponsored by <code>Adafruit &lt;https://adafruit.com&gt;</code>_ and is available on their educational
+development boards. Please support both MicroPython and Adafruit.</p>
+<h2>Get CircuitPython</h2>
+<p>Official binaries for all supported boards are available through
+<code>circuitpython.org/downloads &lt;https://circuitpython.org/downloads&gt;</code><em>. The site includes stable, unstable and
+continuous builds. Full release notes are available through
+<code>GitHub releases &lt;https://github.com/adafruit/circuitpython/releases&gt;</code></em> as well.</p>
+<h2>Documentation</h2>
+<p>Guides and videos are available through the <code>Adafruit Learning
+System &lt;https://learn.adafruit.com/&gt;</code><strong> under the <code>CircuitPython
+category &lt;https://learn.adafruit.com/category/circuitpython&gt;</code></strong>. An API
+reference is also available on <code>Read the Docs
+&lt;http://circuitpython.readthedocs.io/en/latest/?&gt;</code><strong>. A collection of awesome
+resources can be found at <code>Awesome CircuitPython &lt;https://github.com/adafruit/awesome-circuitpython&gt;</code></strong>.</p>
+<p>Specifically useful documentation when starting out:</p>
+<ul>
+<li><code>Welcome to CircuitPython &lt;https://learn.adafruit.com/welcome-to-circuitpython&gt;</code>__</li>
+<li><code>CircuitPython Essentials &lt;https://learn.adafruit.com/circuitpython-essentials&gt;</code>__</li>
+<li><code>Example Code &lt;https://github.com/adafruit/Adafruit_Learning_System_Guides/tree/master/CircuitPython_Essentials&gt;</code>__</li>
+</ul>
+<h2>Code Search</h2>
+<p>GitHub doesn't currently support code search on forks. Therefore, CircuitPython doesn't have code search through GitHub because it is a fork of MicroPython. Luckily, <code>SourceGraph &lt;https://sourcegraph.com/github.com/adafruit/circuitpython&gt;</code><em> has free code search for public repos like CircuitPython. So, visit <code>sourcegraph.com/github.com/adafruit/circuitpython &lt;https://sourcegraph.com/github.com/adafruit/circuitpython&gt;</code></em> to search the CircuitPython codebase online.</p>
+<h2>Contributing</h2>
+<p>See
+<code>CONTRIBUTING.md &lt;https://github.com/adafruit/circuitpython/blob/main/CONTRIBUTING.md&gt;</code><strong>
+for full guidelines but please be aware that by contributing to this
+project you are agreeing to the <code>Code of
+Conduct &lt;https://github.com/adafruit/circuitpython/blob/main/CODE_OF_CONDUCT.md&gt;</code></strong>.
+Contributors who follow the <code>Code of
+Conduct &lt;https://github.com/adafruit/circuitpython/blob/main/CODE_OF_CONDUCT.md&gt;</code><strong>
+are welcome to submit pull requests and they will be promptly reviewed
+by project admins. Please join the
+<code>Discord &lt;https://adafru.it/discord&gt;</code></strong> too.</p>
+<h2>Branding</h2>
+<p>While we are happy to see CircuitPython forked and modified, we'd appreciate it if forked releases
+not use the name "CircuitPython" or the Blinka logo. "CircuitPython" means something special to
+us and those who learn about it. As a result, we'd like to make sure products referring to it meet a
+common set of requirements.</p>
+<p>If you'd like to use the term "CircuitPython" and Blinka for your product here is what we ask:</p>
+<ul>
+<li>Your product is supported by the primary
+  <code>"adafruit/circuitpython" &lt;https://github.com/adafruit/circuitpython&gt;</code>_ repo. This way we can
+  update any custom code as we update the CircuitPython internals.</li>
+<li>Your product is listed on <code>circuitpython.org &lt;https://circuitpython.org&gt;</code>__ (source
+  <code>here &lt;https://github.com/adafruit/circuitpython-org/&gt;</code>_). This is to ensure that a user of your
+  product can always download the latest version of CircuitPython from the standard place.</li>
+<li>
+<p>Your product supports at least one standard "<code>Workflow &lt;https://docs.circuitpython.org/en/latest/docs/workflows.html&gt;</code>__" for serial and file access:</p>
+</li>
+<li>
+<p>With a user accessible USB plug which appears as a CIRCUITPY drive when plugged in.</p>
+</li>
+<li>With file and serial access over Bluetooth Low Energy using the BLE Workflow.</li>
+<li>
+<p>With file access over WiFi using the WiFi Workflow with serial access over USB and/or WebSocket.</p>
+</li>
+<li>
+<p>Boards that do not support the USB Workflow should be clearly marked.</p>
+</li>
+</ul>
+<p>If you choose not to meet these requirements, then we ask you call your version of CircuitPython
+something else (for example, SuperDuperPython) and not use the Blinka logo. You can say it is
+"CircuitPython-compatible" if most CircuitPython drivers will work with it.</p>
+<hr />
+<h2>Differences from <code>MicroPython &lt;https://github.com/micropython/micropython&gt;</code>__</h2>
+<p>CircuitPython:</p>
+<ul>
+<li>Supports native USB on most boards and BLE otherwise, allowing file editing without special tools.</li>
+<li>Floats (aka decimals) are enabled for all builds.</li>
+<li>Error messages are translated into 10+ languages.</li>
+<li>Concurrency within Python is not well supported. Interrupts and threading are disabled.
+   async/await keywords are available on some boards for cooperative multitasking. Some concurrency
+   is achieved with native modules for tasks that require it such as audio file playback.</li>
+</ul>
+<p>Behavior
+~~~~~~~~</p>
+<ul>
+<li>
+<p>The order that files are run and the state that is shared between
+   them. CircuitPython's goal is to clarify the role of each file and
+   make each file independent from each other.</p>
+</li>
+<li>
+<p><code>boot.py</code> runs only once on start up before
+      workflows are initialized. This lays the ground work for configuring USB at
+      startup rather than it being fixed. Since serial is not available,
+      output is written to <code>boot_out.txt</code>.</p>
+</li>
+<li><code>code.py</code> (or <code>main.py</code>) is run after every reload until it
+      finishes or is interrupted. After it is done running, the vm and
+      hardware is reinitialized. <strong>This means you cannot read state from</strong>
+      <code>code.py</code> <strong>in the REPL anymore, as the REPL is a fresh vm.</strong> CircuitPython's goal for this
+      change includes reducing confusion about pins and memory being used.</li>
+<li>After the main code is finished the REPL can be entered by pressing any key.</li>
+<li>
+<p>Autoreload state will be maintained across reload.</p>
+</li>
+<li>
+<p>Adds a safe mode that does not run user code after a hard crash or brown out. This makes it
+   possible to fix code that causes nasty crashes by making it available through mass storage after
+   the crash. A reset (the button) is needed after it's fixed to get back into normal mode.</p>
+</li>
+<li>Safe mode may be handled programmatically by providing a <code>safemode.py</code>.
+   <code>safemode.py</code> is run if the board has reset due to entering safe mode, unless the safe mode
+   initiated by the user by pressing button(s).
+   USB is not available so nothing can be printed.
+   <code>safemode.py</code> can determine why the safe mode occurred
+   using <code>supervisor.runtime.safe_mode_reason</code>, and take appropriate action. For instance,
+   if a hard crash occurred, <code>safemode.py</code> may do a <code>microcontroller.reset()</code>
+   to automatically restart despite the crash.
+   If the battery is low, but is being charged, <code>safemode.py</code> may put the board in deep sleep
+   for a while. Or it may simply reset, and have <code>code.py</code> check the voltage and do the sleep.</li>
+<li>RGB status LED indicating CircuitPython state.</li>
+<li>One green flash - code completed without error.</li>
+<li>Two red flashes - code ended due to an exception.</li>
+<li>Three yellow flashes - safe mode. May be due to CircuitPython internal error.</li>
+<li>Re-runs <code>code.py</code> or other main file after file system writes by a workflow. (Disable with
+   <code>supervisor.disable_autoreload()</code>)</li>
+<li>Autoreload is disabled while the REPL is active.</li>
+<li><code>code.py</code> may also be named<code>code.txt</code>, <code>main.py</code>, or <code>main.txt</code>.</li>
+<li><code>boot.py</code> may also be named <code>boot.txt</code>.</li>
+<li><code>safemode.py</code> may also be named <code>safemode.txt</code>.</li>
+</ul>
+<p>API
+~~~</p>
+<ul>
+<li>Unified hardware APIs. Documented on
+   <code>ReadTheDocs &lt;https://circuitpython.readthedocs.io/en/latest/shared-bindings/index.html&gt;</code>_.</li>
+<li>API docs are Python stubs within the C files in <code>shared-bindings</code>.</li>
+<li>No <code>machine</code> API.</li>
+</ul>
+<p>Modules
+~~~~~~~</p>
+<ul>
+<li>No module aliasing. (<code>uos</code> and <code>utime</code> are not available as
+   <code>os</code> and <code>time</code> respectively.) Instead <code>os</code>, <code>time</code>, and
+   <code>random</code> are CPython compatible.</li>
+<li>New <code>storage</code> module which manages file system mounts.
+   (Functionality from <code>uos</code> in MicroPython.)</li>
+<li>Modules with a CPython counterpart, such as <code>time</code>, <code>os</code> and
+   <code>random</code>, are strict
+   <code>subsets &lt;https://circuitpython.readthedocs.io/en/latest/shared-bindings/time/__init__.html&gt;</code><strong>
+   of their <code>CPython
+   version &lt;https://docs.python.org/3.4/library/time.html?highlight=time#module-time&gt;</code></strong>.
+   Therefore, code from CircuitPython is runnable on CPython but not
+   necessarily the reverse.</li>
+<li>tick count is available as
+   <code>time.monotonic() &lt;https://circuitpython.readthedocs.io/en/latest/shared-bindings/time/__init__.html#time.monotonic&gt;</code>__</li>
+</ul>
+<hr />
+<h2>Project Structure</h2>
+<p>Here is an overview of the top-level source code directories.</p>
+<p>Core
+~~~~</p>
+<p>The core code of
+<code>MicroPython &lt;https://github.com/micropython/micropython&gt;</code>__ is shared
+amongst ports including CircuitPython:</p>
+<ul>
+<li><code>docs</code> High level user documentation in Sphinx reStructuredText
+   format.</li>
+<li><code>drivers</code> External device drivers written in Python.</li>
+<li><code>examples</code> A few example Python scripts.</li>
+<li><code>extmod</code> Shared C code used in multiple ports' modules.</li>
+<li><code>lib</code> Shared core C code including externally developed libraries
+   such as FATFS.</li>
+<li><code>logo</code> The CircuitPython logo.</li>
+<li><code>mpy-cross</code> A cross compiler that converts Python files to byte
+   code prior to being run in MicroPython. Useful for reducing library
+   size.</li>
+<li><code>py</code> Core Python implementation, including compiler, runtime, and
+   core library.</li>
+<li><code>shared-bindings</code> Shared definition of Python modules, their docs
+   and backing C APIs. Ports must implement the C API to support the
+   corresponding module.</li>
+<li><code>shared-module</code> Shared implementation of Python modules that may be
+   based on <code>common-hal</code>.</li>
+<li><code>tests</code> Test framework and test scripts.</li>
+<li><code>tools</code> Various tools, including the pyboard.py module.</li>
+</ul>
+<p>Ports
+~~~~~</p>
+<p>Ports include the code unique to a microcontroller line.</p>
+<p>================  ============================================================
+Supported         Support status
+================  ============================================================
+atmel-samd        <code>SAMD21</code> stable | <code>SAMD51</code> stable
+cxd56             stable
+espressif         <code>ESP32</code> beta | <code>ESP32-C3</code> beta | <code>ESP32-S2</code> stable | <code>ESP32-S3</code> beta
+litex             alpha
+mimxrt10xx        alpha
+nrf               stable
+raspberrypi       stable
+stm               <code>F4</code> stable | <code>others</code> beta
+unix              alpha
+================  ============================================================</p>
+<ul>
+<li><code>stable</code> Highly unlikely to have bugs or missing functionality.</li>
+<li><code>beta</code>   Being actively improved but may be missing functionality and have bugs.</li>
+<li><code>alpha</code>  Will have bugs and missing functionality.</li>
+</ul>
+<p>Boards
+~~~~~~</p>
+<ul>
+<li>Each <code>port</code> has a <code>boards</code> directory containing boards
+   which belong to a specific microcontroller line.</li>
+<li>A list of native modules supported by a particular board can be found
+   <code>here &lt;https://circuitpython.readthedocs.io/en/latest/shared-bindings/support_matrix.html&gt;</code>__.</li>
+</ul>
+<p><code>Back to Top &lt;#circuitpython&gt;</code>__</p>
+<p>.. |Build Status| image:: https://github.com/adafruit/circuitpython/workflows/Build%20CI/badge.svg
+   :target: https://github.com/adafruit/circuitpython/actions?query=branch%3Amain
+.. |Doc Status| image:: https://readthedocs.org/projects/circuitpython/badge/?version=latest
+   :target: http://circuitpython.readthedocs.io/
+.. |Discord| image:: https://img.shields.io/discord/327254708534116352.svg
+   :target: https://adafru.it/discord
+.. |License| image:: https://img.shields.io/badge/License-MIT-brightgreen.svg
+   :target: https://choosealicense.com/licenses/mit/
+.. |Weblate| image:: https://hosted.weblate.org/widgets/circuitpython/-/svg-badge.svg
+   :target: https://hosted.weblate.org/engage/circuitpython/?utm_source=widget</p>
+    </div>
+
+    </div>
+    <!-- Footer -->
+<footer class="dark:bg-gray-800 bg-white py-6 px-6">
+    <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+            <div class="text-center md:text-left text-gray-600 dark:text-gray-300">
+                <h5 class="text-lg font-semibold">RoboticsBrno</h5>
+                <p class="py-2">© 2023 All rights reserved.</p>
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Terms of Service</a>
+                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
