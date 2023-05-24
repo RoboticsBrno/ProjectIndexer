@@ -25,6 +25,8 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
     # Regular expression to find HTML image syntax
     html_pattern = r'<img\s+[^>]*src="([^"]*)"[^>]*>'
 
+
+
     # Replace relative image paths with absolute paths
     def md_replacer(match):
         alt_text = match.group(1)
@@ -34,6 +36,14 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
     def html_replacer(match):
         img_url = match.group(1)
         return f'<img src="{replace_url(img_url)}">'
+
+    # def link_replacer_html(match):
+    #     link_url = match.group(1)
+    #     return f'<a href="{replace_url(link_url)}">'
+    #
+    # def link_replacer_md(match):
+    #     link_url = match.group(1)
+    #     return f'[{replace_url(link_url)}]'
 
     def replace_url(img_url, alt_text=""):
         # Handle different types of relative paths
@@ -52,5 +62,11 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
 
     # Replace HTML image URLs
     readme_md = re.sub(html_pattern, html_replacer, readme_md)
+
+    # # Replace HTML link URLs
+    # readme_md = re.sub(r'<a href="([^"]*)">', link_replacer_html, readme_md)
+    #
+    # # Replace Markdown link URLs
+    # readme_md = re.sub(r'\[([^]]*)\]\(([^)]*)\)', link_replacer_md, readme_md)
 
     return readme_md

@@ -54,13 +54,26 @@ class GenerateWeb:
             autoescape=select_autoescape(['html', 'jinja2']),
             extensions=[ColorExtension]
         )
-        self.env.globals['now'] = datetime.now().year
+
+        self.paths = {
+            "/": {"path": "index.html", "showHeader": False, "external": False},
+            "Repos": {"path": "repos/index.html", "showHeader": True, "external": False},
+            "Repo": {"path": "repos/{}/index.html", "showHeader": False, "external": False},
+            "Projects": {"path": "projects/index.html", "showHeader": True, "external": False},
+            "Project": {"path": "projects/{}/index.html", "showHeader": False, "external": False},
+            "Demo": {"path": "demo/index.html", "showHeader": True, "external": False},
+            "About": {"path": "about/index.html", "showHeader": True, "external": False},
+            "Our team": {"path": "https://team.robotikabrno.cz/", "showHeader": True, "external": True},
+        }
+
+        self.env.globals['paths'] = self.paths
 
     def generate(self):
         self.copy_static_files()
         self.generate_repos_list()
         self.generate_repos_detail()
         self.generate_demo()
+        self.generate_about()
 
         projects = load_projects(self.project_dir)
         self.generate_project_list(projects)
@@ -97,33 +110,38 @@ class GenerateWeb:
 
 
     def generate_repos_list(self):
-        self.render_page('repos.html', 'repos/index.html', repos=self.repos)
-        self.render_page('repos.html', 'index.html', repos=self.repos)
+        self.render_page('repos.html', self.paths.get("/").get("path"), repos=self.repos)
+        self.render_page('repos.html', self.paths.get("Repos").get("path"), repos=self.repos)
 
     def generate_repos_detail(self):
         for repo in self.repos:
             readme_md = self.readme.get(repo.full_name, "No readme found")
             readme_fixed_images = fix_readme_relative_images(readme_md, repo.full_name, repo.default_branch)
             readme_html = markdown(readme_fixed_images, extensions=['fenced_code'])
-
-            self.render_page('repoDetail.html', f'{repo.name}/index.html', repo=repo, readme=readme_html)
+            path_repo = self.paths.get("Repo").get("path").format(repo.name)
+            self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html)
 
     def generate_demo(self):
-        self.render_page('demo.html', 'demo/index.html')
+        self.render_page('demo.html', self.paths.get("Demo").get("path"))
 
 
     def generate_project_list(self, projects: list):
-        self.render_page('projectList.html', 'projects/index.html', projects=projects)
+        self.render_page('projectList.html', self.paths.get("Projects").get("path"), projects=projects)
 
     def generate_projects(self, projects: list):
         pprint(projects)
 
         for project in projects:
-            self.render_page('projectDetail.html', f'projects/{project["url"]}/index.html', project=project)
+            path_project = self.paths.get("Project").get("path").format(project["url"])
+            self.render_page('projectDetail.html', path_project, project=project)
 
 
 
-    def render_page(self, template_name: Union[str, "Template"], path_render: path, **kwargs):
+    def generate_about(self,):
+        self.render_page('about.html', self.paths.get("About").get("path"))
+
+
+    def render_page(self, template_name: Union[str, "Template"], path_render: str, **kwargs):
         template = self.env.get_template(template_name)
         full_path = os.path.join(self.build_dir, path_render)
         if not path.exists(path.dirname(full_path)):
