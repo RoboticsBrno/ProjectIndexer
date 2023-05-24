@@ -30,7 +30,7 @@ jobs:
         run: make install
 
       - name: Generate web
-        run: python3 projectIndexer.py generate --fetch-directly --hide-private --verbose --github-token ${{ secrets.MY_GITHUB_TOKEN }}
+        run: python3 projectIndexer.py generate --fetch-directly --compile-tailwind --hide-private --verbose --github-token ${{ secrets.MY_GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
