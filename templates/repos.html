@@ -10,7 +10,7 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
         {% for repo in repos %}
             <!-- Repository Card 1 -->
-        <a class="dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between mx-auto w-full min-w-0 max-w-xl h-full" href="{{ repo.name }}/">
+        <a class="dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between mx-auto w-full min-w-0 max-w-xl h-full" href="repos/{{ repo.name }}/">
             <div class="flex-grow">
     {#          <div class="dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto">#}
                 <h2 class="dark:text-white text-xl font-bold text-gray-800 mb-1">{{ repo.name }}</h2>
