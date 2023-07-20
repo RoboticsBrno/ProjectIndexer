@@ -251,7 +251,7 @@
     <p>No description</p>
     <p>Language: HTML</p>
     <p>Created: 02.02.2023</p>
-    <p>Updated: 24.05.2023</p>
+    <p>Updated: 11.07.2023</p>
     <p>Stars: 1</p>
     <a href="https://github.com/RoboticsBrno/ProjectIndexer">Visit on GitHub</a>
 
@@ -269,14 +269,16 @@ It generates a static web page with a list of all our projects based on the GitH
 <li>you can generate your token <a href="https://github.com/settings/tokens?type=beta">here</a></li>
 </ul>
 </li>
-<li>run <code>python3 project_indexer.py</code></li>
+<li>run <code>python3 project_indexer.py --help</code> to see available options</li>
 </ol>
 <h2>ProjectIndexer options</h2>
 <ul>
 <li><code>fetch-github</code> - fetches data from GitHub API and saves it to <code>data/repos.json</code></li>
 <li><code>generate</code> - generates static web page from <code>data/repos.json</code> and saves it to <code>output</code> folder</li>
+<li><code>--compile-tailwind</code> - compiles tailwind css </li>
 <li><code>serve</code> - serves the static web page from <code>output</code> folder</li>
 </ul>
+<p>More predefined commands in <code>Makefile</code>.</p>
     </div>
 
     </div>

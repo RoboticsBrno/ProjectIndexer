@@ -251,7 +251,7 @@
     <p>Secure USB DFU1.1 bootloader for STM32</p>
     <p>Language: Assembly</p>
     <p>Created: 10.07.2020</p>
-    <p>Updated: 28.01.2021</p>
+    <p>Updated: 30.05.2023</p>
     <p>Stars: 0</p>
     <a href="https://github.com/RoboticsBrno/sboot_stm32">Visit on GitHub</a>
 
@@ -263,10 +263,10 @@
 <h3>Secure USB DFU1.1 bootloader for STM32</h3>
 <h4>Features</h4>
 <ul>
-<li>Small size. Fits in 4K ROM segment (ASM or no encription, otherwise a bit more).</li>
+<li>Small size. Fits in 4K ROM segment (ASM or no encryption, otherwise a bit more).</li>
 <li>USB DFU1.1 compatible</li>
-<li>supports by <a href="http://dfu-util.sourceforge.net/">dfu-util</a></li>
-<li>Supports one of the following ciphers</li>
+<li>Supported by <a href="http://dfu-util.sourceforge.net/">dfu-util</a></li>
+<li>Supported ciphers:</li>
 <li>No encryption</li>
 <li>ARCFOUR stream cipher</li>
 <li>CHACHA20 stream cipher</li>
@@ -279,22 +279,22 @@
 <li>RTEA block cipher</li>
 <li>BLOWFISH type block cipher</li>
 <li>Rijndael AES-128/192/256 block cipher</li>
-<li>Cipher modes for block ciphers</li>
+<li>Supported cipher modes for block ciphers:</li>
 <li>Electronic Codebook (ECB)</li>
 <li>Cipher Block Chaining (CBC)</li>
 <li>Propagating CBC (PCBC)</li>
 <li>Cipher Feedback (CFB)</li>
 <li>Output Feedback (OFB)</li>
 <li>Counter (CTR)</li>
-<li>Frmware verification signature</li>
+<li>Supported firmware verification methods:</li>
 <li>CRC (CRC32, CRC64)</li>
 <li>Fowler-Noll-Vo (FNV-1A-32, FNV1A-64)</li>
-<li>Different interfaces for flash and eeprom programming</li>
+<li>Separate interfaces for flash and EEPROM programming</li>
 <li>Autoseal using RDP level 1 or 2 (prevents reading decrypted FW trough debug interface).
   Be careful when you set RDP to level 2. <strong>This operation is irreversible and disables
   all debug functions and option bytes programming.</strong></li>
-<li>Software for firmaware encryption/decription included</li>
-<li>Supported STM32 family</li>
+<li>Software for firmware encryption/decryption included</li>
+<li>Supported STM32 families:</li>
 <li>STM32L0x2</li>
 <li>STM32L1xx</li>
 <li>STM32L476xx (OTG FS in device mode)</li>
@@ -305,9 +305,11 @@
 <li>STM32F4 series</li>
 <li>STM32G4 series</li>
 </ul>
+<h4>Generic flow</h4>
+<p><img alt="Generic Flow" src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBzdGFydChbUkVTRVRdKVxuICAgIGdvYXBwKFtBY3RpdmF0ZSBhcHBsaWNhdGlvbl0pXG4gICAgZ29ib290KFtBY3RpdmF0ZSBib290bG9hZGVyXSlcbiAgICBib290a2V5MXt7Ym9vdGtleSBtYXRjaCBpbnZlcnRlZD99fVxuICAgIGJvb3RrZXkye3tib290a2V5IG1hdGNoIG9uIHN0YXJ0P319XG4gICAgd2FpdChTZXQgYm9vdGtleSBhbmQgd2FpdCBzb21lIHRpbWUpXG4gICAgY2xyYm9vdGtleVtDbGVhciBib290a2V5XVxuICAgIHNldGNsb2NrW1NldHVwIFJDQ11cbiAgICBjaGVja3BpbihTZXR1cCBhbmQgY2hlY2sgcGluKVxuICAgIHNldHJlZ3NbU2V0dXAgTVNQIGFuZCBWVE9SXVxuICAgIGNzdmVyaWZ5KFZlcmlmeSBhcHBsaWNhdGlvbiBzaWduYXR1cmUpXG4gICAgc2V0aW52Ym9vdGtleVtTZXQgaW52ZXJ0ZWQgYm9vdGtleV1cblxuICAgIHN0YXJ0LS0-Ym9vdGtleTFcbiAgICBib290a2V5MS0tWWVzLS0-c2V0cmVnc1xuICAgIHNldHJlZ3MtLT5nb2FwcFxuICAgIGJvb3RrZXkxLS0-d2FpdFxuICAgIHdhaXQtLT5jbHJib290a2V5XG4gICAgY2xyYm9vdGtleS0tPnNldGNsb2NrXG4gICAgd2FpdC0uaGFyZHdhcmUgcmVzZXQuLT5zdGFydFxuICAgIHNldGNsb2NrLS0-Ym9vdGtleTJcbiAgICBib290a2V5Mi0tWWVzLS0-Z29ib290XG4gICAgYm9vdGtleTItLT5jaGVja3BpblxuICAgIGNoZWNrcGluLS1QaW4gYWN0aXZlLS0-Z29ib290XG4gICAgY2hlY2twaW4tLT5jc3ZlcmlmeVxuICAgIGNzdmVyaWZ5LS1Ob3QgbWF0Y2gtLT5nb2Jvb3RcbiAgICBjc3ZlcmlmeS0tPnNldGludmJvb3RrZXlcbiAgICBzZXRpbnZib290a2V5LS5OVklDIHJlc2V0Li0-c3RhcnQiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ" /></p>
 <h4>Usage:</h4>
-<h4>Configure bootloader</h4>
-<p>Bootloader can be configured trough the make parameters. See CONFIG.md for details.</p>
+<h4>Configuring bootloader</h4>
+<p>The bootloader can be configured through the make parameters. See CONFIG.md for details.</p>
 <h4>Building bootloader</h4>
 <ol>
 <li>Prerequisites</li>
@@ -363,7 +365,7 @@
 | stm32l062x8   | STM32L062K8                                        |                 |
 | stm32l063x8   | STM32L063C8, STM32L063R8                           |                 |
 | stm32l072v8   | STM32L072V8                                        |                 |
-| stm32l072xb   | STM32L072KB, STM32L072CB, STM32L072RB, STM32L072VB |                 |
+| stm32l072xb   | STM32L072KB, STM32L072CB, STM32L072RB, STM32L072VB | tested          |
 | stm32l072xz   | STM32L072KZ, STM32L072CZ, STM32L072RZ, STM32L072VZ |                 |
 | stm32l073v8   | STM32L073V8                                        |                 |
 | stm32l073xb   | STM32L073CB, STM32L073RB, STM32L073VB              |                 |
@@ -381,7 +383,7 @@
 | stm32f070xb   | STM32F070CB                                        | tested          |
 | stm32f429xe   | STM32F429xE series (single bank mode)              |                 |
 | stm32f429xg   | STM32F429xG series (single bank mode)              |                 |
-| stm32f429xi   | STM32F429xI series (single and dual bank)          | teted           |
+| stm32f429xi   | STM32F429xI series (single and dual bank)          | tested           |
 | stm32g431x6   | STM32G431x6, STM32G441x6                           |                 |
 | stm32g431x8   | STM32G431x8, STM32G441x8                           |                 |
 | stm32g431xb   | STM32G431xB, STM32G441xB                           | tested G431RB   |
@@ -392,27 +394,26 @@
 | stm32f373xc   | STM32F373xC                                        | tested          |</p>
 <h4>Adjusting user firmware</h4>
 <ul>
-<li>check bootloader's linker map for the <code>__app_start</code> address. This is the new ROM origin for the user firmware (isr vectors).</li>
-<li>Adjust your linker script to set new ROM origin and ROM length</li>
+<li>Check bootloader's linker map for the <code>__app_start</code> address. This is the new ROM origin for the user firmware (ISR vectors).</li>
+<li>Adjust your linker script to set new ROM origin and ROM length.</li>
 </ul>
 <h4>Utilizing usbd core and usbd driver from bootloader in the user firmware</h4>
 <ul>
-<li>check bootloader's linker map for the <code>usbd_poll</code> entry point and usbd driver (<code>usbd_devfs</code>, <code>usbd_otgfs</code>, e.t.c. depends used MCU). It's located just after <code>.isr_vector</code> section</li>
-<li>add address for usbd_driver structure to your linker script. For example <code>usbd_drv    = 0x08000040;</code></li>
-<li>add address for usbd_poll entry point to your linker script. For example <code>usbd_poll   = 0x08000074;</code></li>
-<li>add <code>extern struct usbd_driver usbd_drv;</code> driver declaration to your code</li>
-<li>include at least "usbd_core.h" and "usb_std.h" to your code</li>
+<li>Check bootloader's linker map for the <code>usbd_poll</code> entry point and usbd driver (<code>usbd_devfs</code>, <code>usbd_otgfs</code>, e.t.c. depends used MCU). It's located just after the <code>.isr_vector</code> section.</li>
+<li>Add address for usbd_driver structure to your linker script. For example <code>usbd_drv    = 0x08000040;</code></li>
+<li>Add address for usbd_poll entry point to your linker script. For example <code>usbd_poll   = 0x08000074;</code></li>
+<li>Add <code>extern struct usbd_driver usbd_drv;</code> driver declaration to your code.</li>
+<li>Include at least "usbd_core.h" and "usb_std.h" to your code.</li>
 </ul>
-<p>Now you can use usbd core and driver from bootloader in your application. Don't forget to set GPIO and RCC for USB according to MCU requirements.</p>
+<p>Now you can use the usbd core and driver from the bootloader in your application. Don't forget to set GPIO and RCC for USB according to MCU requirements.</p>
 <h4>Activating bootloader</h4>
 <ul>
-<li>put DFU_BOOTKEY on DFU_BOOTKEY_ADDR (RAM top by default) and make a software reset</li>
-<li>by DFU_BOOTSTRAP_PIN on DFU_BOOTSTRAP_PORT on startup (optional)</li>
-<li>make a double reset in DFU_DBLRESET_MS period (optional)
-+</li>
+<li>Write DFU_BOOTKEY at DFU_BOOTKEY_ADDR (RAM top by default) and make a software reset.</li>
+<li>Assert DFU_BOOTSTRAP_PIN on DFU_BOOTSTRAP_PORT on startup (optional).</li>
+<li>Make a double reset during the DFU_DBLRESET_MS period (optional).</li>
 </ul>
-<h4>Encryption/Decryption user firmware</h4>
-<p>At this moment only binary files supported</p>
+<h4>Encrypting user firmware</h4>
+<p>We provide a utility for encryption and decryption of firmware images. At this moment, only raw binary files are supported.</p>
 <p>To encrypt:</p>
 <pre><code>fwcrypt -e -i infile.bin -o outfile.bin
 </code></pre>

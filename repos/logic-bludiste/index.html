@@ -247,60 +247,17 @@
 
     <div class="pt-16">
         
-    <h1>RB3201-RBProtocol-library</h1>
-    <p>Library implementing the RBController protocol by RoboticsBrno.</p>
-    <p>Language: C</p>
-    <p>Created: 06.07.2018</p>
-    <p>Updated: 11.07.2023</p>
+    <h1>logic-bludiste</h1>
+    <p>No description</p>
+    <p>Language: C++</p>
+    <p>Created: 12.07.2023</p>
+    <p>Updated: 12.07.2023</p>
     <p>Stars: 0</p>
-    <a href="https://github.com/RoboticsBrno/RB3201-RBProtocol-library">Visit on GitHub</a>
+    <a href="https://github.com/RoboticsBrno/logic-bludiste">Visit on GitHub</a>
 
     <h2>Readme</h2>
     <div class="readme">
-        <h1>RbProtocol</h1>
-<p>A library faciliating communication with RbController Android app: https://play.google.com/store/apps/details?id=com.tassadar.rbcontroller</p>
-<pre><code class="language-cpp">#include &lt;esp_log.h&gt;
-#include &lt;lwip/sockets.h&gt;
-#include &lt;string.h&gt;
-#include &lt;freertos/FreeRTOS.h&gt;
-#include &lt;freertos/task.h&gt;
-#include &lt;esp_system.h&gt;
-
-#include &quot;rbprotocol.h&quot;
-#include &quot;rbwebserver.h&quot;
-
-void onPktReceived(const std::string&amp; command, rbjson::Object *pkt) {
-    if(command == &quot;joy&quot;) {
-        printf(&quot;Joy: &quot;);
-        rbjson::Array *data = pkt-&gt;getArray(&quot;data&quot;);
-        for(size_t i = 0; i &lt; data-&gt;size(); ++i) {
-            rbjson::Object *ax = data-&gt;getObject(i);
-            printf(&quot;#%d %6lld %6lld | &quot;, i, ax-&gt;getInt(&quot;x&quot;), ax-&gt;getInt(&quot;y&quot;)); 
-        }
-        printf(&quot;\r&quot;);
-    } else if(command == &quot;fire&quot;) {
-        printf(&quot;\n\nFIRE THE MISSILESS\n\n&quot;);
-    }
-}
-
-extern &quot;C&quot; void app_main() {
-    // Create web server, serves static files from the spiffs memory
-    rb_web_start(80);
-
-    rb::Protocol prot(&quot;Foo&quot;, &quot;Bar&quot;, &quot;The very best bar&quot;, &amp;onPktReceived);
-    prot.start();
-
-    printf(&quot;Hello world!\n&quot;);
-
-    int i = 0;
-    while(true) {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-        if(prot.is_possessed()) {
-            prot.send_log(&quot;Tick #%d\n&quot;, i++);
-        }
-    }
-}
-</code></pre>
+        
     </div>
 
     </div>
