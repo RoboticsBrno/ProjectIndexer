@@ -247,17 +247,32 @@
 
     <div class="pt-16">
         
-    <h1>RB0006-USB-C-Maestro</h1>
-    <p>No description</p>
-    <p>Language: None</p>
-    <p>Created: 10.04.2021</p>
-    <p>Updated: 04.11.2023</p>
-    <p>Stars: 0</p>
-    <a href="https://github.com/RoboticsBrno/RB0006-USB-C-Maestro">Visit on GitHub</a>
+    <h1>RB0012-HD108-LED</h1>
+    <p>Testing HD108 LEDs</p>
+    <p>Language: Python</p>
+    <p>Created: 10.09.2023</p>
+    <p>Updated: 22.03.2024</p>
+    <p>Stars: 3</p>
+    <a href="https://github.com/RoboticsBrno/RB0012-HD108-LED">Visit on GitHub</a>
 
     <h2>Readme</h2>
     <div class="readme">
-        
+        <h1>HD108 LEDs</h1>
+<p>We all love addressable LEDs such as WS2812B. But they suffer from two problems:
+- they have high current consumption in the off state – about 1 mA.
+- It's nice to have a single-wire protocol for driving these LEDs. However
+  generating this signal is not often that easy on common microcontrollers.
+  Also, there are many flavours out there that differ in the timing
+  requirements.
+- They have no gamma correction and only 8-bit PWM.</p>
+<p>There seem to be a new kind of LED -
+<a href="https://www.rose-lighting.com/wp-content/uploads/sites/53/2022/07/HD108-Specificaion-V1.2.pdf">HD108</a>
+that:
+- uses traditional SPI,
+- has 16-bit PWM + 5-bit brightness control so gamma correction is actually
+  possible.
+- claims to have 1 µA power consumption when off.</p>
+<p>This repository contains PCB &amp; software to test these LEDs.</p>
     </div>
 
     </div>

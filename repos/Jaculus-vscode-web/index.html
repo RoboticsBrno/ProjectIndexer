@@ -248,16 +248,37 @@
     <div class="pt-16">
         
     <h1>Jaculus-vscode-web</h1>
-    <p>No description</p>
+    <p>VS Code Web Extension demonstrating WebUSB access - testing version</p>
     <p>Language: TypeScript</p>
     <p>Created: 17.07.2023</p>
-    <p>Updated: 17.07.2023</p>
+    <p>Updated: 15.11.2023</p>
     <p>Stars: 0</p>
     <a href="https://github.com/RoboticsBrno/Jaculus-vscode-web">Visit on GitHub</a>
 
     <h2>Readme</h2>
     <div class="readme">
-        <h1>Jaculus-vscode-web</h1>
+        <h1>WebUSB Web Extension</h1>
+<p>VS Code Web Extension demonstrating WebUSB access</p>
+<h2>Prerequisites</h2>
+<p>A VS Code Web build available which includes https://github.com/microsoft/vscode/pull/152310</p>
+<h2>Description</h2>
+<p>WebUSB devices can be accessed from web extensions running in the web extension host webworker here:</p>
+<p>https://github.com/thegecko/webusb-web-extension/blob/main/src/browser/commands.ts#L23</p>
+<p>WebUSB devices need to be authorised before being accessed and this is possible due to the new <code>workbench.experimental.requestUsbDevice</code> command.</p>
+<p>This is triggered from the webview here:</p>
+<p>https://github.com/thegecko/webusb-web-extension/blob/main/src/views/webusb-view.ts#L7</p>
+<p>but run in the webworker here:</p>
+<p>https://github.com/thegecko/webusb-web-extension/blob/main/src/views/webusb-main.ts#L25</p>
+<h2>Screenshot</h2>
+<p><img src="https://user-images.githubusercontent.com/61341/161058912-85171f70-7c86-42f0-862b-29a7e014cf92.png"></p>
+<h2>Install</h2>
+<pre><code class="language-bash">npm install
+npm run watch
+</code></pre>
+<p>In second terminal:</p>
+<pre><code class="language-bash">npm run browser
+</code></pre>
+<p>Then open the extension in VS Code and run the <code>Run Extension</code> launch configuration.</p>
     </div>
 
     </div>

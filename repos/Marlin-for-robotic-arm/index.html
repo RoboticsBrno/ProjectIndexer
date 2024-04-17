@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head class="dark:bg-gray-800 bg-gray-200">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<script src="/assets/js/preline.js"></script>
+
+<link rel="stylesheet" href="/assets/css/font-awesome-6.4.1.css">
+
+
+    <title></title>
+</head>
+<body class="flex flex-col min-h-screen">
+    
+<header class="fixed top-0 left-0 right-0  z-50 w-full flex items-center justify-center flex-nowrap pl-5 pr-5">
+    <nav class="mt-6 relative w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white w-100" href="/">
+                <img class="w-12 h-auto" src="/assets/logo.png" alt="Logo">
+                <div class="hover:text-blue-600">
+                    Robotics Brno
+                </div>
+            </a>
+            <div class="md:hidden">
+                <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
+                    <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+            <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+                
+                    
+                    
+                    
+                    
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+                        
+                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                               href="/repos"
+                               >
+                                Repos
+                            </a>
+                        
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+                        
+                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                               href="/projects"
+                               >
+                                Projects
+                            </a>
+                        
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+                        
+                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                               href="/demo"
+                               >
+                                Demo
+                            </a>
+                        
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+                        
+                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                               href="/about"
+                               >
+                                About
+                            </a>
+                        
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+                        
+                            <div class="flex items-center gap-x-2 text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500">
+                                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                                   href="https://team.robotikabrno.cz/" target="_blank">
+                                    Our team
+                                </a>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        
+                    
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="pt-16">
+        
+    <h1>Marlin-for-robotic-arm</h1>
+    <p>Fork of Marlin with configuration for robotic arms</p>
+    <p>Language: C++</p>
+    <p>Created: 05.11.2023</p>
+    <p>Updated: 30.11.2023</p>
+    <p>Stars: 0</p>
+    <a href="https://github.com/RoboticsBrno/Marlin-for-robotic-arm">Visit on GitHub</a>
+
+    <h2>Readme</h2>
+    <div class="readme">
+        <p align="center"><img src="buildroot/share/pixmaps/logo/marlin-outrun-nf-500.png"></p>
+
+<h1 align="center">Marlin 3D Printer Firmware</h1>
+
+<p align="center">
+    <a href="/LICENSE"><img src="https://img.shields.io/github/license/marlinfirmware/marlin.svg"></a>
+    <a href="https://github.com/MarlinFirmware/Marlin/graphs/contributors"><img src="https://img.shields.io/github/contributors/marlinfirmware/marlin.svg"></a>
+    <a href="https://github.com/MarlinFirmware/Marlin/releases"><img src="https://img.shields.io/github/release-date/MarlinFirmware/Marlin"></a>
+    <a href="https://github.com/MarlinFirmware/Marlin/actions"><img src="https://github.com/MarlinFirmware/Marlin/actions/workflows/test-builds.yml/badge.svg"></a>
+    <a href="https://github.com/sponsors/thinkyhead"><img src="https://img.shields.io/github/sponsors/thinkyhead?color=db61a2"></a>
+    <br />
+    <a href="https://fosstodon.org/@marlinfirmware"><img src="https://img.shields.io/mastodon/follow/109450200866020466?domain=https%3A%2F%2Ffosstodon.org&logoColor=%2300B&style=social"></a>
+</p>
+
+<p>Additional documentation can be found at the <a href="https://marlinfw.org/">Marlin Home Page</a>.
+Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!</p>
+<h2>Marlin 2.1 Bugfix Branch</h2>
+<p><strong>Not for production use. Use with caution!</strong></p>
+<p>Marlin 2.1 takes this popular RepRap firmware to the next level by adding support for much faster 32-bit and ARM-based boards while improving support for 8-bit AVR boards. Read about Marlin's decision to use a "Hardware Abstraction Layer" below.</p>
+<p>This branch is for patches to the latest 2.1.x release version. Periodically this branch will form the basis for the next minor 2.1.x release.</p>
+<p>Download earlier versions of Marlin on the <a href="https://github.com/MarlinFirmware/Marlin/releases">Releases page</a>.</p>
+<h2>Example Configurations</h2>
+<p>Before you can build Marlin for your machine you'll need a configuration for your specific hardware. Upon request, your vendor will be happy to provide you with the complete source code and configurations for your machine, but you'll need to get updated configuration files if you want to install a newer version of Marlin. Fortunately, Marlin users have contributed dozens of tested configurations to get you started. Visit the <a href="https://github.com/MarlinFirmware/Configurations">MarlinFirmware/Configurations</a> repository to find the right configuration for your hardware.</p>
+<h2>Building Marlin 2.1</h2>
+<p>To build and upload Marlin you will use one of these tools:</p>
+<ul>
+<li>The free <a href="https://code.visualstudio.com/download">Visual Studio Code</a> using the <a href="https://marlinfw.org/docs/basics/auto_build_marlin.html">Auto Build Marlin</a> extension.</li>
+<li>The free <a href="https://www.arduino.cc/en/main/software">Arduino IDE</a> : See <a href="https://marlinfw.org/docs/basics/install_arduino.html">Building Marlin with Arduino</a></li>
+<li>You can also use VSCode with devcontainer : See <a href="http://marlinfw.org/docs/basics/install_devcontainer_vscode.html">Installing Marlin (VSCode devcontainer)</a>.</li>
+</ul>
+<p>Marlin is optimized to build with the <strong>PlatformIO IDE</strong> extension for <strong>Visual Studio Code</strong>. You can still build Marlin with <strong>Arduino IDE</strong>, and we hope to improve the Arduino build experience, but at this time PlatformIO is the better choice.</p>
+<h2>Hardware Abstraction Layer (HAL)</h2>
+<p>Marlin includes an abstraction layer to provide a common API for all the platforms it targets. This allows Marlin code to address the details of motion and user interface tasks at the lowest and highest levels with no system overhead, tying all events directly to the hardware clock.</p>
+<p>Every new HAL opens up a world of hardware. At this time we need HALs for RP2040 and the Duet3D family of boards. A HAL that wraps an RTOS is an interesting concept that could be explored. Did you know that Marlin includes a Simulator that can run on Windows, macOS, and Linux? Join the Discord to help move these sub-projects forward!</p>
+<h2>8-Bit AVR Boards</h2>
+<p>A core tenet of this project is to keep supporting 8-bit AVR boards while also maintaining a single codebase that applies equally to all machines. We want casual hobbyists to benefit from the community's innovations as much as possible just as much as those with fancier machines. Plus, those old AVR-based machines are often the best for your testing and feedback!</p>
+<h3>Supported Platforms</h3>
+<p>Platform|MCU|Example Boards
+  --------|---|-------
+  <a href="https://www.arduino.cc/">Arduino AVR</a>|ATmega|RAMPS, Melzi, RAMBo
+  <a href="https://www.microchip.com/en-us/product/AT90USB1286">Teensy++ 2.0</a>|AT90USB1286|Printrboard
+  <a href="https://www.arduino.cc/en/Guide/ArduinoDue">Arduino Due</a>|SAM3X8E|RAMPS-FD, RADDS, RAMPS4DUE
+  <a href="https://github.com/espressif/arduino-esp32">ESP32</a>|ESP32|FYSETC E4, E4d@BOX, MRR
+  <a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc1700-cortex-m3/512-kb-flash-64-kb-sram-ethernet-usb-lqfp100-package:LPC1768FBD100">LPC1768</a>|ARM® Cortex-M3|MKS SBASE, Re-ARM, Selena Compact
+  <a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc1700-cortex-m3/512-kb-flash-64-kb-sram-ethernet-usb-lqfp100-package:LPC1769FBD100">LPC1769</a>|ARM® Cortex-M3|Smoothieboard, Azteeg X5 mini, TH3D EZBoard
+  <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f103.html">STM32F103</a>|ARM® Cortex-M3|Malyan M200, GTM32 Pro, MKS Robin, BTT SKR Mini
+  <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f401.html">STM32F401</a>|ARM® Cortex-M4|ARMED, Rumba32, SKR Pro, Lerdge, FYSETC S6, Artillery Ruby
+  <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f7x6.html">STM32F7x6</a>|ARM® Cortex-M7|The Borg, RemRam V1
+  <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32g0x1.html">STM32G0B1RET6</a>|ARM® Cortex-M0+|BigTreeTech SKR mini E3 V3.0
+  <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html">STM32H743xIT6</a>|ARM® Cortex-M7|BigTreeTech SKR V3.0, SKR EZ V3.0, SKR SE BX V2.0/V3.0
+  <a href="https://www.adafruit.com/product/4064">SAMD51P20A</a>|ARM® Cortex-M4|Adafruit Grand Central M4
+  <a href="https://www.pjrc.com/store/teensy35.html">Teensy 3.5</a>|ARM® Cortex-M4|
+  <a href="https://www.pjrc.com/store/teensy36.html">Teensy 3.6</a>|ARM® Cortex-M4|
+  <a href="https://www.pjrc.com/store/teensy40.html">Teensy 4.0</a>|ARM® Cortex-M7|
+  <a href="https://www.pjrc.com/store/teensy41.html">Teensy 4.1</a>|ARM® Cortex-M7|
+  Linux Native|x86/ARM/etc.|Raspberry Pi</p>
+<h2>Submitting Patches</h2>
+<p>Proposed patches should be submitted as a Pull Request against the (<a href="https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.1.x">bugfix-2.1.x</a>) branch.</p>
+<ul>
+<li>This branch is for fixing bugs and integrating any new features for the duration of the Marlin 2.1.x life-cycle.</li>
+<li>Follow the <a href="https://marlinfw.org/docs/development/coding_standards.html">Coding Standards</a> to gain points with the maintainers.</li>
+<li>Please submit Feature Requests and Bug Reports to the <a href="https://github.com/MarlinFirmware/Marlin/issues/new/choose">Issue Queue</a>. Support resources are also listed there.</li>
+<li>Whenever you add new features, be sure to add tests to <code>buildroot/tests</code> and then run your tests locally, if possible.</li>
+<li>It's optional: Running all the tests on Windows might take a long time, and they will run anyway on GitHub.</li>
+<li>If you're running the tests on Linux (or on WSL with the code on a Linux volume) the speed is much faster.</li>
+<li>You can use <code>make tests-all-local</code> or <code>make tests-single-local TEST_TARGET=...</code>.</li>
+<li>If you prefer Docker you can use <code>make tests-all-local-docker</code> or <code>make tests-all-local-docker TEST_TARGET=...</code>.</li>
+</ul>
+<h2>Marlin Support</h2>
+<p>The Issue Queue is reserved for Bug Reports and Feature Requests. To get help with configuration and troubleshooting, please use the following resources:</p>
+<ul>
+<li><a href="https://marlinfw.org">Marlin Documentation</a> - Official Marlin documentation</li>
+<li><a href="https://discord.gg/n5NJ59y">Marlin Discord</a> - Discuss issues with Marlin users and developers</li>
+<li>Facebook Group <a href="https://www.facebook.com/groups/1049718498464482/">"Marlin Firmware"</a></li>
+<li>RepRap.org <a href="https://forums.reprap.org/list.php?415">Marlin Forum</a></li>
+<li>Facebook Group <a href="https://www.facebook.com/groups/3Dtechtalk/">"Marlin Firmware for 3D Printers"</a></li>
+<li><a href="https://www.youtube.com/results?search_query=marlin+configuration">Marlin Configuration</a> on YouTube</li>
+</ul>
+<h2>Contributors</h2>
+<p>Marlin is constantly improving thanks to a huge number of contributors from all over the world bringing their specialties and talents. Huge thanks are due to <a href="https://github.com/MarlinFirmware/Marlin/graphs/contributors">all the contributors</a> who regularly patch up bugs, help direct traffic, and basically keep Marlin from falling apart. Marlin's continued existence would not be possible without them.</p>
+<h2>Administration</h2>
+<p>Regular users can open and close their own issues, but only the administrators can do project-related things like add labels, merge changes, set milestones, and kick trolls. The current Marlin admin team consists of:</p>
+<table align="center">
+<tr><td>Project Maintainer</td></tr>
+<tr><td>
+
+ 🇺🇸  **Scott Lahteine**
+       [@thinkyhead](https://github.com/thinkyhead)
+       [<kbd>  Donate 💸  </kbd>](https://www.thinkyhead.com/donate-to-marlin)
+
+</td><td>
+
+ 🇺🇸  **Roxanne Neufeld**
+       [@Roxy-3D](https://github.com/Roxy-3D)
+
+ 🇺🇸  **Keith Bennett**
+       [@thisiskeithb](https://github.com/thisiskeithb)
+       [<kbd>  Donate 💸  </kbd>](https://github.com/sponsors/thisiskeithb)
+
+ 🇺🇸  **Jason Smith**
+       [@sjasonsmith](https://github.com/sjasonsmith)
+
+</td><td>
+
+ 🇧🇷  **Victor Oliveira**
+       [@rhapsodyv](https://github.com/rhapsodyv)
+
+ 🇬🇧  **Chris Pepper**
+       [@p3p](https://github.com/p3p)
+
+🇳🇿  **Peter Ellens**
+       [@ellensp](https://github.com/ellensp)
+       [<kbd>  Donate 💸  </kbd>](https://ko-fi.com/ellensp)
+
+</td><td>
+
+ 🇺🇸  **Bob Kuhn**
+       [@Bob-the-Kuhn](https://github.com/Bob-the-Kuhn)
+
+ 🇳🇱  **Erik van der Zalm**
+       [@ErikZalm](https://github.com/ErikZalm)
+       [<kbd>  Donate 💸  </kbd>](https://flattr.com/submit/auto?user_id=ErikZalm&url=https://github.com/MarlinFirmware/Marlin&title=Marlin&language=&tags=github&category=software)
+
+</td></tr>
+</table>
+
+<h2>License</h2>
+<p>Marlin is published under the <a href="/LICENSE">GPL license</a> because we believe in open development. The GPL comes with both rights and obligations. Whether you use Marlin firmware as the driver for your open or closed-source product, you must keep Marlin open, and you must provide your compatible Marlin source code to end users upon request. The most straightforward way to comply with the Marlin license is to make a fork of Marlin on Github, perform your modifications, and direct users to your modified fork.</p>
+<p>While we can't prevent the use of this code in products (3D printers, CNC, etc.) that are closed source or crippled by a patent, we would prefer that you choose another firmware or, better yet, make your own.</p>
+    </div>
+
+    </div>
+    <!-- Footer -->
+<footer class="dark:bg-gray-800 bg-white py-6 px-6">
+    <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+            <div class="text-center md:text-left text-gray-600 dark:text-gray-300">
+                <h5 class="text-lg font-semibold">RoboticsBrno</h5>
+                <p class="py-2">©  All rights reserved.</p>
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Terms of Service</a>
+                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
