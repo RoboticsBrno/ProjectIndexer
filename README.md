@@ -98,3 +98,14 @@ Markdown text...
 
 ### Obrázky
 Cesta k obrázkům začíná `R:<repo name>/images/...` (např. `R:robotka/images/...`)
+
+## Úvodní stránka
+Kdo jsme a co děláme.
+Tahle stánka ideálně anglicky i česky - zbytek stačí v angličtině (pokud je to možné).
+
+Déle zde zobrazova informace o změnách v projektech (např. poslední aktualizace).
+Nachystat několik šablon a při každé kompilaci se náhodně vybere jedna a zobrazí se na úvodní stránce (např. obrázek z nějakého projektu s popisem a linkem).
+
+## Náš tým
+Zde by se měli zobrazovat členové týmu (případně i přispěvatelé).
+Přesunout informace z https://team.robotikabrno.cz/ sem na jeden web.
