@@ -9,3 +9,4 @@ python-dotenv~=1.0.0
 pytest
 PyYAML~=6.0
 Markdown~=3.3.7
+click
