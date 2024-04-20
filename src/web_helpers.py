@@ -8,7 +8,8 @@ def load_projects(project_dir: os.path) -> list:
         with open(f'{project_dir}/{project}') as f:
             return yaml.safe_load(f)
 
-    projects_dir = [f for f in os.listdir(project_dir) if f.endswith('.yaml')]
+    projects_dir = [f for f in os.listdir(project_dir) if f.endswith('.yaml') and not f == "template.yaml"]
+
     projects = [project_loader(project) for project in projects_dir]
     return projects
 
