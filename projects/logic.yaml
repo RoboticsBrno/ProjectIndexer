@@ -1,0 +1,14 @@
+name: Logic
+url: logic
+description: 
+website: https://logic.robotikabrno.cz/
+readme: https://github.com/RoboticsBrno/RB3205-Logic/blob/main/README.md
+
+
+related_repos:
+  - url: https://github.com/RoboticsBrno/RB3205-Logic
+    description: Logic PCB + schematics 
+  
+  - url: https://github.com/RoboticsBrno/Logic_library
+    description: Logic library
+
