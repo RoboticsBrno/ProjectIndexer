@@ -8,10 +8,15 @@
 </head>
 <body class="flex flex-col min-h-screen">
     {% include 'header.html' %}
-{#    padding for floating nav#}
-    <div class="pt-16">
+    {# padding for floating nav#}
+    <div class="mt-28 mb-2">
         {% block content %}{% endblock %}
     </div>
+
+    {# move the footer to the bottom #}
+    <div class="flex flex-grow">
+    </div>
+    
     {% include 'footer.html' %}
 </body>
 </html>

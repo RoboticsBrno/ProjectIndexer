@@ -1,6 +1,6 @@
 {#<header class="fixed top-0 md:justify-start md:flex-nowrap z-50 w-full text-sm">#}
-<header class="fixed top-0 left-0 right-0  z-50 w-full flex items-center justify-center flex-nowrap pl-5 pr-5">
-    <nav class="mt-6 relative w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+<header class="pl-2 pr-2 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap">
+    <nav class="mt-2 mx-2 py-1 px-4 relative w-full bg-white border border-gray-200 rounded-[26px] md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
         <div class="flex items-center justify-between">
             <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white w-100" href="/">
                 <img class="w-12 h-auto" src="/assets/logo.png" alt="Logo">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
-            <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+            <div class="flex mt-6 md:mt-0 md:pl-7 flex-col gap-y-4 gap-x-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7">
                 {% for key, value in paths.items() %}
                     {% set active_link = (key == active) %}
                     {% set path = value.path %}
@@ -29,14 +29,14 @@
 
                     {% if value.showHeader %}
                         {% if not external %}
-                            <a class="font-medium {% if active_link %}text-blue-600{% else %}text-gray-500 hover:text-gray-400{% endif %} md:py-6 dark:text-gray-400 hover:text-gray-500"
+                            <a class="font-medium md:py-4 {% if active_link %}text-blue-600{% else %}text-gray-500 hover:text-gray-400{% endif %} dark:text-gray-400 hover:text-gray-500"
                                href="/{{ key.lower() }}"
                                {% if active_link %}aria-current="page"{% endif %}>
                                 {{ key }}
                             </a>
                         {% else %}
-                            <div class="flex items-center gap-x-2 text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500">
-                                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                            <div class="flex md:py-5 items-center gap-x-2 text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500">
+                                <a class="font-medium md:py-2 text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
                                    href="{{ path }}" target="_blank">
                                     {{ key }}
                                 </a>
