@@ -70,8 +70,17 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
     if not repos or not readme:
         raise Exception("No repos loaded")
 
-    generate_web = GenerateWeb(repos, readme, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
+    # sort repos by time of last push (newest to oldest)
+    repos_w_time = []
+    for repo in repos:
+        repos_w_time.append((repo, max(repo.pushed_at, repo.updated_at)))
 
+    sorted_repos = sorted(repos_w_time, key=lambda x: x[1], reverse=True)
+    repos = []
+    for repo, t in sorted_repos:
+        repos.append(repo)
+
+    generate_web = GenerateWeb(repos, readme, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
 
     generate_web.generate()
     print(f"Generated web to {build_dir} directory in {time() - start:.2f} seconds")
@@ -89,6 +98,7 @@ def serve(port: int, host: str, build_dir: str, no_livereload: bool):
         import socketserver
         Handler = http.server.SimpleHTTPRequestHandler
         with socketserver.TCPServer((host, port), Handler) as httpd:
+            httpd.allow_reuse_address = True
             print(f"Serving at http://{host}:{port}")
             httpd.serve_forever()
     else:
