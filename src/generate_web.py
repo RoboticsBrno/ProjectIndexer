@@ -117,6 +117,8 @@ class GenerateWeb:
         for repo in self.repos:
             readme_md = self.readme.get(repo.full_name, "No readme found")
             readme_fixed_images = fix_readme_relative_images(readme_md, repo.full_name, repo.default_branch)
+            readme_fixed_images = readme_fixed_images.replace(':\n- ', ':\n\n- ') # fix markdown lists
+            readme_fixed_images = readme_fixed_images.replace('- ', '- ● ') # add the dot before each element of the list
             readme_html = markdown(readme_fixed_images, extensions=['fenced_code'])
             path_repo = self.paths.get("Repo").get("path").format(repo.name)
             self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html)
