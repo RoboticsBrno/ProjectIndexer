@@ -12,14 +12,15 @@
 <script src="/assets/js/preline.js"></script>
 
 <link rel="stylesheet" href="/assets/css/font-awesome-6.4.1.css">
+<link rel="stylesheet" href="/assets/css/github-markdown.css">
 
 
     <title>Projects</title>
 </head>
 <body class="flex flex-col min-h-screen">
     
-<header class="fixed top-0 left-0 right-0  z-50 w-full flex items-center justify-center flex-nowrap pl-5 pr-5">
-    <nav class="mt-6 relative w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+<header class="px-2 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap">
+    <nav class="mt-2 mx-2 py-1 px-4 relative w-full bg-white border border-gray-200 rounded-[26px] md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
         <div class="flex items-center justify-between">
             <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white w-100" href="/">
                 <img class="w-12 h-auto" src="/assets/logo.png" alt="Logo">
@@ -39,7 +40,7 @@
             </div>
         </div>
         <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
-            <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+            <div class="flex mt-6 md:mt-0 md:pl-7 flex-col gap-y-4 gap-x-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7">
                 
                     
                     
@@ -55,7 +56,7 @@
 
                     
                         
-                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                            <a class="font-medium md:py-4 text-gray-500 hover:text-gray-400 dark:text-gray-400 hover:text-gray-500"
                                href="/repos"
                                >
                                 Repos
@@ -77,7 +78,7 @@
 
                     
                         
-                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                            <a class="font-medium md:py-4 text-gray-500 hover:text-gray-400 dark:text-gray-400 hover:text-gray-500"
                                href="/projects"
                                >
                                 Projects
@@ -99,7 +100,7 @@
 
                     
                         
-                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                            <a class="font-medium md:py-4 text-gray-500 hover:text-gray-400 dark:text-gray-400 hover:text-gray-500"
                                href="/demo"
                                >
                                 Demo
@@ -114,7 +115,7 @@
 
                     
                         
-                            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 hover:text-gray-500"
+                            <a class="font-medium md:py-4 text-gray-500 hover:text-gray-400 dark:text-gray-400 hover:text-gray-500"
                                href="/about"
                                >
                                 About
@@ -129,8 +130,8 @@
 
                     
                         
-                            <div class="flex items-center gap-x-2 text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500">
-                                <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                            <div class="flex md:py-5 items-center gap-x-2 text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500">
+                                <a class="font-medium md:py-2 text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
                                    href="https://team.robotikabrno.cz/" target="_blank">
                                     Our team
                                 </a>
@@ -248,39 +249,74 @@
 
 
 
-
-    <div class="pt-16">
+    
+    <div class="mt-20 md:mt-28">
         
-    
-        <div class="row">
-            <div class="col-md-12">
-                <h2></h2>
-                <p>RBCX is a universal controller for hobby robots. It is a successor of RB3201-RBControl. It is used in our robot Robotka on Robo camp 2020.</p>
-                <p><a href="/projects/rbcx">Read more</a></p>
+<div class="mx-2 mt-2 grid grid-cols-1 md:grid-cols-3 gap-2">
+        
+        <!-- Project Card - RBCX -->
+        <a class="mx-auto dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between w-full min-w-0 max-w-xl h-full" href="/projects/rbcx/">
+            <div class="flex flex-col h-full w-full flex-grow">
+                
+                <h2 class="mb-1 dark:text-white text-xl font-bold text-gray-800">RBCX</h2>
+                <p class="mb-2 dark:text-gray-300 text-gray-600">RBCX is a universal controller for hobby robots. It is a successor of RB3201-RBControl. It is used in our robot Robotka on Robo camp 2020.</p>
+
+                    
             </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-md-12">
-                <h2></h2>
-                <p>ESP Learning Kit starter</p>
-                <p><a href="/projects/elks">Read more</a></p>
+        </a>
+        
+        <!-- Project Card - Jaculus-esp32 -->
+        <a class="mx-auto dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between w-full min-w-0 max-w-xl h-full" href="/projects/jaculus/">
+            <div class="flex flex-col h-full w-full flex-grow">
+                
+                <h2 class="mb-1 dark:text-white text-xl font-bold text-gray-800">Jaculus-esp32</h2>
+                <p class="mb-2 dark:text-gray-300 text-gray-600">JavaScript runtime for esp32 devices</p>
+
+                    
             </div>
-        </div>
-    
+        </a>
+        
+        <!-- Project Card - Logic -->
+        <a class="mx-auto dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between w-full min-w-0 max-w-xl h-full" href="/projects/logic/">
+            <div class="flex flex-col h-full w-full flex-grow">
+                
+                <h2 class="mb-1 dark:text-white text-xl font-bold text-gray-800">Logic</h2>
+                <p class="mb-2 dark:text-gray-300 text-gray-600">Logic is a universal programmable toy designed for teaching programming developed at Robotárna.</p>
+
+                    
+            </div>
+        </a>
+        
+        <!-- Project Card - ELKS -->
+        <a class="mx-auto dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between w-full min-w-0 max-w-xl h-full" href="/projects/elks/">
+            <div class="flex flex-col h-full w-full flex-grow">
+                
+                <h2 class="mb-1 dark:text-white text-xl font-bold text-gray-800">ELKS</h2>
+                <p class="mb-2 dark:text-gray-300 text-gray-600">ESP Learning Kit starter</p>
+
+                    
+            </div>
+        </a>
+        
+    </div>
 
     </div>
+
+    
+    <div class="mt-2 flex flex-grow">
+    </div>
+    
     <!-- Footer -->
-<footer class="dark:bg-gray-800 bg-white py-6 px-6">
-    <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
+<footer class="py-6 px-6 dark:bg-gray-800 bg-white">
+    <div class="sm:px-6 lg:px-8 container mx-auto max-w-7xl">
         <div class="flex justify-between items-center">
             <div class="text-center md:text-left text-gray-600 dark:text-gray-300">
                 <h5 class="text-lg font-semibold">RoboticsBrno</h5>
                 <p class="py-2">©  All rights reserved.</p>
             </div>
             <div class="space-x-4">
-                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Terms of Service</a>
-                <a href="#" class="dark:hover:text-gray-300 hover:text-gray-800 text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Privacy Policy</a>
+                <a href="#" class="px-3 py-2 dark:text-gray-300 dark:hover:text-gray-500 text-gray-600 hover:text-gray-800 rounded-md text-sm font-medium">Terms of Service</a>
+                <a href="#" class="px-3 py-2 dark:text-gray-300 dark:hover:text-gray-500 text-gray-600 hover:text-gray-800 rounded-md text-sm font-medium">Privacy Policy</a>
             </div>
         </div>
     </div>
