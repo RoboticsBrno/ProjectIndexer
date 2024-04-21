@@ -65,6 +65,12 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
             repo.full_name: fetch_data.fetch_readme(repo)
             for repo in repos
         }
+
+        contributors ={
+            repo.full_name:
+            [[contributor.html_url, contributor.avatar_url, contributor.name, contributor.login, contributor.contributions,] for contributor in fetch_data.fetch_contributors(repo)] for repo in repos
+        } 
+
     else:
         repos = fetch_data.load_repo(input_repos)
         readme = fetch_data.load_readme(input_readme)
