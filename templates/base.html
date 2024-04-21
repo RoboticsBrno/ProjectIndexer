@@ -9,12 +9,12 @@
 <body class="flex flex-col min-h-screen">
     {% include 'header.html' %}
     {# padding for floating nav#}
-    <div class="mt-28 mb-2">
+    <div class="mt-20 md:mt-28">
         {% block content %}{% endblock %}
     </div>
 
     {# move the footer to the bottom #}
-    <div class="flex flex-grow">
+    <div class="mt-2 flex flex-grow">
     </div>
     
     {% include 'footer.html' %}
