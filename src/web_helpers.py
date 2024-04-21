@@ -52,10 +52,14 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
             new_url = base_url + img_url
         elif img_url.startswith("./"):
             new_url = f"{base_url}/{img_url[2:]}"
-        else:
+        elif img_url.startswith("https://github.com"):
+            new_url = base_url + img_url.split("/blob/master")[-1]
+        elif img_url.startswith("http"):
             # The URL is already absolute, or it's a type of relative URL
-            # that we aren't handling.
             new_url = img_url
+        else:
+            new_url = base_url + "/"+ img_url
+
         return f"![{alt_text}]({new_url})" if alt_text else new_url
 
     # Replace Markdown image URLs

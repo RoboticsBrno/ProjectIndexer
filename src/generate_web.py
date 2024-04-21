@@ -25,6 +25,7 @@ class GenerateWeb:
             self,
             repos: list[Repository.Repository],
             readme: dict[str, str],
+            contributors: dict[list],
             build_dir: str = 'build',
             template_dir: path = 'templates',
             static_dir: path = 'static',
@@ -39,6 +40,7 @@ class GenerateWeb:
             self.repos = repos
 
         self.readme = readme
+        self.contributors = contributors
         self.static_dir = static_dir
         self.template_dir = template_dir
         self.project_dir = project_dir
@@ -114,14 +116,17 @@ class GenerateWeb:
         self.render_page('repos.html', self.paths.get("Repos").get("path"), repos=self.repos)
 
     def generate_repos_detail(self):
-        for repo in self.repos:
+        repo_count = len(self.repos)
+        for i, repo in enumerate(self.repos):
+            print(f"Generating {repo.name} {i}/{repo_count}")
             readme_md = self.readme.get(repo.full_name, "No readme found")
             readme_fixed_images = fix_readme_relative_images(readme_md, repo.full_name, repo.default_branch)
             readme_fixed_images = readme_fixed_images.replace(':\n- ', ':\n\n- ') # fix markdown lists
             readme_fixed_images = readme_fixed_images.replace('- ', '- ● ') # add the dot before each element of the list
             readme_html = markdown(readme_fixed_images, extensions=['fenced_code'])
             path_repo = self.paths.get("Repo").get("path").format(repo.name)
-            self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html)
+
+            self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html, repo_contrib = self.contributors[repo.full_name])
 
     def generate_demo(self):
         self.render_page('demo.html', self.paths.get("Demo").get("path"))

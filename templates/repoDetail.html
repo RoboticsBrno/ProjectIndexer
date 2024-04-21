@@ -1,7 +1,7 @@
 {% set title = repo.name %}
 {% extends "base.html" %}
 {% block content %}
-<div class="ml-2 mx-2 mt-2 ">
+<div class="mx-2 mt-2 ">
     {# Repo info #}
     <div class="flex flex-col md:flex-row gap-2 h-auto md:items-stretch">
         <div class="p-4 flex flex-col w-full min-w-0 md:w-3/6 dark:bg-gray-800 bg-white rounded-lg shadow-md">
@@ -52,16 +52,15 @@
     </div>
 
     {# Contributors #}
-    <div class="mt-2 flex flex-col md:flex-row gap-2 h-auto">
-        {% for contrib in repo.get_contributors() %}
-        <a class="p-4 flex flex-row w-full min-w-0 md:w-1/4 dark:bg-gray-800 bg-white rounded-lg shadow-md"
-            href="{{contrib.html_url}}">
-            <img class="w-20 aspect-square rounded-3xl" src="{{contrib.avatar_url}}">
+    <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
+        {% for contrib in repo_contrib %}
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="{{ contrib[0] }}">
+            <img class="w-20 aspect-square rounded-3xl" src="{{ contrib[1] }}">
             <div class="ml-3 flex flex-col">
-                <p class="dark:text-white text-xl font-bold text-gray-800">{{ contrib.name }}</p>
-                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">{{ contrib.login }}</p>
-                <p class="leading-10 dark:text-gray-300 text-gray-600">{{ contrib.contributions }} {% if
-                    contrib.contributions
+                <p class="dark:text-white text-xl font-bold text-gray-800">{{ contrib[2] }}</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">{{ contrib[3]}}</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">{{ contrib[4] }} {% if
+                    contrib[3]
                     == 1 %}commit{% else
                     %}commits{% endif %}</p>
             </div>

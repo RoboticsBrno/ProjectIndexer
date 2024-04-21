@@ -18,15 +18,16 @@ def cli():
 @click.option('--github-token', default=None, help='Github token (default is in .env file)')
 @click.option('--output-repos', '-o', default='data/repos.json', help='build file (default is repos.json)')
 @click.option('--output-readme', '-r', default='data/readme.json', help='build file (default is readme.json)')
+@click.option('--output-contributors', '-r', default='data/contributors.json', help='build file (default is contributors.json)')
 @click.option('--verbose', default=False, is_flag=True, help='Verbose build')
-def fetch_github(github_token, output_repos, output_readme, verbose):
+def fetch_github(github_token, output_repos, output_readme, output_contributors, verbose):
     fetch_data = FetchData(github_token)
     start = time()
     repos = fetch_data.fetch_repos()
     if repos is None:
         logger.error("No repos fetched")
         return
-    repos_count = fetch_data.save_to_file(repos, output_repos, output_readme, verbose)
+    repos_count = fetch_data.save_to_file(repos, output_repos, output_readme, output_contributors, verbose)
     logger.info(f"Fetched {repos_count} repos in {time() - start:.2f} seconds")
 
 @click.command(help='List repos from file - for debugging')
@@ -46,6 +47,7 @@ def list(github_token, input_file):
 @click.option('--fetch-directly', default=False, is_flag=True, help='Fetch repos directly from github')
 @click.option('--input-repos', default='data/repos.json', help='Input file (default is repos.json)')
 @click.option('--input-readme', default='data/readme.json', help='Input file (default is readme.json)')
+@click.option('--input-contributors', default='data/contributors.json', help='Input file (default is contributors.json)')
 @click.option('--build-dir', '-o', default='build', help='build directory (default is build)')
 @click.option('--template-dir', '-t', default='templates', help="Template directory (default is 'templates')")
 @click.option('--static-dir', default='static', help="Static directory (default is 'static')")
@@ -53,7 +55,7 @@ def list(github_token, input_file):
 @click.option('--hide-private', default=False, is_flag=True, help="Hide private repos")
 @click.option('--verbose', default=False, is_flag=True, help='Verbose build')
 @click.option('--compile-tailwind', default=False, is_flag=True, help='Compile tailwind (requires npx + tailwindcss)')
-def generate(github_token: str, fetch_directly: bool, input_repos: str, input_readme:str, build_dir: str, template_dir: str, static_dir: str, project_dir: str, hide_private: bool, verbose: bool, compile_tailwind: bool):
+def generate(github_token: str, fetch_directly: bool, input_repos: str, input_readme:str, input_contributors:str, build_dir: str, template_dir: str, static_dir: str, project_dir: str, hide_private: bool, verbose: bool, compile_tailwind: bool):
     print(f"Generating web to {build_dir} directory")
     start = time()
     fetch_data = FetchData(github_token)
@@ -66,8 +68,9 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
     else:
         repos = fetch_data.load_repo(input_repos)
         readme = fetch_data.load_readme(input_readme)
+        contributors = fetch_data.load_contributors(input_contributors)
 
-    if not repos or not readme:
+    if not repos or not readme or not contributors:
         raise Exception("No repos loaded")
 
     # sort repos by time of last push (newest to oldest)
@@ -80,7 +83,7 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
     for repo, t in sorted_repos:
         repos.append(repo)
 
-    generate_web = GenerateWeb(repos, readme, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
+    generate_web = GenerateWeb(repos, readme, contributors, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
 
     generate_web.generate()
     print(f"Generated web to {build_dir} directory in {time() - start:.2f} seconds")

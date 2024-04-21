@@ -26,9 +26,14 @@ class FetchData:
             return repo.get_readme().decoded_content.decode("utf-8")
         except UnknownObjectException:
             return ""
+    
+    def fetch_contributors(self, repo: Repository.Repository, contributors_limit:int = 15) -> PaginatedList:
+        try:
+            return sorted(repo.get_contributors(), key=lambda x: x.contributions, reverse=True)[:contributors_limit]
+        except UnknownObjectException:
+            return []
 
-
-    def save_to_file(self, repos: list[Repository.Repository], file_repos:str= 'data/repos.json', file_readme:str= 'data/readme.json', verbose=False) -> int:
+    def save_to_file(self, repos: list[Repository.Repository], file_repos:str= 'data/repos.json', file_readme:str= 'data/readme.json', file_contributors:str= 'data/contributors.json', verbose=False) -> int:
         """
         Save repos to file
         :param file_repos:
@@ -42,6 +47,7 @@ class FetchData:
 
         data_repo = []
         data_readme = {}
+        data_contrib = {}
         index = 0
         for repo in repos:
             if verbose:
@@ -50,12 +56,17 @@ class FetchData:
 
             data_readme[repo.full_name] = self.fetch_readme(repo)
 
+            contributors = self.fetch_contributors(repo)
+            data_contrib[repo.full_name] = [[contributor.html_url, contributor.avatar_url, contributor.name, contributor.login, contributor.contributions,] for contributor in contributors]
             index += 1
         with open(file_repos, 'w') as json_file:
             json.dump(data_repo, json_file)
 
         with open(file_readme, 'w') as json_file:
             json.dump(data_readme, json_file)
+
+        with open(file_contributors, 'w') as json_file:
+            json.dump(data_contrib, json_file)
 
         if verbose:
             logger.info(f"Saved {index} repos to {file_repos}")
@@ -80,6 +91,15 @@ class FetchData:
                 return json.load(json_file)
         except FileNotFoundError:
             logger.error(f"File {file_readme} not found")
+            return {}
+    
+    def load_contributors(self, file_contrib: str="data/contributors.json") -> dict[str, list[str]]:
+        # return {repo, [name, login, url_to_img]}
+        try:
+            with open(file_contrib, 'r') as json_file:
+                return json.load(json_file)
+        except FileNotFoundError:
+            logger.error(f"File {file_contrib} not found")
             return {}
 
 if __name__ == "__main__":
