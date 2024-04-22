@@ -31,8 +31,10 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
     # Replace relative image paths with absolute paths
     def md_replacer(match):
         alt_text = match.group(1)
+        if alt_text == "":
+            alt_text = "img"
         img_url = match.group(2)
-        return replace_url(img_url, alt_text)
+        return f"![{alt_text}]({replace_url(img_url)})"
 
     def html_replacer(match):
         img_url = match.group(1)
@@ -46,7 +48,7 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
     #     link_url = match.group(1)
     #     return f'[{replace_url(link_url)}]'
 
-    def replace_url(img_url, alt_text=""):
+    def replace_url(img_url):
         # Handle different types of relative paths
         if img_url.startswith("/"):
             new_url = base_url + img_url
@@ -60,7 +62,8 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
         else:
             new_url = base_url + "/"+ img_url
 
-        return f"![{alt_text}]({new_url})" if alt_text else new_url
+
+        return new_url
 
     # Replace Markdown image URLs
     readme_md = re.sub(md_pattern, md_replacer, readme_md)
