@@ -1,6 +1,7 @@
 import os
 import random
 import re
+import requests
 from datetime import datetime
 from os import path, makedirs
 from pprint import pprint
@@ -15,7 +16,7 @@ import logging
 from markdown import markdown
 
 from src.jinja_extensions.color_extension import ColorExtension
-from src.web_helpers import load_projects, fix_readme_relative_images
+from src.web_helpers import load_projects, fix_readme_relative_images, conv_markdown
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -121,9 +122,9 @@ class GenerateWeb:
             print(f"Generating {repo.name} {i}/{repo_count}")
             readme_md = self.readme.get(repo.full_name, "No readme found")
             readme_fixed_images = fix_readme_relative_images(readme_md, repo.full_name, repo.default_branch)
-            readme_fixed_images = readme_fixed_images.replace(':\n- ', ':\n\n- ') # fix markdown lists
-            readme_fixed_images = readme_fixed_images.replace('- ', '- ● ') # add the dot before each element of the list
-            readme_html = markdown(readme_fixed_images, extensions=['fenced_code'])
+            readme_fixed_lists = readme_fixed_images.replace('\n- ', '\n@@ ').replace('\n* ', '\n@@ ').replace('\n    - ', '\n    @@ ').replace('\n    * ', '\n    @@ ').replace("@@", "- ●") # add the dot before each element of the list
+
+            readme_html = conv_markdown(readme_fixed_lists)
             path_repo = self.paths.get("Repo").get("path").format(repo.name)
 
             self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html, repo_contrib = self.contributors[repo.full_name])
@@ -139,8 +140,26 @@ class GenerateWeb:
         pprint(projects)
 
         for project in projects:
+            for i, repo in enumerate(project["related_repos"]):
+                project["related_repos"][i]["name"] = repo["url"].split("/")[-1] # add "name" key to related_projects
+
+            readme_url = project["readme"].replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "")
+            readme_md = requests.get(readme_url).content.decode().strip()
+            if readme_md == "404: Not Found":
+                readme_md = "No readme found"
+            
+
+            full_name = "/".join(project["readme"].split("/")[-5:-3])
+            branch = project["readme"].split("/")[-2]
+
+            readme_fixed_images = fix_readme_relative_images(readme_md, full_name, branch)
+            readme_fixed_lists = readme_fixed_images.replace('\n- ', '\n@@ ').replace('\n* ', '\n@@ ').replace('\n    - ', '\n    @@ ').replace('\n    * ', '\n    @@ ').replace("@@", "- ●") # add the dot before each element of the list
+
+            readme_html = conv_markdown(readme_fixed_lists)
+
+
             path_project = self.paths.get("Project").get("path").format(project["url"])
-            self.render_page('projectDetail.html', path_project, project=project)
+            self.render_page('projectDetail.html', path_project, project=project, readme=readme_html)
 
 
 

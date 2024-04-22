@@ -1,6 +1,6 @@
 import os
 from typing import IO
-
+import markdown
 import yaml
 
 def load_projects(project_dir: os.path) -> list:
@@ -55,7 +55,7 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
         elif img_url.startswith("./"):
             new_url = f"{base_url}/{img_url[2:]}"
         elif img_url.startswith("https://github.com"):
-            new_url = base_url + img_url.split("/blob/master")[-1]
+            new_url = base_url + img_url.split(f"/blob/{default_branch}")[-1]
         elif img_url.startswith("http"):
             # The URL is already absolute, or it's a type of relative URL
             new_url = img_url
@@ -78,3 +78,19 @@ def fix_readme_relative_images(readme_md: str, full_name: str, default_branch: s
     # readme_md = re.sub(r'\[([^]]*)\]\(([^)]*)\)', link_replacer_md, readme_md)
 
     return readme_md
+
+
+class TargetBlankExtension(markdown.Extension):
+    def extendMarkdown(self, md):
+        md.treeprocessors.register(TargetBlankTreeprocessor(md), 'target_blank', 15)
+
+class TargetBlankTreeprocessor(markdown.treeprocessors.Treeprocessor):
+    def run(self, root):
+        for element in root.iter():
+            if element.tag == 'a':
+                element.set('target', '_blank')
+
+def conv_markdown(text):
+    md = markdown.Markdown(extensions=['fenced_code', 'markdown.extensions.extra', 'markdown.extensions.meta', TargetBlankExtension()])
+    html = md.convert(text)
+    return html
