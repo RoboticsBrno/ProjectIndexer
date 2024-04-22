@@ -985,8 +985,8 @@ video {
   --tw-bg-opacity: 0.5;
 }
 
-.fill-current {
-  fill: currentColor;
+.fill-gray-700 {
+  fill: #374151;
 }
 
 .p-2 {
@@ -1401,6 +1401,10 @@ video {
     --tw-bg-opacity: 0.8;
   }
 
+  .dark\:fill-gray-300 {
+    fill: #d1d5db;
+  }
+
   .dark\:text-gray-300 {
     --tw-text-opacity: 1;
     color: rgb(209 213 219 / var(--tw-text-opacity));
@@ -1490,8 +1494,16 @@ video {
     display: none;
   }
 
+  .md\:w-1\/4 {
+    width: 25%;
+  }
+
   .md\:w-1\/6 {
     width: 16.666667%;
+  }
+
+  .md\:w-3\/4 {
+    width: 75%;
   }
 
   .md\:w-3\/6 {

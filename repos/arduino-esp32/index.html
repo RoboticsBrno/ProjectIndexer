@@ -295,41 +295,39 @@
         
         <div class="readme dark:text-gray-300 text-gray-600 overflow-x-auto">
             <h1>Arduino core for ESP32 WiFi chip</h1>
-<p><a href="https://travis-ci.org/espressif/arduino-esp32"><img alt="Build Status" src="https://travis-ci.org/espressif/arduino-esp32.svg?branch=master" /></a></p>
-<h3>Need help or have a question? Join the chat at <a href="https://gitter.im/espressif/arduino-esp32?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img alt="https://gitter.im/espressif/arduino-esp32" src="https://badges.gitter.im/espressif/arduino-esp32.svg" /></a></h3>
+<p><a href="https://travis-ci.org/espressif/arduino-esp32" target="_blank"><img alt="Build Status" src="https://travis-ci.org/espressif/arduino-esp32.svg?branch=master" /></a></p>
+<h3>Need help or have a question? Join the chat at <a href="https://gitter.im/espressif/arduino-esp32?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge" target="_blank"><img alt="https://gitter.im/espressif/arduino-esp32" src="https://badges.gitter.im/espressif/arduino-esp32.svg" /></a></h3>
 <h2>Contents</h2>
 <ul>
-<li>● <a href="#development-status">Development Status</a></li>
-<li>● <a href="#installation-instructions">Installation Instructions</a></li>
-<li>● <a href="#decoding-exceptions">Decoding Exceptions</a></li>
-<li>● <a href="#issuebug-report-template">Issue/Bug report template</a></li>
-<li>● <a href="#esp32dev-board-pinmap">ESP32Dev Board PINMAP</a></li>
+<li>● <a href="#development-status" target="_blank">Development Status</a></li>
+<li>● <a href="#installation-instructions" target="_blank">Installation Instructions</a></li>
+<li>● <a href="#decoding-exceptions" target="_blank">Decoding Exceptions</a></li>
+<li>● <a href="#issuebug-report-template" target="_blank">Issue/Bug report template</a></li>
+<li>● <a href="#esp32dev-board-pinmap" target="_blank">ESP32Dev Board PINMAP</a></li>
 </ul>
 <h2>Development Status</h2>
-<p>Most of the framework is implemented. Most noticable is the missing analogWrite. While analogWrite is on it's way, there are a few other options that you can use:</p>
-<ul>
-<li>● 16 channels <a href="cores/esp32/esp32-hal-ledc.h">LEDC</a> which is PWM</li>
-<li>● 8 channels <a href="cores/esp32/esp32-hal-sigmadelta.h">SigmaDelta</a> which uses SigmaDelta modulation</li>
-<li>● 2 channels <a href="cores/esp32/esp32-hal-dac.h">DAC</a> which gives real analog output</li>
-</ul>
+<p>Most of the framework is implemented. Most noticable is the missing analogWrite. While analogWrite is on it's way, there are a few other options that you can use:
+- ● 16 channels <a href="cores/esp32/esp32-hal-ledc.h" target="_blank">LEDC</a> which is PWM
+- ● 8 channels <a href="cores/esp32/esp32-hal-sigmadelta.h" target="_blank">SigmaDelta</a> which uses SigmaDelta modulation
+- ● 2 channels <a href="cores/esp32/esp32-hal-dac.h" target="_blank">DAC</a> which gives real analog output</p>
 <h2>Installation Instructions</h2>
 <ul>
 <li>● Using Arduino IDE</li>
-<li><a href="docs/arduino-ide/windows.md">Instructions for Windows</a></li>
-<li><a href="docs/arduino-ide/mac.md">Instructions for Mac</a></li>
-<li><a href="docs/arduino-ide/debian_ubuntu.md">Instructions for Debian/Ubuntu Linux</a></li>
-<li><a href="docs/arduino-ide/fedora.md">Instructions for Fedora</a></li>
-<li><a href="docs/arduino-ide/opensuse.md">Instructions for openSUSE</a></li>
-<li>● <a href="docs/platformio.md">Using PlatformIO</a></li>
-<li>● <a href="docs/make.md">Building with make</a></li>
-<li>● <a href="docs/esp-idf_component.md">Using as ESP-IDF component</a></li>
-<li>● <a href="docs/OTAWebUpdate/OTAWebUpdate.md">Using OTAWebUpdater</a></li>
+<li><a href="docs/arduino-ide/windows.md" target="_blank">Instructions for Windows</a></li>
+<li><a href="docs/arduino-ide/mac.md" target="_blank">Instructions for Mac</a></li>
+<li><a href="docs/arduino-ide/debian_ubuntu.md" target="_blank">Instructions for Debian/Ubuntu Linux</a></li>
+<li><a href="docs/arduino-ide/fedora.md" target="_blank">Instructions for Fedora</a></li>
+<li><a href="docs/arduino-ide/opensuse.md" target="_blank">Instructions for openSUSE</a></li>
+<li>● <a href="docs/platformio.md" target="_blank">Using PlatformIO</a></li>
+<li>● <a href="docs/make.md" target="_blank">Building with make</a></li>
+<li>● <a href="docs/esp-idf_component.md" target="_blank">Using as ESP-IDF component</a></li>
+<li>● <a href="docs/OTAWebUpdate/OTAWebUpdate.md" target="_blank">Using OTAWebUpdater</a></li>
 </ul>
 <h4>Decoding exceptions</h4>
-<p>You can use <a href="https://github.com/me-no-dev/EspExceptionDecoder">EspExceptionDecoder</a> to get meaningful call trace.</p>
+<p>You can use <a href="https://github.com/me-no-dev/EspExceptionDecoder" target="_blank">EspExceptionDecoder</a> to get meaningful call trace.</p>
 <h4>Issue/Bug report template</h4>
-<p>Before reporting an issue, make sure you've searched for similar one that was already created. Also make sure to go through all the issues labelled as <a href="https://github.com/espressif/arduino-esp32/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20label%3A%22for%20reference%22%20">for reference</a>.</p>
-<p>Finally, if you're sure no one else had the issue, follow the <a href="docs/ISSUE_TEMPLATE.md">ISSUE_TEMPLATE</a> while reporting any issue.</p>
+<p>Before reporting an issue, make sure you've searched for similar one that was already created. Also make sure to go through all the issues labelled as <a href="https://github.com/espressif/arduino-esp32/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20label%3A%22for%20reference%22%20" target="_blank">for reference</a>.</p>
+<p>Finally, if you're sure no one else had the issue, follow the <a href="docs/ISSUE_TEMPLATE.md" target="_blank">ISSUE_TEMPLATE</a> while reporting any issue.</p>
 <h2>ESP32Dev Board PINMAP</h2>
 <p><img alt="Pin Functions" src="https://raw.githubusercontent.com/RoboticsBrno/arduino-esp32/master/docs/esp32_pinmap.png" /></p>
 <h2>Hint</h2>
@@ -340,7 +338,7 @@
     
     <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/me-no-dev">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/me-no-dev" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/12663778?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Me No Dev</p>
@@ -349,7 +347,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/ivankravets">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/ivankravets" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1760209?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Ivan Kravets</p>
@@ -358,7 +356,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/copercini">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/copercini" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/21266776?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -367,7 +365,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/arcao">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/arcao" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/315097?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Martin Sloup</p>
@@ -376,7 +374,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/stickbreaker">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/stickbreaker" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/2858309?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">chuck todd</p>
@@ -385,7 +383,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/lbernstone">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/lbernstone" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/22748063?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -394,7 +392,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/cewbdex">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/cewbdex" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/9021297?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Kryštof Černý</p>
@@ -403,7 +401,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/lonerzzz">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/lonerzzz" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/3473145?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Jason K.</p>
@@ -412,7 +410,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/reaper7">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/reaper7" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/4134851?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">reaper7</p>
@@ -421,7 +419,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/bbx10">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/bbx10" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1388441?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -430,7 +428,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Raienryu97">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Raienryu97" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/11881858?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Pranav Cherukupalli</p>
@@ -439,7 +437,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/joeybab3">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/joeybab3" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/2829457?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Joey Babcock</p>
@@ -448,7 +446,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/pacucha42">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/pacucha42" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/38914089?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -457,7 +455,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/tobozo">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/tobozo" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1893754?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">tobozo</p>
@@ -466,7 +464,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/sticilface">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/sticilface" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/10061736?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>

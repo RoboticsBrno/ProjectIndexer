@@ -297,9 +297,9 @@
             <h1>CircuitPython</h1>
 <p>.. image:: https://s3.amazonaws.com/adafruit-circuit-python/CircuitPython_Repo_header_logo.png</p>
 <p>|Build Status| |Doc Status| |License| |Discord| |Weblate|</p>
-<p><code>circuitpython.org &lt;https://circuitpython.org&gt;</code><strong> \| <code>Get CircuitPython &lt;#get-circuitpython&gt;</code></strong> \|
-<code>Documentation &lt;#documentation&gt;</code><strong> \| <code>Contributing &lt;#contributing&gt;</code></strong> \|
-<code>Branding &lt;#branding&gt;</code><strong> \| <code>Differences from Micropython &lt;#differences-from-micropython&gt;</code></strong> \|
+<p><code>circuitpython.org &lt;https://circuitpython.org&gt;</code><strong> | <code>Get CircuitPython &lt;#get-circuitpython&gt;</code></strong> |
+<code>Documentation &lt;#documentation&gt;</code><strong> | <code>Contributing &lt;#contributing&gt;</code></strong> |
+<code>Branding &lt;#branding&gt;</code><strong> | <code>Differences from Micropython &lt;#differences-from-micropython&gt;</code></strong> |
 <code>Project Structure &lt;#project-structure&gt;</code>__</p>
 <p><strong>CircuitPython</strong> is a <em>beginner friendly</em>, open source version of Python for tiny, inexpensive
 computers called microcontrollers. Microcontrollers are the brains of many electronics including a
@@ -367,11 +367,11 @@ common set of requirements.</p>
 <p>● Your product supports at least one standard "<code>Workflow &lt;https://docs.circuitpython.org/en/latest/docs/workflows.html&gt;</code>__" for serial and file access:</p>
 </li>
 <li>
-<p>● With a user accessible USB plug which appears as a CIRCUITPY drive when plugged in.</p>
+<p>With a user accessible USB plug which appears as a CIRCUITPY drive when plugged in.</p>
 </li>
-<li>● With file and serial access over Bluetooth Low Energy using the BLE Workflow.</li>
+<li>With file and serial access over Bluetooth Low Energy using the BLE Workflow.</li>
 <li>
-<p>● With file access over WiFi using the WiFi Workflow with serial access over USB and/or WebSocket.</p>
+<p>With file access over WiFi using the WiFi Workflow with serial access over USB and/or WebSocket.</p>
 </li>
 <li>
 <p>● Boards that do not support the USB Workflow should be clearly marked.</p>
@@ -400,19 +400,19 @@ something else (for example, SuperDuperPython) and not use the Blinka logo. You 
    make each file independent from each other.</p>
 </li>
 <li>
-<p>●  <code>boot.py</code> runs only once on start up before
+<p><code>boot.py</code> runs only once on start up before
       workflows are initialized. This lays the ground work for configuring USB at
       startup rather than it being fixed. Since serial is not available,
       output is written to <code>boot_out.txt</code>.</p>
 </li>
-<li>●  <code>code.py</code> (or <code>main.py</code>) is run after every reload until it
+<li><code>code.py</code> (or <code>main.py</code>) is run after every reload until it
       finishes or is interrupted. After it is done running, the vm and
       hardware is reinitialized. <strong>This means you cannot read state from</strong>
       <code>code.py</code> <strong>in the REPL anymore, as the REPL is a fresh vm.</strong> CircuitPython's goal for this
       change includes reducing confusion about pins and memory being used.</li>
-<li>●  After the main code is finished the REPL can be entered by pressing any key.</li>
+<li>After the main code is finished the REPL can be entered by pressing any key.</li>
 <li>
-<p>●  Autoreload state will be maintained across reload.</p>
+<p>Autoreload state will be maintained across reload.</p>
 </li>
 <li>
 <p>●  Adds a safe mode that does not run user code after a hard crash or brown out. This makes it
@@ -430,9 +430,9 @@ something else (for example, SuperDuperPython) and not use the Blinka logo. You 
    If the battery is low, but is being charged, <code>safemode.py</code> may put the board in deep sleep
    for a while. Or it may simply reset, and have <code>code.py</code> check the voltage and do the sleep.</li>
 <li>●  RGB status LED indicating CircuitPython state.</li>
-<li>● One green flash - ● code completed without error.</li>
-<li>● Two red flashes - ● code ended due to an exception.</li>
-<li>● Three yellow flashes - ● safe mode. May be due to CircuitPython internal error.</li>
+<li>One green flash - code completed without error.</li>
+<li>Two red flashes - code ended due to an exception.</li>
+<li>Three yellow flashes - safe mode. May be due to CircuitPython internal error.</li>
 <li>●  Re-runs <code>code.py</code> or other main file after file system writes by a workflow. (Disable with
    <code>supervisor.disable_autoreload()</code>)</li>
 <li>●  Autoreload is disabled while the REPL is active.</li>
@@ -542,7 +542,7 @@ unix              alpha
     
     <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dpgeorge">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dpgeorge" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/6187689?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Damien George</p>
@@ -551,7 +551,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/tannewt">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/tannewt" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/52649?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Scott Shawcroft</p>
@@ -560,7 +560,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dhalbert">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dhalbert" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/2847802?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Dan Halbert</p>
@@ -569,7 +569,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/pfalcon">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/pfalcon" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/500451?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Paul Sokolovsky</p>
@@ -578,7 +578,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/jepler">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/jepler" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1517291?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Jeff Epler</p>
@@ -587,7 +587,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/glennrub">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/glennrub" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/546756?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -596,7 +596,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/weblate">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/weblate" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1607653?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Weblate (bot)</p>
@@ -605,7 +605,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hierophect">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hierophect" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/5904176?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Lucian Copeland</p>
@@ -614,7 +614,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/microdev1">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/microdev1" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/70126934?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">MicroDev</p>
@@ -623,7 +623,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/danicampora">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/danicampora" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/7749335?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Daniel Campora</p>
@@ -632,7 +632,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/jimmo">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/jimmo" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/5102768?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Jim Mussared</p>
@@ -641,7 +641,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/ladyada">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/ladyada" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1214161?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Limor &#34;Ladyada&#34; Fried</p>
@@ -650,7 +650,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/stinos">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/stinos" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1902997?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -659,7 +659,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dhylands">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dhylands" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/127500?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Dave Hylands</p>
@@ -668,7 +668,7 @@ unix              alpha
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hathach">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hathach" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/249515?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Ha Thach</p>

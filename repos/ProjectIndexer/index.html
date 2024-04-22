@@ -268,7 +268,7 @@
                 </div>
                 <div class="mx-auto grid grid-cols-2 dark:text-gray-300 text-gray-600">
                     <p class="pr-2 text-right">Updated: </p>
-                    <p class="text-left"> 21.04.2024</p>
+                    <p class="text-left"> 22.04.2024</p>
                 </div>
                 <div class="mx-auto grid grid-cols-2 dark:text-gray-300 text-gray-600">
                     <p class="pr-2 text-right">Stars: </p>
@@ -303,17 +303,17 @@ It generates a static web page with a list of all our projects based on the GitH
 <li>Clone this repository</li>
 <li>Install dependencies</li>
 <li>create file <code>.env</code> with content <code>MY_GITHUB_TOKEN=your_github_token</code><ul>
-<li>● you can generate your token <a href="https://github.com/settings/tokens?type=beta">here</a></li>
+<li>● you can generate your token <a href="https://github.com/settings/tokens?type=beta" target="_blank">here</a></li>
 </ul>
 </li>
 <li>run <code>python3 project_indexer.py --help</code> to see available options</li>
 </ol>
 <h2>ProjectIndexer options</h2>
 <ul>
-<li>● <code>fetch-github</code> - ● fetches data from GitHub API and saves it to <code>data/repos.json</code></li>
-<li>● <code>generate</code> - ● generates static web page from <code>data/repos.json</code> and saves it to <code>output</code> folder</li>
-<li>● <code>--compile-tailwind</code> - ● compiles tailwind css</li>
-<li>● <code>serve</code> - ● serves the static web page from <code>output</code> folder</li>
+<li>● <code>fetch-github</code> - fetches data from GitHub API and saves it to <code>data/repos.json</code></li>
+<li>● <code>generate</code> - generates static web page from <code>data/repos.json</code> and saves it to <code>output</code> folder</li>
+<li><code>--compile-tailwind</code> - compiles tailwind css</li>
+<li>● <code>serve</code> - serves the static web page from <code>output</code> folder</li>
 </ul>
 <p>More predefined commands in <code>Makefile</code>.</p>
 <h1>Indexace projektů pro RoboticsBrno (CZ)</h1>
@@ -324,36 +324,36 @@ ProjektIndexer je statický web generátor napsaný v Pythonu a měl by se autom
 Ukázat veřejnosti (i členům) naši práci v přehledné a jednoduché formě na webu.
 Projekty se budou seskupovat podle kategorií a bude možné je filtrovat například podle projektů.
 Každý projekt bude mít svoji podstránku s relevantními informacemi a odkazy na repozitáře.
-Část funkcionality se bude zpracovávat z informací (tagů, popisu) z GitHubu a druhou část bude muset uživatel vyplnit ručně (např. obrázky, popis - ● asi YAML).</p>
+Část funkcionality se bude zpracovávat z informací (tagů, popisu) z GitHubu a druhou část bude muset uživatel vyplnit ručně (např. obrázky, popis - asi YAML).</p>
 <h2>Fungování</h2>
 <h2>Data z GitHubu</h2>
 <p>Data o projektech se získávají z GitHub API. Pro získání dat je potřeba mít GitHub token, který se uloží do souboru <code>.env</code> do proměnné <code>MY_GITHUB_TOKEN</code>.</p>
 <p>Zpracovávaná data
-- ● <code>name</code> - ● název projektu
-- ● <code>description</code> - ● popis projektu
-- ● <code>html_url</code> - ● odkaz na GitHub repozitář
-- ● <code>homepage</code> - ● odkaz na web projektu
-- ● <code>topics</code> - ● tagy projektu
-  - ● jelikož se dají tagy jednoduše nastavovat, můžeme je použít pro kategorizaci projektů (např. <code>robotka</code>, <code>rbcx</code>, <code>smd-challenge</code>, <code>hardware</code>, ...)
-  - ● také by šlo taky využit na skrývýní / zobrazení projektů na webu (např. <code>hidden</code>). Nebo naopak zveřejnění hlavičky privátního repozitáře (např. <code>private-publish-header</code>) - ● pro kompletní prolinkování našich repozitářů.
-- ● <code>language</code> - ● programovací jazyk projektu
-- ● <code>created_at</code> - ● datum vytvoření projektu
-  - ● lze využít pro řazení projektů
-- ● <code>updated_at</code> - ● datum poslední aktualizace projektu
-  - ● lze využít pro řazení projektů
-  - ● na úvodní stránce můžeme informovat o změnách v projektech
-- ● <code>license</code> - ● licence projektu
-- ● <code>contributors</code> - ● seznam přispěvatelů
-  - ● do budoucna propojit s https://team.robotikabrno.cz/ (lépe sjednotit)
-- ● <code>readme</code> - ● obsah README.md
-  - ● zobrazit na podstránce projektu (správně zpracovat obrázky, odkazy, ...)
-- ● <code>images</code> - ● obrázky projektu
-  - ● aktuálně nejspíš nepoužíváme (možná do budoucna)
-- ● <code>stars</code> - ● počet hvězdiček
-  - ● lze využít pro řazení projektů
-- ● <code>issues</code> - ● počet issues</p>
+- ● <code>name</code> - název projektu
+- ● <code>description</code> - popis projektu
+- ● <code>html_url</code> - odkaz na GitHub repozitář
+- ● <code>homepage</code> - odkaz na web projektu
+- ● <code>topics</code> - tagy projektu
+  - jelikož se dají tagy jednoduše nastavovat, můžeme je použít pro kategorizaci projektů (např. <code>robotka</code>, <code>rbcx</code>, <code>smd-challenge</code>, <code>hardware</code>, ...)
+  - také by šlo taky využit na skrývýní / zobrazení projektů na webu (např. <code>hidden</code>). Nebo naopak zveřejnění hlavičky privátního repozitáře (např. <code>private-publish-header</code>) - pro kompletní prolinkování našich repozitářů.
+- ● <code>language</code> - programovací jazyk projektu
+- ● <code>created_at</code> - datum vytvoření projektu
+  - lze využít pro řazení projektů
+- ● <code>updated_at</code> - datum poslední aktualizace projektu
+  - lze využít pro řazení projektů
+  - na úvodní stránce můžeme informovat o změnách v projektech
+- ● <code>license</code> - licence projektu
+- ● <code>contributors</code> - seznam přispěvatelů
+  - do budoucna propojit s https://team.robotikabrno.cz/ (lépe sjednotit)
+- ● <code>readme</code> - obsah README.md
+  - zobrazit na podstránce projektu (správně zpracovat obrázky, odkazy, ...)
+- ● <code>images</code> - obrázky projektu
+  - aktuálně nejspíš nepoužíváme (možná do budoucna)
+- ● <code>stars</code> - počet hvězdiček
+  - lze využít pro řazení projektů
+- ● <code>issues</code> - počet issues</p>
 <h3>README a popis projektu</h3>
-<p>Každý repozitář by měl mít ideálně nastaven Popis projektu na GH a ideálně by měl obsahovat i README.md soubor (CZ/EN - ● lépe EN).
+<p>Každý repozitář by měl mít ideálně nastaven Popis projektu na GH a ideálně by měl obsahovat i README.md soubor (CZ/EN - lépe EN).
 Pokud nebude README.md soubor, tak se zobrazí pouze popis projektu z GH.
 Popis projektu by mohl ideálně začínat Emoji (např. 🤖 ) a následně krátkým popisem projektu.</p>
 <h3>Obrázky projektu</h3>
@@ -371,13 +371,13 @@ name_cz: Robotka
 description: Robotka is a small robot for educational purposes.
 description_cz: Robotka je malý robot pro vzdělávací účely.
 repository:
-  - ● name: robotka library
+  - name: robotka library
     url: https://github.com/RoboticsBrno/RB3204-RBCX-Robotka-library
-  - ● name: robotka-examples
+  - name: robotka-examples
     url: https://github.com/RoboticsBrno/robotka-examples
 web: https://robotka.robotickytabor.cz/
 authors:
-  - ● name: Jan Novák (dohledá si další údaje samo)
+  - name: Jan Novák (dohledá si další údaje samo)
 ...
 ---
 Markdown text...
@@ -387,7 +387,7 @@ Markdown text...
 <p>Cesta k obrázkům začíná <code>R:&lt;repo name&gt;/images/...</code> (např. <code>R:robotka/images/...</code>)</p>
 <h2>Úvodní stránka</h2>
 <p>Kdo jsme a co děláme.
-Tahle stánka ideálně anglicky i česky - ● zbytek stačí v angličtině (pokud je to možné).</p>
+Tahle stánka ideálně anglicky i česky - zbytek stačí v angličtině (pokud je to možné).</p>
 <p>Déle zde zobrazova informace o změnách v projektech (např. poslední aktualizace).
 Nachystat několik šablon a při každé kompilaci se náhodně vybere jedna a zobrazí se na úvodní stránce (např. obrázek z nějakého projektu s popisem a linkem).</p>
 <h2>Náš tým</h2>
@@ -399,7 +399,7 @@ Přesunout informace z https://team.robotikabrno.cz/ sem na jeden web.</p>
     
     <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/JakubAndrysek">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/JakubAndrysek" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/33494544?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Kuba Andrýsek</p>
@@ -408,7 +408,16 @@ Přesunout informace z https://team.robotikabrno.cz/ sem na jeden web.</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/MarPta">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/C2Coder" target="_blank">
+            <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/102322220?v=4">
+            <div class="ml-3 flex flex-col">
+                <p class="dark:text-white text-xl font-bold text-gray-800">C2Coder</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">C2Coder</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">14 commits</p>
+            </div>
+        </a>
+        
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/MarPta" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/30041036?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Martin Ptáček</p>

@@ -294,31 +294,114 @@
         class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-gray-800 bg-white rounded-lg shadow-md">
         
         <div class="readme dark:text-gray-300 text-gray-600 overflow-x-auto">
-            <h1>Adafruit BMP280 Driver (Barometric Pressure Sensor) <a href="https://travis-ci.com/adafruit/Adafruit_BMP280_Library"><img alt="Build Status" src="https://travis-ci.com/adafruit/Adafruit_BMP280_Library.svg?branch=master" /></a></h1>
-<p>This driver is for the <a href="http://www.adafruit.com/products/2651">Adafruit BMP280 Breakout</a></p>
+            <h1>Adafruit BMP280 Driver (Barometric Pressure Sensor) <a href="https://travis-ci.com/adafruit/Adafruit_BMP280_Library" target="_blank"><img alt="Build Status" src="https://travis-ci.com/adafruit/Adafruit_BMP280_Library.svg?branch=master" /></a></h1>
+<p>This driver is for the <a href="http://www.adafruit.com/products/2651" target="_blank">Adafruit BMP280 Breakout</a></p>
 <p><a href="https://www.adafruit.com/product/2651"><img src="https://raw.githubusercontent.com/RoboticsBrno/Adafruit_BMP280_Library/master/assets/board.jpg"></a></p>
 <h2>About the BMP280</h2>
 <p>This precision sensor from Bosch is the best low-cost sensing solution for measuring barometric pressure and temperature. Because pressure changes with altitude you can also use it as an altimeter!</p>
 <h2>About this Driver</h2>
 <p>Adafruit invests time and resources providing this open source code.  Please support Adafruit and open-source hardware by purchasing products from Adafruit!</p>
 <p>Written by Kevin (KTOWN) Townsend for Adafruit Industries.</p>
-<!-- ● START COMPATIBILITY TABLE -->
+<!-- START COMPATIBILITY TABLE -->
 
 <h2>Compatibility</h2>
-<p>MCU                | Tested Works | Doesn't Work | Not Tested  | Notes
------------------- ● | :----------: | :----------: | :---------: | -----
-Atmega328 @ 16MHz  |      X       |             |            |
-Atmega328 @ 12MHz  |      X       |             |            |
-Atmega32u4 @ 16MHz |      X       |             |            | Use SDA/SCL on pins D2 &amp; D3
-Atmega32u4 @ 8MHz  |      X       |             |            | Use SDA/SCL on pins D2 &amp; D3
-ESP8266            |      X       |             |            | SDA/SCL default to pins 4 &amp; 5 but any two pins can be assigned as SDA/SCL using Wire.begin(SDA,SCL)
-Atmega2560 @ 16MHz |      X       |             |            | Use SDA/SCL on pins 20 &amp; 21
-ATSAM3X8E          |      X       |             |            | Use SDA/SCL on pins 20 &amp; 21
-ATSAM21D           |      X       |             |            |
-ATtiny85 @ 16MHz   |             |      X       |            |
-ATtiny85 @ 8MHz    |             |      X       |            |
-Intel Curie @ 32MHz |             |             |     X       |
-STM32F2            |             |             |     X       |</p>
+<table>
+<thead>
+<tr>
+<th>MCU</th>
+<th align="center">Tested Works</th>
+<th align="center">Doesn't Work</th>
+<th align="center">Not Tested</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atmega328 @ 16MHz</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td>Atmega328 @ 12MHz</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td>Atmega32u4 @ 16MHz</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td>Use SDA/SCL on pins D2 &amp; D3</td>
+</tr>
+<tr>
+<td>Atmega32u4 @ 8MHz</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td>Use SDA/SCL on pins D2 &amp; D3</td>
+</tr>
+<tr>
+<td>ESP8266</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td>SDA/SCL default to pins 4 &amp; 5 but any two pins can be assigned as SDA/SCL using Wire.begin(SDA,SCL)</td>
+</tr>
+<tr>
+<td>Atmega2560 @ 16MHz</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td>Use SDA/SCL on pins 20 &amp; 21</td>
+</tr>
+<tr>
+<td>ATSAM3X8E</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td>Use SDA/SCL on pins 20 &amp; 21</td>
+</tr>
+<tr>
+<td>ATSAM21D</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td>ATtiny85 @ 16MHz</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td>ATtiny85 @ 8MHz</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td>Intel Curie @ 32MHz</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td></td>
+</tr>
+<tr>
+<td>STM32F2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>ATmega328 @ 16MHz : Arduino UNO, Adafruit Pro Trinket 5V, Adafruit Metro 328, Adafruit Metro Mini</li>
 <li>ATmega328 @ 12MHz : Adafruit Pro Trinket 3V</li>
@@ -331,14 +414,14 @@ STM32F2            |             |             |     X       |</p>
 <li>ATtiny85 @ 16MHz : Adafruit Trinket 5V</li>
 <li>ATtiny85 @ 8MHz : Adafruit Gemma, Arduino Gemma, Adafruit Trinket 3V</li>
 </ul>
-<!-- ● END COMPATIBILITY TABLE -->
+<!-- END COMPATIBILITY TABLE -->
         </div>
     </div>
 
     
     <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/ladyada">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/ladyada" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1214161?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Limor &#34;Ladyada&#34; Fried</p>
@@ -347,7 +430,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hoffmannjan">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hoffmannjan" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/3756160?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Jan Hoffmann</p>
@@ -356,7 +439,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/tdicola">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/tdicola" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1332183?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Tony DiCola</p>
@@ -365,7 +448,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/andydoro">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/andydoro" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/905211?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Andy Doro</p>
@@ -374,7 +457,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/sslupsky">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/sslupsky" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/16888734?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -383,7 +466,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/siddacious">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/siddacious" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1183985?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">siddacious</p>
@@ -392,7 +475,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/buzz-tee">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/buzz-tee" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/11776936?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -401,7 +484,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hayden-t">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hayden-t" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1000743?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -410,7 +493,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/bleckers">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/bleckers" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/12459597?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Blair Wyatt</p>
@@ -419,7 +502,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dirkmueller">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dirkmueller" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1029152?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Dirk Mueller</p>
@@ -428,7 +511,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hathach">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/hathach" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/249515?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Ha Thach</p>
@@ -437,7 +520,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Ivoz">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Ivoz" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/199266?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Matt Iversen</p>
@@ -446,7 +529,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/toddtreece">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/toddtreece" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/360020?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Todd Treece</p>
@@ -455,7 +538,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/bakrus">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/bakrus" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/12671023?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -464,7 +547,7 @@ STM32F2            |             |             |     X       |</p>
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/mirkix">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/mirkix" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/10398007?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Mirko Denecke</p>

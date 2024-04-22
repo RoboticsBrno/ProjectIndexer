@@ -294,36 +294,36 @@
         class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-gray-800 bg-white rounded-lg shadow-md">
         
         <div class="readme dark:text-gray-300 text-gray-600 overflow-x-auto">
-            <h1>RB0004 - ● Neopixel Booster</h1>
-<p>Probably all of us makers love WS2812B - ● the addressable LEDs, which are often
+            <h1>RB0004 - Neopixel Booster</h1>
+<p>Probably all of us makers love WS2812B - the addressable LEDs, which are often
 called "Neopixel" based on the brand created by
-<a href="https://learn.adafruit.com/adafruit-neopixel-uberguide">Adafruit</a>. They are so
+<a href="https://learn.adafruit.com/adafruit-neopixel-uberguide" target="_blank">Adafruit</a>. They are so
 much fun to play with! Especially when you can buy them in strips for less than
 18 USD/5 meters!</p>
 <p>These LEDs are, however, power-hungry, and the strips are not the best design.
-Therefore you often struggle to power them - ● you need a 5V power supply with
+Therefore you often struggle to power them - you need a 5V power supply with
 a large current rating. And these aren't easy to get. And if you get one, the
-strips behave weirdly - ● the end of the strip has more reddish colors compared
+strips behave weirdly - the end of the strip has more reddish colors compared
 to it's beginning.</p>
-<p><strong>This is where RB0004 - ● Neopixel Booster comes in: it solves all the problems
+<p><strong>This is where RB0004 - Neopixel Booster comes in: it solves all the problems
 above.</strong></p>
 <p><img alt="Header" src="https://raw.githubusercontent.com/RoboticsBrno/RB0004-NeopixelBooster/master/evaluation/assets/header.jpg" /></p>
-<p>View this project on <a href="https://cadlab.io/project/23122">CADLAB.io</a>.</p>
+<p>View this project on <a href="https://cadlab.io/project/23122" target="_blank">CADLAB.io</a>.</p>
 <h2>The Problem In Short</h2>
 <p>If you are interested in much in-depth explanation of the problem with some
-measurements, see the <a href="properties.md">page about strips properties</a>.</p>
+measurements, see the <a href="properties.md" target="_blank">page about strips properties</a>.</p>
 <p>Each of the LEDs consumes around 60-70 mA in the full brightness (based on the
 temperature and batch you have). Therefore, if you have 300 LEDs in a strip,
 they will consume 18-21 A! That's a lot of current. When you push current
-through a wire, there is a voltage drop according to <a href="https://en.wikipedia.org/wiki/Ohm%27s_law">Ohm's
+through a wire, there is a voltage drop according to <a href="https://en.wikipedia.org/wiki/Ohm%27s_law" target="_blank">Ohm's
 law</a>. The copper wire on the strips
 is relatively thin and narrow. Therefore, there will be a significant voltage
 drop. It is quite common that you supply your strip with 5 V, but you will
 measure only 2.5 V at the end of the strip. That means your LEDs can't shine the
 full brightness.</p>
 <p>But why they turn red? There is a red, green, and blue LED in the
-chip. Each of the LED colors has a different <a href="https://en.wikipedia.org/wiki/LED_circuit">forward voltage
-drop</a> - ● the blue one has the larges
+chip. Each of the LED colors has a different <a href="https://en.wikipedia.org/wiki/LED_circuit" target="_blank">forward voltage
+drop</a> - the blue one has the larges
 one, and it is usually around 3 V. That means if the LED is supplied with less
 than 3V, it cannot light up the blue channel and thus, it is missing from the
 final color.</p>
@@ -347,25 +347,25 @@ Boosters in the strip to power it by segments:</p>
 <li>● you can easily power your strip from 2-4 Li-ion cells connected in series</li>
 </ul>
 </li>
-<li>● requires relatively easy modification the strip, see the <a href="assembly.md">assembly
+<li>● requires relatively easy modification the strip, see the <a href="assembly.md" target="_blank">assembly
   guide</a></li>
-<li>● Neopixel Booster is step down module; see  <a href="https://roboticsbrno.github.io/RB0004-NeopixelBooster/eval_v2/index.html">its characteristics and
+<li>● Neopixel Booster is step down module; see  <a href="https://roboticsbrno.github.io/RB0004-NeopixelBooster/eval_v2/index.html" target="_blank">its characteristics and
   performance</a>.</li>
 </ul>
 <h2>I Want One!</h2>
-<p><a href="https://www.tindie.com/stores/yaqwsx/?ref=offsite_badges&amp;utm_source=sellers_yaqwsx&amp;utm_medium=badges&amp;utm_campaign=badge_large"><img alt="I sell on
+<p><a href="https://www.tindie.com/stores/yaqwsx/?ref=offsite_badges&amp;utm_source=sellers_yaqwsx&amp;utm_medium=badges&amp;utm_campaign=badge_large" target="_blank"><img alt="I sell on
 Tindie!" src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-mediums.png" /></a></p>
 <h2>How Do I Use Them?</h2>
-<p>Once you buy a kit from us, follow the <a href="assembly.md">assembly guide</a> , and
+<p>Once you buy a kit from us, follow the <a href="assembly.md" target="_blank">assembly guide</a> , and
 within an hour, you can have your boosted strips.</p>
 <h2>How Many Do I Need Them?</h2>
 <p>We recommend not to exceed 60 LEDs per one Neopixel Booster. It is best for
 convenient assembly to put one Neopixel Booster for each 50 cm of the strip, but
 if you want to go cheap, it is OK to apply it every meter.</p>
 <h2>Licence</h2>
-<p><a href="https://github.com/RoboticsBrno/RB0004-NeopixelBooster">RB0004 –
+<p><a href="https://github.com/RoboticsBrno/RB0004-NeopixelBooster" target="_blank">RB0004 –
 NeopixexlBooster</a> by
-<a href="https://honzamrazek.cz">Jan Mrázek</a> and Martin Kousal is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC
+<a href="https://honzamrazek.cz" target="_blank">Jan Mrázek</a> and Martin Kousal is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">CC
 BY-NC-SA 4.0
 <img alt="badge" src="https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png" /></a>.</p>
         </div>
@@ -374,7 +374,7 @@ BY-NC-SA 4.0
     
     <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/mkousal">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/mkousal" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/30050881?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Martin Kousal</p>
@@ -383,7 +383,7 @@ BY-NC-SA 4.0
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/yaqwsx">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/yaqwsx" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1590880?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Jan Mrázek</p>
@@ -392,7 +392,7 @@ BY-NC-SA 4.0
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/JarekParal">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/JarekParal" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/6726556?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Jaroslav Páral</p>

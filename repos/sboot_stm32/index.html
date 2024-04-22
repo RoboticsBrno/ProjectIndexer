@@ -302,7 +302,7 @@
 <ul>
 <li>Small size. Fits in 4K ROM segment (ASM or no encryption, otherwise a bit more).</li>
 <li>USB DFU1.1 compatible</li>
-<li>Supported by <a href="http://dfu-util.sourceforge.net/">dfu-util</a></li>
+<li>Supported by <a href="http://dfu-util.sourceforge.net/" target="_blank">dfu-util</a></li>
 <li>Supported ciphers:</li>
 <li>No encryption</li>
 <li>ARCFOUR stream cipher</li>
@@ -353,10 +353,10 @@
 <li>GNU make</li>
 <li>arm-none-eabi-gcc toolchaipren v4.9 or later to build bootloader</li>
 <li>gcc toolchain to build fwcrypt software</li>
-<li><a href="https://github.com/ARM-software/CMSIS">CMSIS V4</a> or <a href="https://github.com/ARM-software/CMSIS_5">CMSIS V5</a>.</li>
-<li>Device peripheral access layer header files for STM32. See <a href="https://github.com/ARM-software/CMSIS/tree/master/Device/_Template_Vendor">Vendor Template</a> for details.</li>
-<li><a href="https://github.com/dmitrystu/stm32h">stm32.h</a> STM32 universal header</li>
-<li>optional <a href="https://github.com/texane/stlink">st-util</a> tool to program bootloader</li>
+<li><a href="https://github.com/ARM-software/CMSIS" target="_blank">CMSIS V4</a> or <a href="https://github.com/ARM-software/CMSIS_5" target="_blank">CMSIS V5</a>.</li>
+<li>Device peripheral access layer header files for STM32. See <a href="https://github.com/ARM-software/CMSIS/tree/master/Device/_Template_Vendor" target="_blank">Vendor Template</a> for details.</li>
+<li><a href="https://github.com/dmitrystu/stm32h" target="_blank">stm32.h</a> STM32 universal header</li>
+<li>optional <a href="https://github.com/texane/stlink" target="_blank">st-util</a> tool to program bootloader</li>
 <li>Makefile targets</li>
 <li><strong>make prerequisites</strong> to download required libs and headers</li>
 <li><strong>make mcu_target</strong> to build bootloader</li>
@@ -364,71 +364,321 @@
 <li><strong>make crypter</strong> to build encryption software</li>
 <li>Makefile and environmental variables</li>
 </ol>
-<p>| Variable | Default Value                       | Description                         |
-|----------|-------------------------------------|-------------------------------------|
-| CMSIS    | CMSIS                               | path to CMSIS root folder           |
-| CMSISDEV | $(CMSIS)/Device                     | path to CMSIS device folder         |
-| OUTDIR   | build                               | output folder for binaries          |
-| FWNAME   | firmware                            | name for bootloader binary          |
-| SWNAME   | fwcrypt                             | name for encrypter binary           |</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMSIS</td>
+<td>CMSIS</td>
+<td>path to CMSIS root folder</td>
+</tr>
+<tr>
+<td>CMSISDEV</td>
+<td>$(CMSIS)/Device</td>
+<td>path to CMSIS device folder</td>
+</tr>
+<tr>
+<td>OUTDIR</td>
+<td>build</td>
+<td>output folder for binaries</td>
+</tr>
+<tr>
+<td>FWNAME</td>
+<td>firmware</td>
+<td>name for bootloader binary</td>
+</tr>
+<tr>
+<td>SWNAME</td>
+<td>fwcrypt</td>
+<td>name for encrypter binary</td>
+</tr>
+</tbody>
+</table>
 <ol>
 <li>MCU targets</li>
 </ol>
-<p>| mcu_target    | MCU                                                | remarks         |
-|---------------|----------------------------------------------------|-----------------|
-| stm32l100x6a  | STM32L100C6-A                                      |                 |
-| stm32l100x8a  | STM32L100R8-A                                      |                 |
-| stm32l100xba  | STM32L100RB-A                                      |                 |
-| stm32l100xc   | STM32L100RC                                        | tested          |
-| stm32l151x6a  | STM32L151C6-A, STM32L151R6-A                       |                 |
-| stm32l151x8a  | STM32L151C8-A, STM32L151R8-A, STM31L151V8-A        |                 |
-| stm32l151xba  | STM32L151CB-A, STM32L151RB-A, STM31L151VB-A        |                 |
-| stm32l151xc   | STM32L151CC, STM32L151QC, SRM32L151RC, STM32L151UC |                 |
-| stm32l151xd   | STM32L151QD, STM32L151RD, STM32L151VD, STM32L151ZD |                 |
-| stm32l151xe   | STM32L151QE, STM32L151RE, STM32L151VE, STM32L151ZE |                 |
-| stm32l152x6a  | STM32L152C6-A, STM32L152R6-A                       |                 |
-| stm32l152x8a  | STM32L152C8-A, STM32L152R8-A, STM31L152V8-A        |                 |
-| stm32l152xba  | STM32L152CB-A, STM32L152RB-A, STM31L152VB-A        |                 |
-| stm32l152xc   | STM32L152CC, STM32L152QC, SRM32L152RC, STM32L152UC |                 |
-| stm32l152xd   | STM32L152QD, STM32L152RD, STM32L152VD, STM32L152ZD |                 |
-| stm32l152xe   | STM32L152QE, STM32L152RE, STM32L152VE, STM32L152ZE |                 |
-| stm32l162xc   | STM32L162RC, STM32L162VC                           |                 |
-| stm32l162xd   | STM32L162QD, STM32L156RD, STM32L162VD, STM32L162ZD |                 |
-| stm32l162xe   | STM32L162QE, STM32L156RE, STM32L162VE, STM32L162ZE |                 |
-| stm32l052x6   | STM32L052K6, STM32L052T6, STM32L052C6, STM32L052R6 |                 |
-| stm32l052x8   | STM32L052K8, STM32L052T8, STM32L052C8, STM32L052R8 | tested, default |
-| stm32l053x6   | STM32L053C6, STM32L053R6                           |                 |
-| stm32l053x8   | STM32L053C8, STM32L053R8                           |                 |
-| stm32l062x8   | STM32L062K8                                        |                 |
-| stm32l063x8   | STM32L063C8, STM32L063R8                           |                 |
-| stm32l072v8   | STM32L072V8                                        |                 |
-| stm32l072xb   | STM32L072KB, STM32L072CB, STM32L072RB, STM32L072VB | tested          |
-| stm32l072xz   | STM32L072KZ, STM32L072CZ, STM32L072RZ, STM32L072VZ |                 |
-| stm32l073v8   | STM32L073V8                                        |                 |
-| stm32l073xb   | STM32L073CB, STM32L073RB, STM32L073VB              |                 |
-| stm32l073xz   | STM32L073CZ, STM32L073RZ, STM32L073VZ              |                 |
-| stm32l476xc   | STM32L476RC, STM32L476VC                           |                 |
-| stm32l476xe   | STM32L476RE, STM32L476JE, STM32L476ME, STM32L476VE |                 |
-| stm32l476xg   | STM32L476RG, STM32L476JG, STM32L476MG, STM32L476VG | tested          |
-| stm32f103x6   | STM32F103T6, STM32F103C6, STM32F103R6              |                 |
-| stm32f103x8   | STM32F103T8, STM32F103C8, STM32F103R8, STM32f103V8 | tested          |
-| stm32f105xb   | STM32F105RB, STM32F105VB                           | tested          |
-| stm32f107xb   | STM32F107RB, STM32F107VB                           | tested          |
-| stm32l433xb   | STM32L433CB, STM32L433RB                           |                 |
-| stm32l433xc   | STM32L433CC, STM32L433RC, STM32L433VC              | tested          |
-| stm32f070x6   | STM32F070C6                                        |                 |
-| stm32f070xb   | STM32F070CB                                        | tested          |
-| stm32f429xe   | STM32F429xE series (single bank mode)              |                 |
-| stm32f429xg   | STM32F429xG series (single bank mode)              |                 |
-| stm32f429xi   | STM32F429xI series (single and dual bank)          | tested           |
-| stm32g431x6   | STM32G431x6, STM32G441x6                           |                 |
-| stm32g431x8   | STM32G431x8, STM32G441x8                           |                 |
-| stm32g431xb   | STM32G431xB, STM32G441xB                           | tested G431RB   |
-| stm32g474xb   | STM32G471xB, STM32G473xB, STM32G474xB, STM32G483xB |                 |
-| stm32g474xc   | STM32G471xC, STM32G473xC, STM32G474xC, STM32G483xC |                 |
-| stm32g474xe   | STM32G471xE, STM32G473xE, STM32G474xE, STM32G483xE | tested G747RE   |
-| stm32f303xe   | STM32F303xE                                        | tested          |
-| stm32f373xc   | STM32F373xC                                        | tested          |</p>
+<table>
+<thead>
+<tr>
+<th>mcu_target</th>
+<th>MCU</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stm32l100x6a</td>
+<td>STM32L100C6-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l100x8a</td>
+<td>STM32L100R8-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l100xba</td>
+<td>STM32L100RB-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l100xc</td>
+<td>STM32L100RC</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32l151x6a</td>
+<td>STM32L151C6-A, STM32L151R6-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l151x8a</td>
+<td>STM32L151C8-A, STM32L151R8-A, STM31L151V8-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l151xba</td>
+<td>STM32L151CB-A, STM32L151RB-A, STM31L151VB-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l151xc</td>
+<td>STM32L151CC, STM32L151QC, SRM32L151RC, STM32L151UC</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l151xd</td>
+<td>STM32L151QD, STM32L151RD, STM32L151VD, STM32L151ZD</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l151xe</td>
+<td>STM32L151QE, STM32L151RE, STM32L151VE, STM32L151ZE</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l152x6a</td>
+<td>STM32L152C6-A, STM32L152R6-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l152x8a</td>
+<td>STM32L152C8-A, STM32L152R8-A, STM31L152V8-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l152xba</td>
+<td>STM32L152CB-A, STM32L152RB-A, STM31L152VB-A</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l152xc</td>
+<td>STM32L152CC, STM32L152QC, SRM32L152RC, STM32L152UC</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l152xd</td>
+<td>STM32L152QD, STM32L152RD, STM32L152VD, STM32L152ZD</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l152xe</td>
+<td>STM32L152QE, STM32L152RE, STM32L152VE, STM32L152ZE</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l162xc</td>
+<td>STM32L162RC, STM32L162VC</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l162xd</td>
+<td>STM32L162QD, STM32L156RD, STM32L162VD, STM32L162ZD</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l162xe</td>
+<td>STM32L162QE, STM32L156RE, STM32L162VE, STM32L162ZE</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l052x6</td>
+<td>STM32L052K6, STM32L052T6, STM32L052C6, STM32L052R6</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l052x8</td>
+<td>STM32L052K8, STM32L052T8, STM32L052C8, STM32L052R8</td>
+<td>tested, default</td>
+</tr>
+<tr>
+<td>stm32l053x6</td>
+<td>STM32L053C6, STM32L053R6</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l053x8</td>
+<td>STM32L053C8, STM32L053R8</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l062x8</td>
+<td>STM32L062K8</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l063x8</td>
+<td>STM32L063C8, STM32L063R8</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l072v8</td>
+<td>STM32L072V8</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l072xb</td>
+<td>STM32L072KB, STM32L072CB, STM32L072RB, STM32L072VB</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32l072xz</td>
+<td>STM32L072KZ, STM32L072CZ, STM32L072RZ, STM32L072VZ</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l073v8</td>
+<td>STM32L073V8</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l073xb</td>
+<td>STM32L073CB, STM32L073RB, STM32L073VB</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l073xz</td>
+<td>STM32L073CZ, STM32L073RZ, STM32L073VZ</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l476xc</td>
+<td>STM32L476RC, STM32L476VC</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l476xe</td>
+<td>STM32L476RE, STM32L476JE, STM32L476ME, STM32L476VE</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l476xg</td>
+<td>STM32L476RG, STM32L476JG, STM32L476MG, STM32L476VG</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32f103x6</td>
+<td>STM32F103T6, STM32F103C6, STM32F103R6</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32f103x8</td>
+<td>STM32F103T8, STM32F103C8, STM32F103R8, STM32f103V8</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32f105xb</td>
+<td>STM32F105RB, STM32F105VB</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32f107xb</td>
+<td>STM32F107RB, STM32F107VB</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32l433xb</td>
+<td>STM32L433CB, STM32L433RB</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32l433xc</td>
+<td>STM32L433CC, STM32L433RC, STM32L433VC</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32f070x6</td>
+<td>STM32F070C6</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32f070xb</td>
+<td>STM32F070CB</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32f429xe</td>
+<td>STM32F429xE series (single bank mode)</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32f429xg</td>
+<td>STM32F429xG series (single bank mode)</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32f429xi</td>
+<td>STM32F429xI series (single and dual bank)</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32g431x6</td>
+<td>STM32G431x6, STM32G441x6</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32g431x8</td>
+<td>STM32G431x8, STM32G441x8</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32g431xb</td>
+<td>STM32G431xB, STM32G441xB</td>
+<td>tested G431RB</td>
+</tr>
+<tr>
+<td>stm32g474xb</td>
+<td>STM32G471xB, STM32G473xB, STM32G474xB, STM32G483xB</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32g474xc</td>
+<td>STM32G471xC, STM32G473xC, STM32G474xC, STM32G483xC</td>
+<td></td>
+</tr>
+<tr>
+<td>stm32g474xe</td>
+<td>STM32G471xE, STM32G473xE, STM32G474xE, STM32G483xE</td>
+<td>tested G747RE</td>
+</tr>
+<tr>
+<td>stm32f303xe</td>
+<td>STM32F303xE</td>
+<td>tested</td>
+</tr>
+<tr>
+<td>stm32f373xc</td>
+<td>STM32F373xC</td>
+<td>tested</td>
+</tr>
+</tbody>
+</table>
 <h4>Adjusting user firmware</h4>
 <ul>
 <li>Check bootloader's linker map for the <code>__app_start</code> address. This is the new ROM origin for the user firmware (ISR vectors).</li>
@@ -463,7 +713,7 @@
     
     <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dmitrystu">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dmitrystu" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/15378501?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Dmitry Filimonchuk</p>
@@ -472,7 +722,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dzarda">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/dzarda" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/3955056?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Jaroslav Malec</p>
@@ -481,7 +731,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Tasssadar">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Tasssadar" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/120108?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Vojtěch Boček</p>
@@ -490,7 +740,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/FabianInostroza">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/FabianInostroza" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/8893928?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -499,7 +749,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/alexispolti">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/alexispolti" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/423342?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Alexis Polti</p>
@@ -508,7 +758,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/AFTomahawk">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/AFTomahawk" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/45998935?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">None</p>
@@ -517,7 +767,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/rbm78bln">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/rbm78bln" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/43565949?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Ralf M</p>
@@ -526,7 +776,7 @@
             </div>
         </a>
         
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/shawnchain">
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/shawnchain" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/45704?v=4">
             <div class="ml-3 flex flex-col">
                 <p class="dark:text-white text-xl font-bold text-gray-800">Shawn</p>
