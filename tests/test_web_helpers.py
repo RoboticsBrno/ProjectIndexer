@@ -27,5 +27,5 @@ class Test(TestCase):
         res = fix_readme_relative_images(
             test_context, "RoboticsBrno/RB3206-ELKS", "main"
         )
-        self.assertEquals(res, expected_result)
+        self.assertEqual(res, expected_result)
 
