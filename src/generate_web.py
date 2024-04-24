@@ -122,8 +122,18 @@ class GenerateWeb:
             print(f"Generating {repo.name} {i}/{repo_count}")
             readme_md = self.readme.get(repo.full_name, "No readme found")
             readme_fixed_images = fix_readme_relative_images(readme_md, repo.full_name, repo.default_branch)
-            readme_fixed_lists = readme_fixed_images.replace('\n- ', '\n@@ ').replace('\n* ', '\n@@ ').replace('\n    - ', '\n    @@ ').replace('\n    * ', '\n    @@ ').replace("@@", "- ●") # add the dot before each element of the list
+            
+            list_conv = {}
+            for i in range(0, 5):
+                list_conv[f"\n{' ' * i}- "] = f"\n{' ' * (3 if i > 1 else 0)} @@"
+                list_conv[f"\n{' ' * i}* "] = f"\n{' ' * (3 if i > 1 else 0)} @@"
 
+            readme_fixed_lists = readme_fixed_images
+            for o in list_conv:
+                readme_fixed_lists = readme_fixed_lists.replace(o, list_conv[o])
+
+            readme_fixed_lists = readme_fixed_lists.replace("@@", "- ● ") # add the dot before each element of the list
+            
             readme_html = conv_markdown(readme_fixed_lists)
             path_repo = self.paths.get("Repo").get("path").format(repo.name)
 
