@@ -133,7 +133,7 @@ class GenerateWeb:
                 readme_fixed_lists = readme_fixed_lists.replace(o, list_conv[o])
 
             readme_fixed_lists = readme_fixed_lists.replace("@@", "- ● ") # add the dot before each element of the list
-            
+
             readme_html = conv_markdown(readme_fixed_lists)
             path_repo = self.paths.get("Repo").get("path").format(repo.name)
 
@@ -154,11 +154,12 @@ class GenerateWeb:
                 project["related_repos"][i]["name"] = repo["url"].split("/")[-1] # add "name" key to related_projects
 
             readme_url = project["readme"].replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "")
-            readme_md = requests.get(readme_url).content.decode().strip()
-            if readme_md == "404: Not Found":
-                readme_md = "No readme found"
-            
+            readme_md = "No readme found"
 
+            r = requests.get(readme_url)
+            if int(r.status_code) == 200:
+                readme_md = r.content.decode().strip()
+            
             full_name = "/".join(project["readme"].split("/")[-5:-3])
             branch = project["readme"].split("/")[-2]
 
