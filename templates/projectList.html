@@ -5,7 +5,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="mx-2 mt-2 grid grid-cols-1 md:grid-cols-3 gap-2">
+<div class="mx-2 grid grid-cols-1 md:grid-cols-3 gap-2">
         {% for project in projects %}
         <!-- Project Card - {{project.name}} -->
         <a class="mx-auto dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between w-full min-w-0 max-w-xl h-full" href="/projects/{{ project.url }}/">

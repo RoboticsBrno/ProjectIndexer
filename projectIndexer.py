@@ -19,15 +19,16 @@ def cli():
 @click.option('--output-repos', '-o', default='data/repos.json', help='build file (default is repos.json)')
 @click.option('--output-readme', '-r', default='data/readme.json', help='build file (default is readme.json)')
 @click.option('--output-contributors', '-r', default='data/contributors.json', help='build file (default is contributors.json)')
+@click.option('--output-about', '-r', default='data/about.json', help='build file (default is about.json)')
 @click.option('--verbose', default=False, is_flag=True, help='Verbose build')
-def fetch_github(github_token, output_repos, output_readme, output_contributors, verbose):
+def fetch_github(github_token, output_repos, output_readme, output_contributors, output_about, verbose):
     fetch_data = FetchData(github_token)
     start = time()
     repos = fetch_data.fetch_repos()
     if repos is None:
         logger.error("No repos fetched")
         return
-    repos_count = fetch_data.save_to_file(repos, output_repos, output_readme, output_contributors, verbose)
+    repos_count = fetch_data.save_to_file(repos, output_repos, output_readme, output_contributors, output_about, verbose)
     logger.info(f"Fetched {repos_count} repos in {time() - start:.2f} seconds")
 
 @click.command(help='List repos from file - for debugging')
@@ -48,6 +49,7 @@ def list(github_token, input_file):
 @click.option('--input-repos', default='data/repos.json', help='Input file (default is repos.json)')
 @click.option('--input-readme', default='data/readme.json', help='Input file (default is readme.json)')
 @click.option('--input-contributors', default='data/contributors.json', help='Input file (default is contributors.json)')
+@click.option('--input-about', default='data/about.json', help='Input file (default is about.json)')
 @click.option('--build-dir', '-o', default='build', help='build directory (default is build)')
 @click.option('--template-dir', '-t', default='templates', help="Template directory (default is 'templates')")
 @click.option('--static-dir', default='static', help="Static directory (default is 'static')")
@@ -55,7 +57,7 @@ def list(github_token, input_file):
 @click.option('--hide-private', default=False, is_flag=True, help="Hide private repos")
 @click.option('--verbose', default=False, is_flag=True, help='Verbose build')
 @click.option('--compile-tailwind', default=False, is_flag=True, help='Compile tailwind (requires npx + tailwindcss)')
-def generate(github_token: str, fetch_directly: bool, input_repos: str, input_readme:str, input_contributors:str, build_dir: str, template_dir: str, static_dir: str, project_dir: str, hide_private: bool, verbose: bool, compile_tailwind: bool):
+def generate(github_token: str, fetch_directly: bool, input_repos: str, input_readme:str, input_contributors:str, input_about:str, build_dir: str, template_dir: str, static_dir: str, project_dir: str, hide_private: bool, verbose: bool, compile_tailwind: bool):
     print(f"Generating web to {build_dir} directory")
     start = time()
     fetch_data = FetchData(github_token)
@@ -69,12 +71,15 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
         contributors ={
             repo.full_name:
             [[contributor.html_url, contributor.avatar_url, contributor.name, contributor.login, contributor.contributions,] for contributor in fetch_data.fetch_contributors(repo)] for repo in repos
-        } 
+        }
+
+        about_info = {fetch_data.fetch_about_info()}
 
     else:
         repos = fetch_data.load_repo(input_repos)
         readme = fetch_data.load_readme(input_readme)
         contributors = fetch_data.load_contributors(input_contributors)
+        about_info = fetch_data.load_about(input_about)
 
     if not repos or not readme or not contributors:
         raise Exception("No repos loaded")
@@ -89,7 +94,7 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
     for repo, t in sorted_repos:
         repos.append(repo)
 
-    generate_web = GenerateWeb(repos, readme, contributors, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
+    generate_web = GenerateWeb(repos, readme, contributors, about_info, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
 
     generate_web.generate()
     print(f"Generated web to {build_dir} directory in {time() - start:.2f} seconds")

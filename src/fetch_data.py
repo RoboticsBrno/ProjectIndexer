@@ -1,5 +1,6 @@
 from os import environ, path, makedirs
 from github import Github, PaginatedList, Repository, UnknownObjectException
+import requests
 import json
 from dotenv import load_dotenv
 import logging
@@ -32,8 +33,31 @@ class FetchData:
             return sorted(repo.get_contributors(), key=lambda x: x.contributions, reverse=True)[:contributors_limit]
         except UnknownObjectException:
             return []
+        
+    def fetch_about_info(self) -> dict[str, str]:
+        r = requests.get("https://raw.githubusercontent.com/RoboticsBrno/.github/main/profile/README.md")
+        if int(r.status_code) == 200:
+            readme = {p[0]: [v for v in p[1:]] for p in [s.split("\n") for s in r.content.decode().strip().replace(" --->", "").split("<!--- ")][1:]}
+        
+        info = {}
 
-    def save_to_file(self, repos: list[Repository.Repository], file_repos:str= 'data/repos.json', file_readme:str= 'data/readme.json', file_contributors:str= 'data/contributors.json', verbose=False) -> int:
+        titles = ["Website","RoboCamp","Instagram","Facebook","YouTube","Twitter"]
+        links = [s[s.find('href="')+6:s.find('"', s.find('href="')+6)] for s in readme["contacts"][1:-1] if 'href="' in s]
+        print(links)
+        contacts = {}
+        for t, l in zip(titles, links):
+            contacts[t] = [l, l.split("/")[-1]]
+
+        info.update({"contacts":contacts})
+        
+        info.update({"readme_1":readme["readme_1"],
+                     "readme_2":readme["readme_2"]})
+        
+        info.update({"images":[s[s.find('src="')+5:s.find('"', s.find('src="')+5)] for s in readme["images"] if 'src="' in s]})
+
+        return info
+
+    def save_to_file(self, repos: list[Repository.Repository], file_repos:str= 'data/repos.json', file_readme:str= 'data/readme.json', file_contributors:str= 'data/contributors.json', file_about:str= 'data/about.json', verbose=False) -> int:
         """
         Save repos to file
         :param file_repos:
@@ -53,12 +77,15 @@ class FetchData:
             if verbose:
                 logger.info(f"Saving {repo.full_name} to {file_repos}")
             data_repo.append(repo.raw_data)
-
+        
             data_readme[repo.full_name] = self.fetch_readme(repo)
-
+        
             contributors = self.fetch_contributors(repo)
             data_contrib[repo.full_name] = [[contributor.html_url, contributor.avatar_url, contributor.name, contributor.login, contributor.contributions,] for contributor in contributors]
             index += 1
+
+        data_about = self.fetch_about_info()
+
         with open(file_repos, 'w') as json_file:
             json.dump(data_repo, json_file)
 
@@ -67,6 +94,9 @@ class FetchData:
 
         with open(file_contributors, 'w') as json_file:
             json.dump(data_contrib, json_file)
+
+        with open(file_about, 'w') as json_file:
+            json.dump(data_about, json_file)
 
         if verbose:
             logger.info(f"Saved {index} repos to {file_repos}")
@@ -94,12 +124,19 @@ class FetchData:
             return {}
     
     def load_contributors(self, file_contrib: str="data/contributors.json") -> dict[str, list[str]]:
-        # return {repo, [name, login, url_to_img]}
         try:
             with open(file_contrib, 'r') as json_file:
                 return json.load(json_file)
         except FileNotFoundError:
             logger.error(f"File {file_contrib} not found")
+            return {}
+
+    def load_about(self, file_about:str = "data/about.json") -> dict[str, str]:
+        try:
+            with open(file_about, 'r') as json_file:
+                return json.load(json_file)
+        except FileNotFoundError:
+            logger.error(f"File {file_about} not found")
             return {}
 
 if __name__ == "__main__":

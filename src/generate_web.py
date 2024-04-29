@@ -26,7 +26,8 @@ class GenerateWeb:
             self,
             repos: list[Repository.Repository],
             readme: dict[str, str],
-            contributors: dict[list],
+            contributors: dict[str, list],
+            about_info: dict,
             build_dir: str = 'build',
             template_dir: path = 'templates',
             static_dir: path = 'static',
@@ -42,6 +43,7 @@ class GenerateWeb:
 
         self.readme = readme
         self.contributors = contributors
+        self.about_info = about_info
         self.static_dir = static_dir
         self.template_dir = template_dir
         self.project_dir = project_dir
@@ -113,7 +115,7 @@ class GenerateWeb:
 
 
     def generate_repos_list(self):
-        self.render_page('repos.html', self.paths.get("/").get("path"), repos=self.repos)
+        #self.render_page('repos.html', self.paths.get("/").get("path"), repos=self.repos) # Remove when about page is made
         self.render_page('repos.html', self.paths.get("Repos").get("path"), repos=self.repos)
 
     def generate_repos_detail(self):
@@ -168,14 +170,21 @@ class GenerateWeb:
 
             readme_html = conv_markdown(readme_fixed_lists)
 
-
             path_project = self.paths.get("Project").get("path").format(project["url"])
             self.render_page('projectDetail.html', path_project, project=project, readme=readme_html)
 
 
 
-    def generate_about(self,):
-        self.render_page('about.html', self.paths.get("About").get("path"))
+    def generate_about(self):
+        info = self.about_info
+
+        info["readme_1"] = conv_markdown("\n".join(info["readme_1"]))
+        info["readme_2"] = conv_markdown("\n".join(info["readme_2"]))
+
+        print(info)
+
+        self.render_page('about.html', self.paths.get("/").get("path"), info=info)
+        self.render_page('about.html', self.paths.get("About").get("path"), info=info)
 
 
     def render_page(self, template_name: Union[str, "Template"], path_render: str, **kwargs):
