@@ -73,7 +73,7 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
             [[contributor.html_url, contributor.avatar_url, contributor.name, contributor.login, contributor.contributions,] for contributor in fetch_data.fetch_contributors(repo)] for repo in repos
         }
 
-        about_info = {fetch_data.fetch_about_info()}
+        about_info = fetch_data.fetch_about_info()
 
     else:
         repos = fetch_data.load_repo(input_repos)
@@ -90,9 +90,8 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
         repos_w_time.append((repo, max(repo.pushed_at, repo.updated_at)))
 
     sorted_repos = sorted(repos_w_time, key=lambda x: x[1], reverse=True)
-    repos = []
-    for repo, t in sorted_repos:
-        repos.append(repo)
+    
+    repos = [repo for repo, t in sorted_repos]
 
     generate_web = GenerateWeb(repos, readme, contributors, about_info, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
 
