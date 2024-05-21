@@ -1,8 +1,8 @@
 {#<header class="fixed top-0 md:justify-start md:flex-nowrap z-50 w-full text-sm">#}
 <header class="px-2 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap">
-    <nav class="mt-2 mx-2 py-1 px-4 relative w-full bg-white border border-gray-200 rounded-[26px] md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+    <nav class="mt-2 mx-2 py-2 px-4 md:py-4 md:px-6 lg:px-8 xl:mx-auto w-full relative bg-white border border-gray-200 rounded-[26px] md:flex md:items-center md:justify-between dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
         <div class="flex items-center justify-between">
-            <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white w-100" href="/">
+            <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white" href="/">
                 <img class="w-12 h-auto" src="/assets/logo.png" alt="Logo">
                 <div class="hover:text-blue-600">
                     Robotics Brno
@@ -30,7 +30,7 @@
                     {% if value.showHeader %}
                         {% if not external %}
                             <a class="font-medium md:py-4 {% if active_link %}text-blue-600{% else %}text-gray-500 hover:text-gray-400{% endif %} dark:text-gray-400 hover:text-gray-500"
-                               href="/{{ key.lower() }}"
+                               href="/{{ path.removesuffix('/index.html') }}"
                                {% if active_link %}aria-current="page"{% endif %}>
                                 {{ key }}
                             </a>

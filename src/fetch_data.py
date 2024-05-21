@@ -1,7 +1,8 @@
 from os import environ, path, makedirs
 from github import Github, PaginatedList, Repository, UnknownObjectException
 import requests
-import json
+import json, yaml
+import urllib.parse
 from dotenv import load_dotenv
 import logging
 
@@ -34,7 +35,7 @@ class FetchData:
         except UnknownObjectException:
             return []
         
-    def fetch_about_info(self) -> dict[str, str]:
+    def fetch_about_info(self) -> dict:
         r = requests.get("https://raw.githubusercontent.com/RoboticsBrno/.github/main/profile/README.md")
         if int(r.status_code) == 200:
             readme = {p[0]: [v for v in p[1:]] for p in [s.split("\n") for s in r.content.decode().strip().replace(" --->", "").split("<!--- ")][1:]}
@@ -43,7 +44,7 @@ class FetchData:
 
         titles = ["Website","RoboCamp","Instagram","Facebook","YouTube","Twitter"]
         links = [s[s.find('href="')+6:s.find('"', s.find('href="')+6)] for s in readme["contacts"][1:-1] if 'href="' in s]
-        print(links)
+
         contacts = {}
         for t, l in zip(titles, links):
             contacts[t] = [l, l.split("/")[-1]]
@@ -56,8 +57,16 @@ class FetchData:
         info.update({"images":[s[s.find('src="')+5:s.find('"', s.find('src="')+5)] for s in readme["images"] if 'src="' in s]})
 
         return info
+    
+    def fetch_team(self) -> list[dict]:
+        team = []
+        r = requests.get("https://raw.githubusercontent.com/RoboticsBrno/Our-team/main/team.yaml")
+        if int(r.status_code) == 200:
+            _team:dict = yaml.safe_load(r.content)
+            team = [{key: urllib.parse.unquote(value) if isinstance(value, str) else value for key, value in dictionary.items()} for dictionary in _team]
+        return team
 
-    def save_to_file(self, repos: list[Repository.Repository], file_repos:str= 'data/repos.json', file_readme:str= 'data/readme.json', file_contributors:str= 'data/contributors.json', file_about:str= 'data/about.json', verbose=False) -> int:
+    def save_to_file(self, repos: list[Repository.Repository], file_repos:str= 'data/repos.json', file_readme:str= 'data/readme.json', file_contributors:str= 'data/contributors.json', file_about:str= 'data/about.json', file_team:str= 'data/team.json', verbose=False) -> int:
         """
         Save repos to file
         :param file_repos:
@@ -85,6 +94,7 @@ class FetchData:
             index += 1
 
         data_about = self.fetch_about_info()
+        data_team = self.fetch_team()
 
         with open(file_repos, 'w') as json_file:
             json.dump(data_repo, json_file)
@@ -97,6 +107,9 @@ class FetchData:
 
         with open(file_about, 'w') as json_file:
             json.dump(data_about, json_file)
+
+        with open(file_team, 'w') as json_file:
+            json.dump(data_team, json_file)
 
         if verbose:
             logger.info(f"Saved {index} repos to {file_repos}")
@@ -137,6 +150,14 @@ class FetchData:
                 return json.load(json_file)
         except FileNotFoundError:
             logger.error(f"File {file_about} not found")
+            return {}
+        
+    def load_team(self, file_team:str = "data/team.json") -> dict[str, str]:
+        try:
+            with open(file_team, 'r') as json_file:
+                return json.load(json_file)
+        except FileNotFoundError:
+            logger.error(f"File {file_team} not found")
             return {}
 
 if __name__ == "__main__":

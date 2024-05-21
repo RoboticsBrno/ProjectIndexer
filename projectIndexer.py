@@ -18,17 +18,18 @@ def cli():
 @click.option('--github-token', default=None, help='Github token (default is in .env file)')
 @click.option('--output-repos', '-o', default='data/repos.json', help='build file (default is repos.json)')
 @click.option('--output-readme', '-r', default='data/readme.json', help='build file (default is readme.json)')
-@click.option('--output-contributors', '-r', default='data/contributors.json', help='build file (default is contributors.json)')
-@click.option('--output-about', '-r', default='data/about.json', help='build file (default is about.json)')
+@click.option('--output-contributors', '-c', default='data/contributors.json', help='build file (default is contributors.json)')
+@click.option('--output-about', '-a', default='data/about.json', help='build file (default is about.json)')
+@click.option('--output-team', '-t', default='data/team.json', help='build file (default is team.json)')
 @click.option('--verbose', default=False, is_flag=True, help='Verbose build')
-def fetch_github(github_token, output_repos, output_readme, output_contributors, output_about, verbose):
+def fetch_github(github_token, output_repos, output_readme, output_contributors, output_about, output_team, verbose):
     fetch_data = FetchData(github_token)
     start = time()
     repos = fetch_data.fetch_repos()
     if repos is None:
         logger.error("No repos fetched")
         return
-    repos_count = fetch_data.save_to_file(repos, output_repos, output_readme, output_contributors, output_about, verbose)
+    repos_count = fetch_data.save_to_file(repos, output_repos, output_readme, output_contributors, output_about, output_team, verbose)
     logger.info(f"Fetched {repos_count} repos in {time() - start:.2f} seconds")
 
 @click.command(help='List repos from file - for debugging')
@@ -50,6 +51,7 @@ def list(github_token, input_file):
 @click.option('--input-readme', default='data/readme.json', help='Input file (default is readme.json)')
 @click.option('--input-contributors', default='data/contributors.json', help='Input file (default is contributors.json)')
 @click.option('--input-about', default='data/about.json', help='Input file (default is about.json)')
+@click.option('--input-team', default='data/team.json', help='Input file (default is team.json)')
 @click.option('--build-dir', '-o', default='build', help='build directory (default is build)')
 @click.option('--template-dir', '-t', default='templates', help="Template directory (default is 'templates')")
 @click.option('--static-dir', default='static', help="Static directory (default is 'static')")
@@ -57,7 +59,7 @@ def list(github_token, input_file):
 @click.option('--hide-private', default=False, is_flag=True, help="Hide private repos")
 @click.option('--verbose', default=False, is_flag=True, help='Verbose build')
 @click.option('--compile-tailwind', default=False, is_flag=True, help='Compile tailwind (requires npx + tailwindcss)')
-def generate(github_token: str, fetch_directly: bool, input_repos: str, input_readme:str, input_contributors:str, input_about:str, build_dir: str, template_dir: str, static_dir: str, project_dir: str, hide_private: bool, verbose: bool, compile_tailwind: bool):
+def generate(github_token: str, fetch_directly: bool, input_repos: str, input_readme:str, input_contributors:str, input_about:str, input_team:str, build_dir: str, template_dir: str, static_dir: str, project_dir: str, hide_private: bool, verbose: bool, compile_tailwind: bool):
     print(f"Generating web to {build_dir} directory")
     start = time()
     fetch_data = FetchData(github_token)
@@ -74,14 +76,16 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
         }
 
         about_info = fetch_data.fetch_about_info()
+        team = fetch_data.fetch_team()
 
     else:
         repos = fetch_data.load_repo(input_repos)
         readme = fetch_data.load_readme(input_readme)
         contributors = fetch_data.load_contributors(input_contributors)
         about_info = fetch_data.load_about(input_about)
+        team = fetch_data.load_team(input_team)
 
-    if not repos or not readme or not contributors:
+    if not repos or not readme or not contributors or not team:
         raise Exception("No repos loaded")
 
     # sort repos by time of last push (newest to oldest)
@@ -93,7 +97,7 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
     
     repos = [repo for repo, t in sorted_repos]
 
-    generate_web = GenerateWeb(repos, readme, contributors, about_info, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
+    generate_web = GenerateWeb(repos, readme, contributors, about_info, team, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
 
     generate_web.generate()
     print(f"Generated web to {build_dir} directory in {time() - start:.2f} seconds")

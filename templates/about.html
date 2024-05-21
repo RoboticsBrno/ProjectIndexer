@@ -132,5 +132,27 @@
             <p class="ml-4 my-auto"> Twitter </p>
         </a>
     </div>
+
+    <div class="mt-4 p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md">
+        <p class="font-bold dark:text-white text-gray-800"> Latest commits: </p>
+    </div>
+
+    <div class="mt-2 gap-2 grid grid-cols-1 md:grid-cols-3">
+
+        {% for repo in repos %}
+        <a href='{{ "/repos/" + repo.name }}' target="_blank"
+            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-gray-800"> {{repo.name}} </p>
+            <p class="dark:text-gray-300 text-gray-600"> {{repo.description}} </p>
+            <div class="flex-grow"></div>
+            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                    Last pushed: {{ repo.pushed_at.strftime("%d-%m-%Y") }}
+                </p>
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
 </div>
 {% endblock %}

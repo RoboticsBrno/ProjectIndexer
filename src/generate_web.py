@@ -28,6 +28,7 @@ class GenerateWeb:
             readme: dict[str, str],
             contributors: dict[str, list],
             about_info: dict,
+            team: dict,
             build_dir: str = 'build',
             template_dir: path = 'templates',
             static_dir: path = 'static',
@@ -44,6 +45,7 @@ class GenerateWeb:
         self.readme = readme
         self.contributors = contributors
         self.about_info = about_info
+        self.team = team
         self.static_dir = static_dir
         self.template_dir = template_dir
         self.project_dir = project_dir
@@ -66,9 +68,10 @@ class GenerateWeb:
             "Repo": {"path": "repos/{}/index.html", "showHeader": False, "external": False},
             "Projects": {"path": "projects/index.html", "showHeader": True, "external": False},
             "Project": {"path": "projects/{}/index.html", "showHeader": False, "external": False},
-            "Demo": {"path": "demo/index.html", "showHeader": True, "external": False},
+            #"Demo": {"path": "demo/index.html", "showHeader": True, "external": False},
             "About": {"path": "about/index.html", "showHeader": True, "external": False},
-            "Our team": {"path": "https://team.robotikabrno.cz/", "showHeader": True, "external": True},
+            #"Our team": {"path": "https://team.robotikabrno.cz/", "showHeader": True, "external": True},
+            "Our team": {"path": "team/index.html", "showHeader": True, "external": False},
         }
 
         self.env.globals['paths'] = self.paths
@@ -77,8 +80,9 @@ class GenerateWeb:
         self.copy_static_files()
         self.generate_repos_list()
         self.generate_repos_detail()
-        self.generate_demo()
+        #self.generate_demo()
         self.generate_about()
+        self.generate_team()
 
         projects = load_projects(self.project_dir)
         self.generate_project_list(projects)
@@ -139,7 +143,9 @@ class GenerateWeb:
             readme_html = conv_markdown(readme_fixed_lists)
             path_repo = self.paths.get("Repo").get("path").format(repo.name)
 
-            self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html, repo_contrib = self.contributors[repo.full_name])
+            repo_contrib = [[sublist[i+1] if sublist[i] is None and i+1 < len(sublist) else sublist[i] for i in range(len(sublist))] for sublist in self.contributors[repo.full_name]]
+
+            self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html, repo_contrib = repo_contrib)
 
     def generate_demo(self):
         self.render_page('demo.html', self.paths.get("Demo").get("path"))
@@ -181,10 +187,15 @@ class GenerateWeb:
         info["readme_1"] = conv_markdown("\n".join(info["readme_1"]))
         info["readme_2"] = conv_markdown("\n".join(info["readme_2"]))
 
-        print(info)
+        repos = [i[0] for i in sorted([[r, r.pushed_at] for r in self.repos], key=lambda x: x[1], reverse=True)[:6]]
 
-        self.render_page('about.html', self.paths.get("/").get("path"), info=info)
-        self.render_page('about.html', self.paths.get("About").get("path"), info=info)
+        self.render_page('about.html', self.paths.get("/").get("path"), info=info, repos=repos)
+        self.render_page('about.html', self.paths.get("About").get("path"), info=info, repos=repos)
+
+    def generate_team(self):
+        team = self.team
+
+        self.render_page('team.html', self.paths.get("Our team").get("path"), team=team)
 
 
     def render_page(self, template_name: Union[str, "Template"], path_render: str, **kwargs):
