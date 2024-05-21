@@ -20,9 +20,9 @@
 <body class="flex flex-col min-h-screen">
     
 <header class="px-2 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap">
-    <nav class="mt-2 mx-2 py-1 px-4 relative w-full bg-white border border-gray-200 rounded-[26px] md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+    <nav class="mt-2 mx-2 py-2 px-4 md:py-4 md:px-6 lg:px-8 xl:mx-auto w-full relative bg-white border border-gray-200 rounded-[26px] md:flex md:items-center md:justify-between dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
         <div class="flex items-center justify-between">
-            <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white w-100" href="/">
+            <a class="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white" href="/">
                 <img class="w-12 h-auto" src="/assets/logo.png" alt="Logo">
                 <div class="hover:text-blue-600">
                     Robotics Brno
@@ -100,21 +100,6 @@
 
                     
                         
-                            <a class="font-medium md:py-4 text-gray-500 hover:text-gray-400 dark:text-gray-400 hover:text-gray-500"
-                               href="/demo"
-                               >
-                                Demo
-                            </a>
-                        
-                    
-                
-                    
-                    
-                    
-                    
-
-                    
-                        
                             <a class="font-medium md:py-4 text-blue-600 dark:text-gray-400 hover:text-gray-500"
                                href="/about"
                                aria-current="page">
@@ -130,13 +115,11 @@
 
                     
                         
-                            <div class="flex md:py-5 items-center gap-x-2 text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500">
-                                <a class="font-medium py-2 text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-                                   href="https://team.robotikabrno.cz/" target="_blank">
-                                    Our team
-                                </a>
-                                
-                            </div>
+                            <a class="font-medium md:py-4 text-gray-500 hover:text-gray-400 dark:text-gray-400 hover:text-gray-500"
+                               href="/team"
+                               >
+                                Our team
+                            </a>
                         
                     
                 
@@ -382,6 +365,88 @@ We are convinced that our activities are important in complementing the formal e
             </div>
             <p class="ml-4 my-auto"> Twitter </p>
         </a>
+    </div>
+
+    <div class="mt-4 p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md">
+        <p class="font-bold dark:text-white text-gray-800"> Latest commits: </p>
+    </div>
+
+    <div class="mt-2 gap-2 grid grid-cols-1 md:grid-cols-3">
+
+        
+        <a href='/repos/ProjectIndexer' target="_blank"
+            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-gray-800"> ProjectIndexer </p>
+            <p class="dark:text-gray-300 text-gray-600"> 🔗 ProjectIndexer is a static web generator written in Python. </p>
+            <div class="flex-grow"></div>
+            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                    Last pushed: 21-05-2024
+                </p>
+            </div>
+        </a>
+        
+        <a href='/repos/robotickytabor.cz' target="_blank"
+            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-gray-800"> robotickytabor.cz </p>
+            <p class="dark:text-gray-300 text-gray-600"> Web for Robotic camp </p>
+            <div class="flex-grow"></div>
+            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                    Last pushed: 16-05-2024
+                </p>
+            </div>
+        </a>
+        
+        <a href='/repos/Our-team' target="_blank"
+            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-gray-800"> Our-team </p>
+            <p class="dark:text-gray-300 text-gray-600"> This is RoboticsBrno developers team </p>
+            <div class="flex-grow"></div>
+            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                    Last pushed: 14-05-2024
+                </p>
+            </div>
+        </a>
+        
+        <a href='/repos/RoboCamp-2021' target="_blank"
+            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-gray-800"> RoboCamp-2021 </p>
+            <p class="dark:text-gray-300 text-gray-600"> 🏕️ Webpage with gadgets and manuals for RoboCamp 2021 </p>
+            <div class="flex-grow"></div>
+            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                    Last pushed: 01-05-2024
+                </p>
+            </div>
+        </a>
+        
+        <a href='/repos/RoboCamp-2022' target="_blank"
+            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-gray-800"> RoboCamp-2022 </p>
+            <p class="dark:text-gray-300 text-gray-600"> 🏕️ Webpage with gadgets and manuals for RoboCamp 2022 </p>
+            <div class="flex-grow"></div>
+            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                    Last pushed: 01-05-2024
+                </p>
+            </div>
+        </a>
+        
+        <a href='/repos/RB3201-RBProtocol-library' target="_blank"
+            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-gray-800"> RB3201-RBProtocol-library </p>
+            <p class="dark:text-gray-300 text-gray-600"> Library implementing the RBController protocol by RoboticsBrno. </p>
+            <div class="flex-grow"></div>
+            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                    Last pushed: 30-04-2024
+                </p>
+            </div>
+        </a>
+        
+
     </div>
 </div>
 
