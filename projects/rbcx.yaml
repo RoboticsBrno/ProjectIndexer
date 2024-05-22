@@ -4,6 +4,9 @@ description: RBCX is a universal controller for hobby robots. It is a successor 
 website: https://rbcx.robotikabrno.cz/
 readme: https://github.com/RoboticsBrno/RB3204-RBCX/blob/master/README.md
 
+# you can turn on both at the same time
+frequently_used: True
+recent: False 
 
 related_repos:
   - url: https://github.com/RoboticsBrno/RB3204-RBCX

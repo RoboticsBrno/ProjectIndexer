@@ -4,6 +4,8 @@ on:
     branches:
       - master
       - main
+  schedule:
+    - cron: '0 0 1 * *' # on first day of every month
 permissions:
   contents: write
 jobs:

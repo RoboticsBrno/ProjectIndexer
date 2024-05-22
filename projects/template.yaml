@@ -4,6 +4,9 @@ description: ---
 website: https://---/
 readme: https://github.com/---/README.md
 
+# you can turn on both at the same time
+frequently_used: False
+recent: False 
 
 related_repos:
   - url: https://github.com/---

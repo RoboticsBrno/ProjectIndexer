@@ -4,6 +4,9 @@ description: Logic is a universal programmable toy designed for teaching program
 website: https://logic.robotikabrno.cz/
 readme: https://github.com/RoboticsBrno/RB3205-Logic/blob/main/README.md
 
+# you can turn on both at the same time
+frequently_used: False
+recent: False
 
 related_repos:
   - url: https://github.com/RoboticsBrno/RB3205-Logic

@@ -4,6 +4,9 @@ description: ESP Learning Kit starter
 website: https://elks.robotikabrno.cz/
 readme: https://github.com/RoboticsBrno/RB3206-ELKS/blob/master/README.md
 
+# you can turn on both at the same time
+frequently_used: False
+recent: True
 
 related_repos:
   - url: https://github.com/RoboticsBrno/RB3206-ELKS

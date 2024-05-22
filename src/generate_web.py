@@ -147,15 +147,39 @@ class GenerateWeb:
 
             self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html, repo_contrib = repo_contrib)
 
-    def generate_demo(self):
-        self.render_page('demo.html', self.paths.get("Demo").get("path"))
-
+    # def generate_demo(self):
+    #     self.render_page('demo.html', self.paths.get("Demo").get("path"))
 
     def generate_project_list(self, projects: list):
-        self.render_page('projectList.html', self.paths.get("Projects").get("path"), projects=projects)
+        print(projects)
+
+        # Initialize the three lists
+        recent_projects = []
+        frequently_used_projects = []
+        both_projects = []
+        other_projects = []
+
+        # Iterate through the list of dictionaries
+        for item in projects:
+
+            if item.get("recent") and item.get("frequently_used"):
+                both_projects.append(item)
+            elif item.get("recent"):
+                recent_projects.append(item)
+            elif item.get("frequently_used"):
+                frequently_used_projects.append(item)
+            else:
+                other_projects.append(item)
+
+        projects_list = [["Recent and frequently used projects:",both_projects], 
+                         ["Frequently used projects:",frequently_used_projects], 
+                         ["Recent projects:",recent_projects], 
+                         ["Other projects",other_projects]]
+        
+        self.render_page('projectList.html', self.paths.get("Projects").get("path"), projects_list=projects_list)
 
     def generate_projects(self, projects: list):
-        pprint(projects)
+        # pprint(projects)
 
         for project in projects:
             for i, repo in enumerate(project["related_repos"]):
@@ -178,8 +202,6 @@ class GenerateWeb:
 
             path_project = self.paths.get("Project").get("path").format(project["url"])
             self.render_page('projectDetail.html', path_project, project=project, readme=readme_html)
-
-
 
     def generate_about(self):
         info = self.about_info
