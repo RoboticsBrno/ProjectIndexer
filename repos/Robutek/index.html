@@ -241,7 +241,7 @@
         </div>
         <div class="p-4 flex flex-col w-full min-w-0 md:w-1/6 dark:bg-gray-800 bg-white rounded-lg shadow-md">
             <p class="mx-auto mb-1 dark:text-gray-300 text-gray-600 justify-center items-center">Language:</p>
-            <p class="mx-auto text-lg font-bold dark:text-gray-300 text-gray-600 flex-grow">None</p>
+            <p class="mx-auto text-lg font-bold dark:text-gray-300 text-gray-600 flex-grow">Shell</p>
         </div>
         <div class="w-full md:w-1/6 dark:bg-gray-800 bg-white p-4 rounded-lg shadow-md">
             <div class="flex flex-col h-full justify-between w-full">
@@ -251,11 +251,11 @@
                 </div>
                 <div class="mx-auto grid grid-cols-2 dark:text-gray-300 text-gray-600">
                     <p class="pr-2 text-right">Updated: </p>
-                    <p class="text-left"> 07.06.2024</p>
+                    <p class="text-left"> 26.07.2024</p>
                 </div>
                 <div class="mx-auto grid grid-cols-2 dark:text-gray-300 text-gray-600">
                     <p class="pr-2 text-right">Stars: </p>
-                    <p class="text-left">6</p>
+                    <p class="text-left">9</p>
                 </div>
             </div>
         </div>
@@ -277,84 +277,69 @@
         class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-gray-800 bg-white rounded-lg shadow-md">
         
         <div class="readme dark:text-gray-300 text-gray-600 overflow-x-auto">
-            <h1>Želvička</h1>
+            <h1>Robůtek</h1>
 <p><img alt="top" src="https://roboticsbrno.github.io/Robutek/top.png" />
 <img alt="bottom" src="https://roboticsbrno.github.io/Robutek/bottom.png" />
 <img alt="gif" src="https://roboticsbrno.github.io/Robutek/rotating.gif" /></p>
-<h2>elektro</h2>
-<ul>
-<li>● 1x 18650 ve slotu</li>
-<li>● nabíjení z USB-C z 5V - avšak je potřeba rozpoznávat proudové schopnosti portu 0,5/1,5/víc?</li>
-<li>● stepup na předběžně 6V pro motory a serva</li>
-<li>● stepup na 5V pro PMOD</li>
-<li>● LDO na 3,3V pro ESP</li>
-<li>● vypínač před stepupy (mechanický)</li>
-<li>● 2x H mosty, motorové výstupy (+ enkodér vstupy)</li>
-<li>● 8x senzory jízdy po čáře (viz obrázek)</li>
-<li>● 8x LEDky + konektor</li>
-<li>● 1x servo konektor</li>
-<li>● pípák</li>
-<li>● nx kde n € N &amp;&amp; n &lt;= 5 User tlačítko, Reset tlačítko, Boot tlačítko</li>
-<li>● 3x lidar</li>
-<li>● 1x PMOD konektor (muxovaný na ROM boot UART pinech?), asi s napájecím napětím volitelným jumperem</li>
-<li>● uprostřed díra na fixu</li>
-</ul>
-<h3>nabíječka</h3>
-<ul>
-<li>● MAX77757</li>
-</ul>
-<h3>Stepup 5V</h3>
-<ul>
-<li>● ???</li>
-</ul>
-<h3>Stepup 6V</h3>
-<ul>
-<li>● ???</li>
-</ul>
-<h3>LDO 3.3V</h3>
-<ul>
-<li>● LD39200</li>
-</ul>
-<h3>čárasenzor</h3>
-<ul>
-<li>● ??? ITR8307/S17/TR8(B)</li>
-</ul>
-<h3>pípák</h3>
-<ul>
-<li>● viz ELKS</li>
-</ul>
-<h3>servo</h3>
-<ul>
-<li>● SG90</li>
-</ul>
-<h3>H-most</h3>
-<ul>
-<li>● DRV8833</li>
-</ul>
-<h1>mecha</h1>
-<ul>
-<li>● uchycení paluby a lidarů</li>
-<li>● zvedání fixi</li>
-</ul>
-<h1>TODO</h1>
-<h2>Jarek M</h2>
-<ul>
-<li>● evaluace motorů</li>
-</ul>
-<h2>Jirka</h2>
-<ul>
-<li>● kritika pro zábavu</li>
-</ul>
-<h2>Patrik</h2>
-<ul>
-<li>● seznámit se s datasheety od vybraných součástek<ul>
-<li>● MAX77757</li>
-<li>● LD39200</li>
-<li>● DRV8833</li>
-<li>● ITR8307/S17/TR8(B)</li>
-</ul>
-</li>
-</ul>
+<!-- ## elektro
+ - ● 1x 18650 ve slotu
+ - ● nabíjení z USB-C z 5V - avšak je potřeba rozpoznávat proudové schopnosti portu 0,5/1,5/víc?
+ - ● stepup na předběžně 6V pro motory a serva
+ - ● stepup na 5V pro PMOD
+ - ● LDO na 3,3V pro ESP
+ - ● vypínač před stepupy (mechanický)
+ - ● 2x H mosty, motorové výstupy (+ enkodér vstupy)
+ - ● 8x senzory jízdy po čáře (viz obrázek)
+ - ● 8x LEDky + konektor
+ - ● 1x servo konektor
+ - ● pípák
+ - ● nx kde n € N && n <= 5 User tlačítko, Reset tlačítko, Boot tlačítko
+ - ● 3x lidar
+ - ● 1x PMOD konektor (muxovaný na ROM boot UART pinech?), asi s napájecím napětím volitelným jumperem
+ - ● uprostřed díra na fixu
+
+### nabíječka
+ - ● MAX77757
+
+### Stepup 5V
+ - ● ???
+
+### Stepup 6V
+ - ● ???
+
+### LDO 3.3V
+ - ● LD39200
+
+### čárasenzor
+ - ● ??? ITR8307/S17/TR8(B)
+
+### pípák
+ - ● viz ELKS
+
+### servo
+ - ● SG90
+
+### H-most
+ - ● DRV8833
+
+# mecha
+ - ● uchycení paluby a lidarů
+ - ● zvedání fixi
+
+# TODO
+
+## Jarek M
+ - ● evaluace motorů
+
+## Jirka
+ - ● kritika pro zábavu
+
+## Patrik
+ - ● seznámit se s datasheety od vybraných součástek
+    - ● MAX77757
+    - ● LD39200
+    - ● DRV8833
+    - ● ITR8307/S17/TR8(B) -->
         </div>
     </div>
 
@@ -367,7 +352,17 @@
                 <p class="dark:text-white text-xl font-bold text-gray-800">Tomáš Vavrinec</p>
                 <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">TVavrinec</p>
                 <p class="leading-10 dark:text-gray-300 text-gray-600">
-                    63 commits</p>
+                    68 commits</p>
+            </div>
+        </a>
+        
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Tasssadar" target="_blank">
+            <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/120108?v=4">
+            <div class="ml-3 flex flex-col">
+                <p class="dark:text-white text-xl font-bold text-gray-800">Vojtěch Boček</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">Tasssadar</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">
+                    34 commits</p>
             </div>
         </a>
         
@@ -377,7 +372,47 @@
                 <p class="dark:text-white text-xl font-bold text-gray-800">Kuba Andrýsek</p>
                 <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">JakubAndrysek</p>
                 <p class="leading-10 dark:text-gray-300 text-gray-600">
-                    4 commits</p>
+                    33 commits</p>
+            </div>
+        </a>
+        
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/C2Coder" target="_blank">
+            <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/102322220?v=4">
+            <div class="ml-3 flex flex-col">
+                <p class="dark:text-white text-xl font-bold text-gray-800">C2Coder</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">C2Coder</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">
+                    25 commits</p>
+            </div>
+        </a>
+        
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/JohnieWalkerCZ" target="_blank">
+            <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/77408420?v=4">
+            <div class="ml-3 flex flex-col">
+                <p class="dark:text-white text-xl font-bold text-gray-800">JohnieWalkerCZ</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">JohnieWalkerCZ</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">
+                    22 commits</p>
+            </div>
+        </a>
+        
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/cubicap" target="_blank">
+            <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/29575279?v=4">
+            <div class="ml-3 flex flex-col">
+                <p class="dark:text-white text-xl font-bold text-gray-800">Petr Kubica</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">cubicap</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">
+                    20 commits</p>
+            </div>
+        </a>
+        
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/jezura777" target="_blank">
+            <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/68075487?v=4">
+            <div class="ml-3 flex flex-col">
+                <p class="dark:text-white text-xl font-bold text-gray-800">jezura777</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">jezura777</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">
+                    20 commits</p>
             </div>
         </a>
         
@@ -387,7 +422,17 @@
                 <p class="dark:text-white text-xl font-bold text-gray-800">xondika</p>
                 <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">xondika</p>
                 <p class="leading-10 dark:text-gray-300 text-gray-600">
-                    3 commits</p>
+                    7 commits</p>
+            </div>
+        </a>
+        
+        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="https://github.com/Robot7769" target="_blank">
+            <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/43411364?v=4">
+            <div class="ml-3 flex flex-col">
+                <p class="dark:text-white text-xl font-bold text-gray-800">Honza </p>
+                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">Robot7769</p>
+                <p class="leading-10 dark:text-gray-300 text-gray-600">
+                    4 commits</p>
             </div>
         </a>
         
