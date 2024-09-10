@@ -1,1 +1,40 @@
-Oh no 404
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <script type="text/javascript">
+        // Function to capture the current path and redirect accordingly
+        window.onload = function() {
+            // Get the current path of the 404 URL (e.g., "/a", "/b", etc.)
+            var currentPath = window.location.pathname;
+
+            // Redirect to stary.robotikabrno.cz with the same path
+            window.location.href = "https://stary.robotikabrno.cz" + currentPath;
+
+            // Open robotikabrno.cz in a new tab
+            window.open('https://robotikabrno.cz', '_blank');
+        };
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 48px;
+            color: #333;
+        }
+        p {
+            font-size: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>404 - Page Not Found</h1>
+    <p>You are being redirected to the old site...</p>
+</body>
+</html>
