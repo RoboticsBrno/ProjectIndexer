@@ -85,8 +85,8 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
         about_info = fetch_data.load_about(input_about)
         team = fetch_data.load_team(input_team)
 
-    if not repos or not readme or not contributors or not team:
-        raise Exception("No repos loaded")
+    #if not repos or not readme or not contributors or not team:
+    #    raise Exception("No repos loaded")
 
     # sort repos by time of last push (newest to oldest)
     repos_w_time = []
@@ -97,7 +97,8 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
     
     repos = [repo for repo, t in sorted_repos]
 
-    generate_web = GenerateWeb(repos, readme, contributors, about_info, team, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
+    generate_web = GenerateWeb(repos, readme, contributors, about_info, team, hide_private, verbose, compile_tailwind)
+    # generate_web = GenerateWeb(repos, readme, contributors, about_info, team, build_dir, template_dir, static_dir, project_dir, hide_private, verbose, compile_tailwind)
 
     generate_web.generate()
     print(f"Generated web to {build_dir} directory in {time() - start:.2f} seconds")

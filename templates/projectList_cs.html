@@ -1,7 +1,7 @@
-{% set title = "Projects" %}
-{% set description = "A list of our projects" %}
-{% set keywords = "projects" %}
-{% set active = "Projects" %}
+{% set title = "Projekty" %}
+{% set description = "List našich projektů" %}
+{% set keywords = "projekty, list projektů" %}
+{% set active = "Projekty" %}
 {% extends "base.html" %}
 
 {% block content %}
@@ -14,7 +14,7 @@
         {% for project in projects[1] %}
         <!-- Project Card - {{project.name}} -->
         <a class=" dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between w-full min-w-0 h-full"
-            href="/project/{{ project.url }}/">
+            href="/cs/projekt/{{ project.url }}/">
             <div class="flex flex-col h-full w-full flex-grow">
                 {# <div class="mx-auto p-4 dark:bg-gray-800 flex flex-col bg-white rounded-lg shadow-md max-w-sm"> #}
                     
