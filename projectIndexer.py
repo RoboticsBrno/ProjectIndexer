@@ -85,8 +85,8 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
         about_info = fetch_data.load_about(input_about)
         team = fetch_data.load_team(input_team)
 
-    #if not repos or not readme or not contributors or not team:
-    #    raise Exception("No repos loaded")
+    if not repos or not readme or not contributors or not team:
+        raise Exception("No repos loaded")
 
     # sort repos by time of last push (newest to oldest)
     repos_w_time = []

@@ -4,32 +4,32 @@
 <div class="mx-2 mt-2 ">
     {# Repo info #}
     <div class="flex flex-col md:flex-row gap-2 h-auto md:items-stretch">
-        <div class="p-4 flex flex-col w-full min-w-0 md:w-3/6 dark:bg-gray-800 bg-white rounded-lg shadow-md">
-            <h2 class="dark:text-white text-xl font-bold text-gray-800 mb-1">{{ repo.name }}</h2>
-            <p class="dark:text-gray-300 text-gray-600 flex-grow">{% if repo.description %}{{ repo.description }}{% else
+        <div class="p-4 flex flex-col w-full min-w-0 md:w-3/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+            <h2 class="dark:text-white text-xl font-bold text-zinc-800 mb-1">{{ repo.name }}</h2>
+            <p class="dark:text-zinc-300 text-zinc-800 flex-grow">{% if repo.description %}{{ repo.description }}{% else
                 %}No description{% endif %}</p>
         </div>
-        <div class="p-4 flex flex-col w-full min-w-0 md:w-1/6 dark:bg-gray-800 bg-white rounded-lg shadow-md">
-            <p class="mx-auto mb-1 dark:text-gray-300 text-gray-600 justify-center items-center">Language:</p>
-            <p class="mx-auto text-lg font-bold dark:text-gray-300 text-gray-600 flex-grow">{{ repo.language }}</p>
+        <div class="p-4 flex flex-col w-full min-w-0 md:w-1/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+            <p class="mx-auto mb-1 dark:text-zinc-300 text-zinc-800 justify-center items-center">Language:</p>
+            <p class="mx-auto text-lg font-bold dark:text-zinc-300 text-zinc-800 flex-grow">{{ repo.language }}</p>
         </div>
-        <div class="w-full md:w-1/6 dark:bg-gray-800 bg-white p-4 rounded-lg shadow-md">
+        <div class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md">
             <div class="flex flex-col h-full justify-between w-full">
-                <div class="mx-auto grid grid-cols-2 dark:text-gray-300 text-gray-600">
+                <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
                     <p class="pr-2 text-right">Created: </p>
                     <p class="text-left"> {{ repo.created_at.strftime('%d.%m.%Y') }}</p>
                 </div>
-                <div class="mx-auto grid grid-cols-2 dark:text-gray-300 text-gray-600">
+                <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
                     <p class="pr-2 text-right">Updated: </p>
                     <p class="text-left"> {{ repo.pushed_at.strftime('%d.%m.%Y') }}</p>
                 </div>
-                <div class="mx-auto grid grid-cols-2 dark:text-gray-300 text-gray-600">
+                <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
                     <p class="pr-2 text-right">Stars: </p>
                     <p class="text-left">{{ repo.stargazers_count }}</p>
                 </div>
             </div>
         </div>
-        <a href="{{ repo.html_url }}" class="w-full md:w-1/6 dark:bg-gray-800 bg-white p-4 rounded-lg shadow-md" target="_blank">
+        <a href="{{ repo.html_url }}" class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md" target="_blank">
             <div class="flex flex-col h-full justify-center items-center">
                 <svg class="mx-auto h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     viewBox="0 0 496 512">
@@ -37,16 +37,16 @@
                     <path fill="white"
                         d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
                 </svg>
-                <p class="font-bold dark:text-gray-300 text-gray-600">Visit on GitHub</p>
+                <p class="font-bold dark:text-zinc-300 text-zinc-800">Visit on GitHub</p>
             </div>
         </a>
     </div>
 
     {# Readme #}
     <div
-        class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-gray-800 bg-white rounded-lg shadow-md">
-        {# <p class="font-bold dark:text-white text-gray-800">Readme:</h2> #}
-        <div class="readme dark:text-gray-300 text-gray-600 overflow-x-auto">
+        class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        {# <p class="font-bold dark:text-white text-zinc-800">Readme:</h2> #}
+        <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
             {{ readme | safe }}
         </div>
     </div>
@@ -54,12 +54,12 @@
     {# Contributors #}
     <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
         {% for contrib in repo_contrib %}
-        <a class="p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md" href="{{ contrib[0] }}" target="_blank">
+        <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="{{ contrib[0] }}" target="_blank">
             <img class="w-20 aspect-square rounded-3xl" src="{{ contrib[1] }}">
             <div class="ml-3 flex flex-col">
-                <p class="dark:text-white text-xl font-bold text-gray-800">{{ contrib[2] }}</p>
-                <p class="ml-[1px] leading-none text-sm dark:text-gray-300 text-gray-600">{{ contrib[3]}}</p>
-                <p class="leading-10 dark:text-gray-300 text-gray-600">
+                <p class="dark:text-white text-xl font-bold text-zinc-800">{{ contrib[2] }}</p>
+                <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">{{ contrib[3]}}</p>
+                <p class="leading-10 dark:text-zinc-300 text-zinc-800">
                     {{ contrib[4] }} {% if contrib[3] == 1 %}commit{% else %}commits{% endif %}</p>
             </div>
         </a>

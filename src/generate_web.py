@@ -66,14 +66,14 @@ class GenerateWeb:
         self.paths = {
             "/":            {"path": "index.html",                  "lang":"en", "showHeader": False,    "external": False},
             "Repos":        {"path": "repos/index.html",            "lang":"en", "showHeader": True,     "external": False},
-            "Repo":         {"path": "repo/{}/index.html",         "lang":"en", "showHeader": False,    "external": False},
+            "Repo":         {"path": "repo/{}/index.html",          "lang":"en", "showHeader": False,    "external": False},
             "Projects":     {"path": "projects/index.html",         "lang":"en", "showHeader": True,     "external": False},
-            "Project":      {"path": "project/{}/index.html",      "lang":"en", "showHeader": False,    "external": False},
+            "Project":      {"path": "project/{}/index.html",       "lang":"en", "showHeader": False,    "external": False},
             "Our team":     {"path": "team/index.html",             "lang":"en", "showHeader": True,     "external": False},
             
             "/cs":          {"path": "cs/index.html",               "lang":"cs", "showHeader": False,    "external": False},
             "Repozitáře":   {"path": "cs/repozitare/index.html",    "lang":"cs", "showHeader": True,     "external": False},
-            "Repo":         {"path": "cs/repo/{}/index.html",       "lang":"cs", "showHeader": False,    "external": False},
+            "Repo_cs":      {"path": "cs/repo/{}/index.html",       "lang":"cs", "showHeader": False,    "external": False},
             "Projekty":     {"path": "cs/projekty/index.html",      "lang":"cs", "showHeader": True,     "external": False},
             "Projket":      {"path": "cs/projekt/{}/index.html",    "lang":"cs", "showHeader": False,    "external": False},
             "Náš tým":      {"path": "cs/nas-tym/index.html",       "lang":"cs", "showHeader": True,     "external": False},
@@ -88,13 +88,12 @@ class GenerateWeb:
         self.copy_static_files()
         
         self.generate_about()
-        # self.generate_repos_list()
-        # self.generate_repos_detail()
-        # self.generate_team()
-        # 
-        # projects = load_projects(self.project_dir)
-        # self.generate_project_list(projects)
-        # self.generate_projects(projects)
+        self.generate_repos_list()
+        #self.generate_repos_detail()
+        self.generate_team()
+        projects = load_projects(self.project_dir)
+        self.generate_project_list(projects)
+        #self.generate_projects(projects)
         if self.compile_tailwind:
             self.compile_tailwind_css()
 
@@ -153,14 +152,13 @@ class GenerateWeb:
             readme_fixed_lists = readme_fixed_lists.replace("@@", "- ● ")
 
             readme_html = conv_markdown(readme_fixed_lists)
-            path_repo = self.paths.get("Repo").get("path").format(repo.name)
+            
 
             repo_contrib = [[sublist[i+1] if sublist[i] is None and i+1 < len(
                 sublist) else sublist[i] for i in range(len(sublist))] for sublist in self.contributors[repo.full_name]]
-
-            self.render_page('repoDetail.html', path_repo, repo=repo, readme=readme_html, repo_contrib=repo_contrib, lang="en")
             
-            self.render_page('repoDetail_cs.html', path_repo, repo=repo, readme=readme_html, repo_contrib=repo_contrib, lang="cs")
+            self.render_page('repoDetail.html', self.paths.get("Repo").get("path").format(repo.name), repo=repo, readme=readme_html, repo_contrib=repo_contrib, lang="en")
+            self.render_page('repoDetail_cs.html', self.paths.get("Repo_cs").get("path").format(repo.name), repo=repo, readme=readme_html, repo_contrib=repo_contrib, lang="cs")
 
     def generate_project_list(self, projects: list):
         print(projects)

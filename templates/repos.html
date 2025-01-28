@@ -5,7 +5,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="flex flex-grow mx-2 p-4 text-base dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-white text-gray-800">
+    <div class="flex flex-grow mx-2 p-4 text-base dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-white text-zinc-800">
        <p>
            Listed {{ repos|length }} repositories
        </p> 
@@ -14,15 +14,15 @@
     <div class="mx-2 mt-4 grid grid-cols-1 md:grid-cols-4 gap-2">
         {% for repo in repos %}
         <!-- Repository Card - {{repo.name}} -->
-        <a class="dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between mx-auto w-full min-w-0 h-full" href="/repo/{{ repo.name }}/">
+        <a class="dark:bg-zinc-900 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between mx-auto w-full min-w-0 h-full" href="/repo/{{ repo.name }}/">
             <div class="flex flex-col h-full w-full flex-grow">
-                {# <div class="dark:bg-gray-800 flex flex-col bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto"> #}
-                    <h2 class="dark:text-white text-xl font-bold text-gray-800 mb-1">{{ repo.name }}</h2>
-                    <p class="dark:text-gray-300 text-gray-600 mb-2">{{ repo.description }}</p>
+                {# <div class="dark:bg-zinc-900 flex flex-col bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto"> #}
+                    <h2 class="dark:text-white text-xl font-bold text-zinc-800 mb-1">{{ repo.name }}</h2>
+                    <p class="dark:text-zinc-300 text-zinc-800 mb-2">{{ repo.description }}</p>
 
                     <div class="mb-4">
                         {% for topic in repo.topics %}
-                            {# <span class="dark:bg-gray-700 bg-gray-200 text-gray-700 dark:text-gray-300 text-sm font-semibold py-1 px-2 rounded-full mr-2">{{ topic }}</span>#}
+                            {# <span class="dark:bg-zinc-700 bg-zinc-200 text-zinc-700 dark:text-zinc-300 text-sm font-semibold py-1 px-2 rounded-full mr-2">{{ topic }}</span>#}
                             {# <a href="https://github.com/topics/{{ topic }}"> #}
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium {{ topic|colorize }}">
                                 {{ topic }}
@@ -32,21 +32,21 @@
                     </div>
                     <div class="flex items-center justify-between mt-4">
                         <div class="flex items-center">
-                            <svg class="w-4 h-4 dark:fill-gray-300 fill-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z"/></svg>
-                            <span class="ml-2 dark:text-gray-300 text-gray-700">{{ repo.stargazers_count }} Stars</span>
+                            <svg class="w-4 h-4 dark:fill-zinc-300 fill-zinc-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z"/></svg>
+                            <span class="ml-2 dark:text-zinc-300 text-zinc-700">{{ repo.stargazers_count }} Stars</span>
                         </div>
                         <div class="flex items-center">
-                            <svg class="w-4 h-4 dark:fill-gray-300 fill-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 104a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm80-24c0 32.8-19.7 61-48 73.3v87.8c18.8-10.9 40.7-17.1 64-17.1h96c35.3 0 64-28.7 64-64v-6.7C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V160c0 70.7-57.3 128-128 128H176c-35.3 0-64 28.7-64 64v6.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V352 153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm232 0a24 24 0 1 0 -48 0 24 24 0 1 0 48 0zM80 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>
-                            <span class="ml-2 dark:text-gray-300 text-gray-700">{{ repo.forks_count }} Forks</span>
+                            <svg class="w-4 h-4 dark:fill-zinc-300 fill-zinc-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 104a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm80-24c0 32.8-19.7 61-48 73.3v87.8c18.8-10.9 40.7-17.1 64-17.1h96c35.3 0 64-28.7 64-64v-6.7C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V160c0 70.7-57.3 128-128 128H176c-35.3 0-64 28.7-64 64v6.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V352 153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm232 0a24 24 0 1 0 -48 0 24 24 0 1 0 48 0zM80 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>
+                            <span class="ml-2 dark:text-zinc-300 text-zinc-700">{{ repo.forks_count }} Forks</span>
                         </div>
                     </div>
                     <div class="flex-grow"></div>
-                    <div class="mt-auto bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
+                    <div class="mt-auto bg-zinc-100 border-t rounded-b-xl dark:bg-zinc-900 dark:border-zinc-700">
                         {# dont know what to use #}
-                        {# <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                        {# <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-500">
                                Last updated: {{ repo.updated_at.strftime("%d-%m-%Y") }}
                            </p> #}
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                        <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-500">
                             Last pushed: {{ repo.pushed_at.strftime("%d-%m-%Y") }}
                         </p>
                     </div>
@@ -58,10 +58,10 @@
 {% endblock %}
 
 {# not used code #}
-<div class="dark:bg-gray-800 flex flex-col justify-between bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto">
+<div class="dark:bg-zinc-900 flex flex-col justify-between bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto">
     <div>
-        <h2 class="dark:text-white text-xl font-bold text-gray-800 mb-1">Repository Name</h2>
-        <p class="dark:text-gray-300 text-gray-600 mb-2">Repository description goes here...</p>
+        <h2 class="dark:text-white text-xl font-bold text-zinc-800 mb-1">Repository Name</h2>
+        <p class="dark:text-zinc-300 text-zinc-800 mb-2">Repository description goes here...</p>
 
         <div class="mb-4">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">Tag 1</span>
@@ -70,26 +70,26 @@
         </div>
 
         <div class="flex justify-between mt-4">
-            <p class="dark:text-gray-300 text-gray-700">CSS</p>
-            <p class="dark:text-gray-300 text-gray-700">MIT License</p>
+            <p class="dark:text-zinc-300 text-zinc-700">CSS</p>
+            <p class="dark:text-zinc-300 text-zinc-700">MIT License</p>
         </div>
 
-        <p class="mt-4 dark:text-gray-300 text-gray-700">Last updated: 4 days ago</p>
+        <p class="mt-4 dark:text-zinc-300 text-zinc-700">Last updated: 4 days ago</p>
     </div>
 
     <div class="flex items-center justify-between mt-4">
         <div class="flex items-center">
-            <svg class="w-4 h-4 dark:text-gray-300 text-gray-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <svg class="w-4 h-4 dark:text-zinc-300 text-zinc-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 4 4 0 013.446-6.032 1 1 0 011.868.828 4 4 0 01-.893 4.26A3.5 3.5 0 0110 18v-2a1.5 1.5 0 00-1.14-1.446A4 4 0 016 12a4 4 0 100-8 1 1 0 11-2 0 6 6 0 116 6v-1.928A1.5 1.5 0 0010 2z" clip-rule="evenodd" />
             </svg>
-            <span class="ml-2 dark:text-gray-300 text-gray-700">100 Stars</span>
+            <span class="ml-2 dark:text-zinc-300 text-zinc-700">100 Stars</span>
         </div>
 
         <div class="flex items-center">
-            <svg class="w-4 h-4 dark:text-gray-300 text-gray-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <svg class="w-4 h-4 dark:text-zinc-300 text-zinc-500 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h4a2 2 0 012 2v1h4a2 2 0 012 2v5a2 2 0 01-2 2h-4v1a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm10 1H8v1H4v5h4v-1h4V6z" clip-rule="evenodd" />
             </svg>
-            <span class="ml-2 dark:text-gray-300 text-gray-700">20 Forks</span>
+            <span class="ml-2 dark:text-zinc-300 text-zinc-700">20 Forks</span>
         </div>
     </div>
 </div>

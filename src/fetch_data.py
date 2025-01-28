@@ -90,7 +90,6 @@ class FetchData:
         data_contrib = {}
         index = 0
         for repo in repos:
-            break
             if verbose:
                 logger.info(f"Saving {repo.full_name} to {file_repos}")
             data_repo.append(repo.raw_data)

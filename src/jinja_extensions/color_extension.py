@@ -16,7 +16,7 @@ class ColorExtension(Extension):
                   "bg-purple-100 text-purple-800",
                   "bg-indigo-100 text-indigo-800",
                   "bg-pink-100 text-pink-800",
-                  "bg-gray-100 text-gray-800"]
+                  "bg-zinc-100 text-zinc-800"]
 
         # choose a color based on the hash of the value
         color_class = colors[hash(value) % len(colors)]

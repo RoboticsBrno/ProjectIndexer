@@ -6,16 +6,16 @@
 
 {% block content %}
 <div class="mx-2">
-    <div class="gap-4 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-gray-800 bg-white rounded-lg shadow-md">
+    <div class="gap-4 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-zinc-900 bg-white rounded-lg shadow-md">
 
-        <div class="inline-flex justify-between dark:text-white text-gray-800">
+        <div class="inline-flex justify-between dark:text-white text-zinc-800">
             <p class="my-auto text-2xl font-bold"> Robotárna (RoboticsBrno)</p>
             <a href="https://helceletka.cz/Robotarna" target="_blank" class="mr-2 w-20">
                 <img src="/assets/logo.png">
             </a>
         </div>
 
-        <div class="readme dark:text-gray-300 text-gray-600 overflow-x-auto">
+        <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
             {{ info["readme_1_cs"] | safe }}
         </div>
 
@@ -26,7 +26,7 @@
             {% endfor %}
         </div>
 
-        <div class="readme dark:text-gray-300 text-gray-600 overflow-x-auto">
+        <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
             {{ info["readme_2_cs"] | safe }}
         </div>
 
@@ -35,7 +35,7 @@
     <div class="mt-2 grid grid-cols-2 md:grid-cols-7 gap-2">
         <!--- Github --->
         <a href='https://github.com/RoboticsBrno' target="_blank"
-            class="p-4 flex flex-row font-medium dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-gray-300 text-gray-600">
+            class="p-4 flex flex-row font-medium dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-zinc-300 text-zinc-800">
             <div class="w-10 my-auto">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -48,7 +48,7 @@
 
         <!--- Website --->
         <a href='{{ info["contacts"]["Website"][0] }}' target="_blank"
-            class="p-4 flex flex-row font-medium dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-gray-300 text-gray-600">
+            class="p-4 flex flex-row font-medium dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-zinc-300 text-zinc-800">
             <div class="w-10 my-auto">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -61,7 +61,7 @@
 
         <!--- RoboCamp --->
         <a href='{{ info["contacts"]["RoboCamp"][0] }}' target="_blank"
-            class="p-4 flex flex-row font-medium dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-gray-300 text-gray-600">
+            class="p-4 flex flex-row font-medium dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-zinc-300 text-zinc-800">
             <div class="w-10 my-auto">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -74,7 +74,7 @@
 
         <!--- Instagram --->
         <a href='{{ info["contacts"]["Instagram"][0] }}' target="_blank"
-            class="p-4 flex flex-row font-medium dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-gray-300 text-gray-600">
+            class="p-4 flex flex-row font-medium dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-zinc-300 text-zinc-800">
             <div class="w-10 my-auto">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -88,7 +88,7 @@
 
         <!--- Facebook --->
         <a href='{{ info["contacts"]["Facebook"][0] }}' target="_blank"
-            class="p-4 flex flex-row font-medium dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-gray-300 text-gray-600">
+            class="p-4 flex flex-row font-medium dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-zinc-300 text-zinc-800">
             <div class="w-10 my-auto">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -101,7 +101,7 @@
 
         <!--- YouTube --->
         <a href='{{ info["contacts"]["YouTube"][0] }}' target="_blank"
-            class="p-4 flex flex-row font-medium dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-gray-300 text-gray-600">
+            class="p-4 flex flex-row font-medium dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-zinc-300 text-zinc-800">
             <div class="w-10 my-auto">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -114,7 +114,7 @@
 
         <!--- Twitter --->
         <a href='{{ info["contacts"]["Twitter"][0] }}' target="_blank"
-            class="p-4 flex flex-row font-medium dark:bg-gray-800 bg-white rounded-lg shadow-md dark:text-gray-300 text-gray-600">
+            class="p-4 flex flex-row font-medium dark:bg-zinc-900 bg-white rounded-lg shadow-md dark:text-zinc-300 text-zinc-800">
             <div class="w-10 my-auto">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -133,20 +133,20 @@
         </a>
     </div>
 
-    <div class="mt-4 p-4 flex flex-row dark:bg-gray-800 bg-white rounded-lg shadow-md">
-        <p class="font-bold dark:text-white text-gray-800"> Poslední commity: </p>
+    <div class="mt-4 p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        <p class="font-bold dark:text-white text-zinc-800"> Poslední commity: </p>
     </div>
 
     <div class="mt-2 gap-2 grid grid-cols-1 md:grid-cols-3">
 
         {% for repo in repos %}
         <a href='{{ "/repos/" + repo.name }}' target="_blank"
-            class="p-4 flex flex-col dark:bg-gray-800 bg-white rounded-lg shadow-md ">
-            <p class="font-semibold text-xl dark:text-white text-gray-800"> {{repo.name}} </p>
-            <p class="dark:text-gray-300 text-gray-600"> {{repo.description}} </p>
+            class="p-4 flex flex-col dark:bg-zinc-900 bg-white rounded-lg shadow-md ">
+            <p class="font-semibold text-xl dark:text-white text-zinc-800"> {{repo.name}} </p>
+            <p class="dark:text-zinc-300 text-zinc-800"> {{repo.description}} </p>
             <div class="flex-grow"></div>
-            <div class="mt-2 bg-gray-100 border-t rounded-b-xl dark:bg-gray-800 dark:border-gray-700">
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+            <div class="mt-2 bg-zinc-100 border-t rounded-b-xl dark:bg-zinc-900 dark:border-zinc-700">
+                <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-500">
                     Poslední push: {{ repo.pushed_at.strftime("%d-%m-%Y") }}
                 </p>
             </div>
