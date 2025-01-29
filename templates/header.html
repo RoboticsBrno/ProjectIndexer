@@ -1,13 +1,12 @@
 <header class="px-6 md:px-8  py-4 md:py-6 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap bg-white dark:bg-zinc-900">
     <nav class="w-full relative md:flex md:items-center md:justify-between" aria-label="Global">
         <div class="flex items-center justify-between">
-            <a class="inline-flex items-center gap-x-3" href="/">
+            <a class="inline-flex items-center gap-x-4" href="{% if lang == "cs" %}/cs{% endif %}/" >
                 <img class="size-12 md:size-14" src="/assets/logo.png" alt="Logo">
                 <div class="text-xl md:text-2xl font-semibold whitespace-nowrap">
                     Robotics Brno
                 </div>
             </a>
-
             <!-- for smaller than md - phone -->
             <div class="md:hidden inline-flex gap-x-2">
                 <button id="lang-toggle-1"
@@ -69,18 +68,15 @@
 
                 {% if value.showHeader and value_lang == lang %}
                 {% if not external %}
-                <a class="font-medium md:py-4"
+                <a class="text-lg font-medium md:py-4"
                     href="/{{ path.removesuffix('/index.html') }}" {% if active_link %}aria-current="page" {% endif %}>
                     {{ key }}
                 </a>
                 {% else %}
-                <div
-                    class="flex md:py-5 items-center gap-x-2">
-                    <a class="font-medium py-2 "
-                        href="{{ path }}" target="_blank">
-                        {{ key }}
-                    </a>
-                </div>
+                <a class="text-lg font-medium md:py-4"
+                href="{{ path }}" target="_blank">
+                    {{ key }}
+                </a>
                 {% endif %}
                 {% endif %}
                 {% endfor %}

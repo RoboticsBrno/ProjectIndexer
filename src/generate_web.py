@@ -75,7 +75,7 @@ class GenerateWeb:
             "Repozitáře":   {"path": "cs/repozitare/index.html",    "lang":"cs", "showHeader": True,     "external": False},
             "Repo_cs":      {"path": "cs/repo/{}/index.html",       "lang":"cs", "showHeader": False,    "external": False},
             "Projekty":     {"path": "cs/projekty/index.html",      "lang":"cs", "showHeader": True,     "external": False},
-            "Projket":      {"path": "cs/projekt/{}/index.html",    "lang":"cs", "showHeader": False,    "external": False},
+            "Projekt":      {"path": "cs/projekt/{}/index.html",    "lang":"cs", "showHeader": False,    "external": False},
             "Náš tým":      {"path": "cs/nas-tym/index.html",       "lang":"cs", "showHeader": True,     "external": False},
             
             # "Our team":   {"path": "https://team.robotikabrno.cz/", "showHeader": True,     "external": True},
@@ -89,11 +89,11 @@ class GenerateWeb:
         
         self.generate_about()
         self.generate_repos_list()
-        #self.generate_repos_detail()
+        self.generate_repos_detail()
         self.generate_team()
         projects = load_projects(self.project_dir)
         self.generate_project_list(projects)
-        #self.generate_projects(projects)
+        self.generate_projects(projects)
         if self.compile_tailwind:
             self.compile_tailwind_css()
 
@@ -218,7 +218,7 @@ class GenerateWeb:
 
             path_project = self.paths.get("Project").get("path").format(project["url"])
             self.render_page('projectDetail.html', path_project, project=project, readme=readme_html, lang="en")
-            
+            path_project = self.paths.get("Projekt").get("path").format(project["url"])
             self.render_page('projectDetail_cs.html', path_project, project=project, readme=readme_html, lang="cs")
 
     def generate_about(self):

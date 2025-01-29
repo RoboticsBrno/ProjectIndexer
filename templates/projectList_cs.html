@@ -5,7 +5,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="mx-2">
+
     {% for projects in projects_list %}
     <div class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md">
         <p class="font-bold dark:text-white text-zinc-800"> {{projects[0]}} </p>
@@ -27,5 +27,5 @@
         {% endfor %}
     </div>
     {% endfor %}
-</div>
+
 {% endblock %}
