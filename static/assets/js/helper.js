@@ -1,14 +1,3 @@
-
-// Function to apply the theme based on local storage
-function applyTheme() {
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-}
-
 // Function to toggle the theme and save it to local storage
 function toggleTheme() {
     const isDark = document.documentElement.classList.toggle('dark');
@@ -31,8 +20,6 @@ function toggleLang() {
 
 
 window.onload = () => {
-    applyTheme();
-
     document.getElementById('theme-toggle-1').addEventListener('click', () => {
         toggleTheme();
     });
