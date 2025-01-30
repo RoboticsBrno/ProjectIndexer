@@ -1,10 +1,7 @@
 import os
-import random
-import re
 import requests
 from datetime import datetime
 from os import path, makedirs
-from pprint import pprint
 from typing import Union
 
 from github import Repository
@@ -12,8 +9,6 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape, Template
 from shutil import copytree
 import subprocess
 import logging
-
-from markdown import markdown
 
 from src.jinja_extensions.color_extension import ColorExtension
 from src.web_helpers import load_projects, fix_readme_relative_images, conv_markdown
@@ -252,7 +247,7 @@ class GenerateWeb:
             with open(full_path, 'w') as f:
                 if self.verbose:
                     logger.info(f"Generating {path}")
-                f.write(template.render(**kwargs))
+                f.write(template.render(**kwargs, now=datetime.now().year))
         except Exception as e:
             logger.error(f"Error while generating {path_render}")
             logger.error(e)
