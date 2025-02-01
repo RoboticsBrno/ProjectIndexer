@@ -2,16 +2,11 @@
 <html lang="en">
 
 <head class="">
-    <script>
-        if (localStorage.getItem("theme") === "dark") {
-            document.documentElement.classList.add("dark");
-        }
-    </script>
+    {% include 'includes.html' %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{ title }}</title>
-    {% include 'includes.html' %}
 </head>
 <body class="flex flex-col min-h-screen bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
     {% include 'header.html' %}

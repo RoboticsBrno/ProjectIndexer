@@ -1,8 +1,47 @@
-// Function to toggle the theme and save it to local storage
-function toggleTheme() {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+function getPreferredTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
+
+function setTheme(theme) {
+    console.log("set theme to " + theme)
+    if (theme=="light") {
+        lightTheme();
+        return;
+    }
+    darkTheme()
+}
+function darkTheme(){
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+}
+function lightTheme(){
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+}
+function toggleTheme() {
+    console.log("toggle")
+    localStorage.setItem('theme', localStorage.getItem('theme')==="dark" ? 'light' : 'dark');
+    setTheme(localStorage.getItem('theme'));
+}
+
+
+
+if (localStorage.getItem('theme') === null) {
+    localStorage.setItem('theme', getPreferredTheme());
+}
+setTheme(localStorage.getItem('theme'));
+
+
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    if (event.matches) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+    setTheme(localStorage.getItem('theme'));
+});
+
 
 function toggleLang() {
     let current_path = window.location.pathname
@@ -16,8 +55,6 @@ function toggleLang() {
         window.location.href = "/cs" + current_path;
     }
 }
-
-
 
 window.onload = () => {
     document.getElementById('theme-toggle-1').addEventListener('click', () => {
