@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head class="">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+
+<script src="/assets/js/preline.js"></script>
+<script src="/assets/js/helper.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/font-awesome-6.4.1.css">
+<link rel="stylesheet" href="/assets/css/github-markdown.css">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Marlin-for-robotic-arm</title>
+</head>
+<body class="flex flex-col min-h-screen bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
+    <header class="px-6 md:px-8  py-4 md:py-6 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap bg-white dark:bg-zinc-900">
+    <nav class="w-full relative md:flex md:items-center md:justify-between" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="inline-flex items-center gap-x-4" href="/cs/" >
+                <img class="size-12 md:size-14" src="/assets/logo.png" alt="Logo">
+                <div class="text-xl md:text-2xl font-semibold whitespace-nowrap">
+                    Robotics Brno
+                </div>
+            </a>
+            <!-- for smaller than md - phone -->
+            <div class="md:hidden inline-flex gap-x-2">
+                <button id="lang-toggle-1"
+                    class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-translate" viewBox="0 0 16 16">
+                        <path
+                            d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                        <path
+                            d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                    </svg>
+                </button>
+                <button id="theme-toggle-1"
+                    class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                    
+                    <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                    </svg>
+                    
+                    <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                    </svg>
+                </button>
+
+                <button type="button"
+                    class="hs-collapse-toggle size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm"
+                    data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation"
+                    aria-label="Toggle navigation">
+                    <svg class="hs-collapse-open:hidden w-4 h-4" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    <svg class="hs-collapse-open:block hidden w-4 h-4" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <div id="navbar-collapse-with-animation"
+            class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+            <div
+                class="flex mt-4 mb-2 md:my-0 md:pl-7 flex-col gap-y-4 gap-x-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7">
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/cs/repozitare" >
+                    Repozitáře
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/cs/projekty" >
+                    Projekty
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/cs/nas-tym" >
+                    Náš tým
+                </a>
+                
+                
+                
+
+                <!-- for md or bigger - pc -->
+                <div class="max-md:hidden inline-flex gap-2">
+                    <button id="theme-toggle-2"
+                        class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                        
+                        <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                        </svg>
+                        
+                        <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                        </svg>
+                    </button>
+                    <button id="lang-toggle-2"
+                        class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</header>
+    
+    <div class="mx-2 mt-[6rem] md:mt-[7.5rem]">
+        
+
+
+<div class="flex flex-col md:flex-row gap-2 h-auto md:items-stretch">
+    <div class="p-4 flex flex-col w-full min-w-0 md:w-3/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        <h2 class="dark:text-white text-xl font-bold text-zinc-800 mb-1">Marlin-for-robotic-arm</h2>
+        <p class="dark:text-zinc-300 text-zinc-800 flex-grow">Fork of Marlin with configuration for robotic arms</p>
+    </div>
+    <div class="p-4 flex flex-col w-full min-w-0 md:w-1/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        <p class="mx-auto mb-1 dark:text-zinc-300 text-zinc-800 justify-center items-center">Jazyk:</p>
+        <p class="mx-auto text-lg font-bold dark:text-zinc-300 text-zinc-800 flex-grow">C++</p>
+    </div>
+    <div class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md">
+        <div class="flex flex-col h-full justify-between w-full">
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Vytvořeno: </p>
+                <p class="text-left"> 05.11.2023</p>
+            </div>
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Upraveno: </p>
+                <p class="text-left"> 08.03.2024</p>
+            </div>
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Stars: </p>
+                <p class="text-left">1</p>
+            </div>
+        </div>
+    </div>
+    <a href="https://github.com/RoboticsBrno/Marlin-for-robotic-arm" class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md"
+        target="_blank">
+        <div class="flex flex-col h-full justify-center items-center">
+            <svg class="mx-auto h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 496 512">
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                <path fill="white"
+                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+            </svg>
+            <p class="font-bold dark:text-zinc-300 text-zinc-800">Navštívit na GitHubu</p>
+        </div>
+    </a>
+</div>
+
+
+<div class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+    
+    <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
+        <p align="center"><img src="https://raw.githubusercontent.com/RoboticsBrno/Marlin-for-robotic-arm/bugfix-2.1.x/buildroot/share/pixmaps/logo/marlin-outrun-nf-500.png"></p>
+
+<h1 align="center">Marlin 3D Printer Firmware</h1>
+
+<p align="center">
+    <a href="/LICENSE"><img src="https://img.shields.io/github/license/marlinfirmware/marlin.svg"></a>
+    <a href="https://github.com/MarlinFirmware/Marlin/graphs/contributors"><img src="https://img.shields.io/github/contributors/marlinfirmware/marlin.svg"></a>
+    <a href="https://github.com/MarlinFirmware/Marlin/releases"><img src="https://img.shields.io/github/release-date/MarlinFirmware/Marlin"></a>
+    <a href="https://github.com/MarlinFirmware/Marlin/actions"><img src="https://raw.githubusercontent.com/RoboticsBrno/Marlin-for-robotic-arm/bugfix-2.1.xhttps://github.com/MarlinFirmware/Marlin/actions/workflows/test-builds.yml/badge.svg"></a>
+    <a href="https://github.com/sponsors/thinkyhead"><img src="https://img.shields.io/github/sponsors/thinkyhead?color=db61a2"></a>
+    <br />
+    <a href="https://fosstodon.org/@marlinfirmware"><img src="https://img.shields.io/mastodon/follow/109450200866020466?domain=https%3A%2F%2Ffosstodon.org&logoColor=%2300B&style=social"></a>
+</p>
+
+<p>Additional documentation can be found at the <a href="https://marlinfw.org/" target="_blank">Marlin Home Page</a>.
+Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!</p>
+<h2>Marlin 2.1 Bugfix Branch</h2>
+<p><strong>Not for production use. Use with caution!</strong></p>
+<p>Marlin 2.1 takes this popular RepRap firmware to the next level by adding support for much faster 32-bit and ARM-based boards while improving support for 8-bit AVR boards. Read about Marlin's decision to use a "Hardware Abstraction Layer" below.</p>
+<p>This branch is for patches to the latest 2.1.x release version. Periodically this branch will form the basis for the next minor 2.1.x release.</p>
+<p>Download earlier versions of Marlin on the <a href="https://github.com/MarlinFirmware/Marlin/releases" target="_blank">Releases page</a>.</p>
+<h2>Example Configurations</h2>
+<p>Before you can build Marlin for your machine you'll need a configuration for your specific hardware. Upon request, your vendor will be happy to provide you with the complete source code and configurations for your machine, but you'll need to get updated configuration files if you want to install a newer version of Marlin. Fortunately, Marlin users have contributed dozens of tested configurations to get you started. Visit the <a href="https://github.com/MarlinFirmware/Configurations" target="_blank">MarlinFirmware/Configurations</a> repository to find the right configuration for your hardware.</p>
+<h2>Building Marlin 2.1</h2>
+<p>To build and upload Marlin you will use one of these tools:</p>
+<ul>
+<li>● The free <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code</a> using the <a href="https://marlinfw.org/docs/basics/auto_build_marlin.html" target="_blank">Auto Build Marlin</a> extension.</li>
+<li>● The free <a href="https://www.arduino.cc/en/main/software" target="_blank">Arduino IDE</a> : See <a href="https://marlinfw.org/docs/basics/install_arduino.html" target="_blank">Building Marlin with Arduino</a></li>
+<li>● You can also use VSCode with devcontainer : See <a href="http://marlinfw.org/docs/basics/install_devcontainer_vscode.html" target="_blank">Installing Marlin (VSCode devcontainer)</a>.</li>
+</ul>
+<p>Marlin is optimized to build with the <strong>PlatformIO IDE</strong> extension for <strong>Visual Studio Code</strong>. You can still build Marlin with <strong>Arduino IDE</strong>, and we hope to improve the Arduino build experience, but at this time PlatformIO is the better choice.</p>
+<h2>Hardware Abstraction Layer (HAL)</h2>
+<p>Marlin includes an abstraction layer to provide a common API for all the platforms it targets. This allows Marlin code to address the details of motion and user interface tasks at the lowest and highest levels with no system overhead, tying all events directly to the hardware clock.</p>
+<p>Every new HAL opens up a world of hardware. At this time we need HALs for RP2040 and the Duet3D family of boards. A HAL that wraps an RTOS is an interesting concept that could be explored. Did you know that Marlin includes a Simulator that can run on Windows, macOS, and Linux? Join the Discord to help move these sub-projects forward!</p>
+<h2>8-Bit AVR Boards</h2>
+<p>A core tenet of this project is to keep supporting 8-bit AVR boards while also maintaining a single codebase that applies equally to all machines. We want casual hobbyists to benefit from the community's innovations as much as possible just as much as those with fancier machines. Plus, those old AVR-based machines are often the best for your testing and feedback!</p>
+<h3>Supported Platforms</h3>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>MCU</th>
+<th>Example Boards</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.arduino.cc/" target="_blank">Arduino AVR</a></td>
+<td>ATmega</td>
+<td>RAMPS, Melzi, RAMBo</td>
+</tr>
+<tr>
+<td><a href="https://www.microchip.com/en-us/product/AT90USB1286" target="_blank">Teensy++ 2.0</a></td>
+<td>AT90USB1286</td>
+<td>Printrboard</td>
+</tr>
+<tr>
+<td><a href="https://www.arduino.cc/en/Guide/ArduinoDue" target="_blank">Arduino Due</a></td>
+<td>SAM3X8E</td>
+<td>RAMPS-FD, RADDS, RAMPS4DUE</td>
+</tr>
+<tr>
+<td><a href="https://github.com/espressif/arduino-esp32" target="_blank">ESP32</a></td>
+<td>ESP32</td>
+<td>FYSETC E4, E4d@BOX, MRR</td>
+</tr>
+<tr>
+<td><a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc1700-cortex-m3/512-kb-flash-64-kb-sram-ethernet-usb-lqfp100-package:LPC1768FBD100" target="_blank">LPC1768</a></td>
+<td>ARM® Cortex-M3</td>
+<td>MKS SBASE, Re-ARM, Selena Compact</td>
+</tr>
+<tr>
+<td><a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc1700-cortex-m3/512-kb-flash-64-kb-sram-ethernet-usb-lqfp100-package:LPC1769FBD100" target="_blank">LPC1769</a></td>
+<td>ARM® Cortex-M3</td>
+<td>Smoothieboard, Azteeg X5 mini, TH3D EZBoard</td>
+</tr>
+<tr>
+<td><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f103.html" target="_blank">STM32F103</a></td>
+<td>ARM® Cortex-M3</td>
+<td>Malyan M200, GTM32 Pro, MKS Robin, BTT SKR Mini</td>
+</tr>
+<tr>
+<td><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f401.html" target="_blank">STM32F401</a></td>
+<td>ARM® Cortex-M4</td>
+<td>ARMED, Rumba32, SKR Pro, Lerdge, FYSETC S6, Artillery Ruby</td>
+</tr>
+<tr>
+<td><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f7x6.html" target="_blank">STM32F7x6</a></td>
+<td>ARM® Cortex-M7</td>
+<td>The Borg, RemRam V1</td>
+</tr>
+<tr>
+<td><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32g0x1.html" target="_blank">STM32G0B1RET6</a></td>
+<td>ARM® Cortex-M0+</td>
+<td>BigTreeTech SKR mini E3 V3.0</td>
+</tr>
+<tr>
+<td><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html" target="_blank">STM32H743xIT6</a></td>
+<td>ARM® Cortex-M7</td>
+<td>BigTreeTech SKR V3.0, SKR EZ V3.0, SKR SE BX V2.0/V3.0</td>
+</tr>
+<tr>
+<td><a href="https://www.adafruit.com/product/4064" target="_blank">SAMD51P20A</a></td>
+<td>ARM® Cortex-M4</td>
+<td>Adafruit Grand Central M4</td>
+</tr>
+<tr>
+<td><a href="https://www.pjrc.com/store/teensy35.html" target="_blank">Teensy 3.5</a></td>
+<td>ARM® Cortex-M4</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.pjrc.com/store/teensy36.html" target="_blank">Teensy 3.6</a></td>
+<td>ARM® Cortex-M4</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.pjrc.com/store/teensy40.html" target="_blank">Teensy 4.0</a></td>
+<td>ARM® Cortex-M7</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.pjrc.com/store/teensy41.html" target="_blank">Teensy 4.1</a></td>
+<td>ARM® Cortex-M7</td>
+<td></td>
+</tr>
+<tr>
+<td>Linux Native</td>
+<td>x86/ARM/etc.</td>
+<td>Raspberry Pi</td>
+</tr>
+</tbody>
+</table>
+<h2>Submitting Patches</h2>
+<p>Proposed patches should be submitted as a Pull Request against the (<a href="https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.1.x" target="_blank">bugfix-2.1.x</a>) branch.</p>
+<ul>
+<li>● This branch is for fixing bugs and integrating any new features for the duration of the Marlin 2.1.x life-cycle.</li>
+<li>● Follow the <a href="https://marlinfw.org/docs/development/coding_standards.html" target="_blank">Coding Standards</a> to gain points with the maintainers.</li>
+<li>● Please submit Feature Requests and Bug Reports to the <a href="https://github.com/MarlinFirmware/Marlin/issues/new/choose" target="_blank">Issue Queue</a>. Support resources are also listed there.</li>
+<li>● Whenever you add new features, be sure to add tests to <code>buildroot/tests</code> and then run your tests locally, if possible.<ul>
+<li>● It's optional: Running all the tests on Windows might take a long time, and they will run anyway on GitHub.</li>
+<li>● If you're running the tests on Linux (or on WSL with the code on a Linux volume) the speed is much faster.</li>
+<li>● You can use <code>make tests-all-local</code> or <code>make tests-single-local TEST_TARGET=...</code>.</li>
+<li>● If you prefer Docker you can use <code>make tests-all-local-docker</code> or <code>make tests-all-local-docker TEST_TARGET=...</code>.</li>
+</ul>
+</li>
+</ul>
+<h2>Marlin Support</h2>
+<p>The Issue Queue is reserved for Bug Reports and Feature Requests. To get help with configuration and troubleshooting, please use the following resources:</p>
+<ul>
+<li>● <a href="https://marlinfw.org" target="_blank">Marlin Documentation</a> - Official Marlin documentation</li>
+<li>● <a href="https://discord.gg/n5NJ59y" target="_blank">Marlin Discord</a> - Discuss issues with Marlin users and developers</li>
+<li>● Facebook Group <a href="https://www.facebook.com/groups/1049718498464482/" target="_blank">"Marlin Firmware"</a></li>
+<li>● RepRap.org <a href="https://forums.reprap.org/list.php?415" target="_blank">Marlin Forum</a></li>
+<li>● Facebook Group <a href="https://www.facebook.com/groups/3Dtechtalk/" target="_blank">"Marlin Firmware for 3D Printers"</a></li>
+<li>● <a href="https://www.youtube.com/results?search_query=marlin+configuration" target="_blank">Marlin Configuration</a> on YouTube</li>
+</ul>
+<h2>Contributors</h2>
+<p>Marlin is constantly improving thanks to a huge number of contributors from all over the world bringing their specialties and talents. Huge thanks are due to <a href="https://github.com/MarlinFirmware/Marlin/graphs/contributors" target="_blank">all the contributors</a> who regularly patch up bugs, help direct traffic, and basically keep Marlin from falling apart. Marlin's continued existence would not be possible without them.</p>
+<h2>Administration</h2>
+<p>Regular users can open and close their own issues, but only the administrators can do project-related things like add labels, merge changes, set milestones, and kick trolls. The current Marlin admin team consists of:</p>
+<table align="center">
+<tr><td>Project Maintainer</td></tr>
+<tr><td>
+
+ 🇺🇸  **Scott Lahteine**
+       [@thinkyhead](https://github.com/thinkyhead)
+       [<kbd>  Donate 💸  </kbd>](https://www.thinkyhead.com/donate-to-marlin)
+
+</td><td>
+
+ 🇺🇸  **Roxanne Neufeld**
+       [@Roxy-3D](https://github.com/Roxy-3D)
+
+ 🇺🇸  **Keith Bennett**
+       [@thisiskeithb](https://github.com/thisiskeithb)
+       [<kbd>  Donate 💸  </kbd>](https://github.com/sponsors/thisiskeithb)
+
+ 🇺🇸  **Jason Smith**
+       [@sjasonsmith](https://github.com/sjasonsmith)
+
+</td><td>
+
+ 🇧🇷  **Victor Oliveira**
+       [@rhapsodyv](https://github.com/rhapsodyv)
+
+ 🇬🇧  **Chris Pepper**
+       [@p3p](https://github.com/p3p)
+
+🇳🇿  **Peter Ellens**
+       [@ellensp](https://github.com/ellensp)
+       [<kbd>  Donate 💸  </kbd>](https://ko-fi.com/ellensp)
+
+</td><td>
+
+ 🇺🇸  **Bob Kuhn**
+       [@Bob-the-Kuhn](https://github.com/Bob-the-Kuhn)
+
+ 🇳🇱  **Erik van der Zalm**
+       [@ErikZalm](https://github.com/ErikZalm)
+       [<kbd>  Donate 💸  </kbd>](https://flattr.com/submit/auto?user_id=ErikZalm&url=https://github.com/MarlinFirmware/Marlin&title=Marlin&language=&tags=github&category=software)
+
+</td></tr>
+</table>
+
+<h2>License</h2>
+<p>Marlin is published under the <a href="/LICENSE" target="_blank">GPL license</a> because we believe in open development. The GPL comes with both rights and obligations. Whether you use Marlin firmware as the driver for your open or closed-source product, you must keep Marlin open, and you must provide your compatible Marlin source code to end users upon request. The most straightforward way to comply with the Marlin license is to make a fork of Marlin on Github, perform your modifications, and direct users to your modified fork.</p>
+<p>While we can't prevent the use of this code in products (3D printers, CNC, etc.) that are closed source or crippled by a patent, we would prefer that you choose another firmware or, better yet, make your own.</p>
+    </div>
+</div>
+
+
+<div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/thinkyhead" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/698003?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Scott Lahteine</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">thinkyhead</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                10911 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/ErikZalm" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/882374?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Erik van der Zalm</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">ErikZalm</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                418 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/AnHardt" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/211931?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">AnHardt</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">AnHardt</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                413 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/ellensp" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/530024?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">ellensp</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">ellensp</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                360 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/GMagician" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/3684609?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Giuliano Zaro</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">GMagician</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                299 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/Bob-the-Kuhn" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/20692583?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Bob Kuhn</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">Bob-the-Kuhn</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                275 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/thisiskeithb" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/13375512?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Keith Bennett</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">thisiskeithb</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                269 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/InsanityAutomation" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/38436470?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">InsanityAutomation</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">InsanityAutomation</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                241 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/Roxy-3D" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/8404322?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Roxy-3D</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">Roxy-3D</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                190 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/tpruvot" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/145119?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Tanguy Pruvot</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">tpruvot</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                179 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/rhapsodyv" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/81722?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Victor Oliveira</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">rhapsodyv</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                177 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/daid" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/964186?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">daid</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">daid</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                175 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/sjasonsmith" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/20053467?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Jason Smith</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">sjasonsmith</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                175 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/boelle" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/3832239?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Bo Herrmannsen</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">boelle</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                168 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/jbrazio" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/264365?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">João Brázio</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">jbrazio</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                160 commits</p>
+        </div>
+    </a>
+    
+</div>
+
+    </div>
+
+    
+    <div class="mt-2 flex flex-grow">
+    </div>
+    
+    <!-- Footer -->
+<footer class="py-6 px-6 dark:bg-zinc-900 bg-white">
+    <div class="sm:px-6 lg:px-8 container mx-auto max-w-7xl">
+        <div class="flex justify-between items-center">
+            <div class="text-center md:text-left text-zinc-800 dark:text-zinc-300">
+                <h5 class="text-lg font-semibold">RoboticsBrno</h5>
+                <p class="py-2">© 2025 All rights reserved.</p>
+            </div>
+            <a href="https://github.com/RoboticsBrno" target="_blank" class="ml-3 my-auto flex flex-row ">
+
+                <svg class="w-5 my-auto dark:fill-zinc-300 fill-zinc-800" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                </svg>
+                <p
+                    class="ml-2 my-auto dark:text-zinc-300 dark:hover:text-zinc-500 text-zinc-800 hover:text-zinc-800 rounded-md font-medium">
+                    Github</p>
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

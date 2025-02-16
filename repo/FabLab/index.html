@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head class="">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+
+<script src="/assets/js/preline.js"></script>
+<script src="/assets/js/helper.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/font-awesome-6.4.1.css">
+<link rel="stylesheet" href="/assets/css/github-markdown.css">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FabLab</title>
+</head>
+<body class="flex flex-col min-h-screen bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
+    <header class="px-6 md:px-8  py-4 md:py-6 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap bg-white dark:bg-zinc-900">
+    <nav class="w-full relative md:flex md:items-center md:justify-between" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="inline-flex items-center gap-x-4" href="/" >
+                <img class="size-12 md:size-14" src="/assets/logo.png" alt="Logo">
+                <div class="text-xl md:text-2xl font-semibold whitespace-nowrap">
+                    Robotics Brno
+                </div>
+            </a>
+            <!-- for smaller than md - phone -->
+            <div class="md:hidden inline-flex gap-x-2">
+                <button id="lang-toggle-1"
+                    class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-translate" viewBox="0 0 16 16">
+                        <path
+                            d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                        <path
+                            d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                    </svg>
+                </button>
+                <button id="theme-toggle-1"
+                    class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                    
+                    <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                    </svg>
+                    
+                    <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                    </svg>
+                </button>
+
+                <button type="button"
+                    class="hs-collapse-toggle size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm"
+                    data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation"
+                    aria-label="Toggle navigation">
+                    <svg class="hs-collapse-open:hidden w-4 h-4" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    <svg class="hs-collapse-open:block hidden w-4 h-4" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <div id="navbar-collapse-with-animation"
+            class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+            <div
+                class="flex mt-4 mb-2 md:my-0 md:pl-7 flex-col gap-y-4 gap-x-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7">
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/repos" >
+                    Repos
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/projects" >
+                    Projects
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/team" >
+                    Our team
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+
+                <!-- for md or bigger - pc -->
+                <div class="max-md:hidden inline-flex gap-2">
+                    <button id="theme-toggle-2"
+                        class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                        
+                        <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                        </svg>
+                        
+                        <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                        </svg>
+                    </button>
+                    <button id="lang-toggle-2"
+                        class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</header>
+    
+    <div class="mx-2 mt-[6rem] md:mt-[7.5rem]">
+        
+
+
+<div class="flex flex-col md:flex-row gap-2 h-auto md:items-stretch">
+    <div class="p-4 flex flex-col w-full min-w-0 md:w-3/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        <h2 class="dark:text-white text-xl font-bold text-zinc-800 mb-1">FabLab</h2>
+        <p class="dark:text-zinc-300 text-zinc-800 flex-grow">Projects made in FabLab Brno</p>
+    </div>
+    <div class="p-4 flex flex-col w-full min-w-0 md:w-1/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        <p class="mx-auto mb-1 dark:text-zinc-300 text-zinc-800 justify-center items-center">Language:</p>
+        <p class="mx-auto text-lg font-bold dark:text-zinc-300 text-zinc-800 flex-grow">None</p>
+    </div>
+    <div class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md">
+        <div class="flex flex-col h-full justify-between w-full">
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Created: </p>
+                <p class="text-left"> 08.02.2018</p>
+            </div>
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Updated: </p>
+                <p class="text-left"> 10.03.2018</p>
+            </div>
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Stars: </p>
+                <p class="text-left">0</p>
+            </div>
+        </div>
+    </div>
+    <a href="https://github.com/RoboticsBrno/FabLab" class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md"
+        target="_blank">
+        <div class="flex flex-col h-full justify-center items-center">
+            <svg class="mx-auto h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 496 512">
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                <path fill="white"
+                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+            </svg>
+            <p class="font-bold dark:text-zinc-300 text-zinc-800">Visit on GitHub</p>
+        </div>
+    </a>
+</div>
+
+
+<div class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+    
+    <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
+        <h1>FabLab</h1>
+<p>Projects made in FabLab Brno</p>
+    </div>
+</div>
+
+
+<div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/JarekParal" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/6726556?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Jaroslav Páral</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">JarekParal</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                5 commits</p>
+        </div>
+    </a>
+    
+</div>
+
+    </div>
+
+    
+    <div class="mt-2 flex flex-grow">
+    </div>
+    
+    <!-- Footer -->
+<footer class="py-6 px-6 dark:bg-zinc-900 bg-white">
+    <div class="sm:px-6 lg:px-8 container mx-auto max-w-7xl">
+        <div class="flex justify-between items-center">
+            <div class="text-center md:text-left text-zinc-800 dark:text-zinc-300">
+                <h5 class="text-lg font-semibold">RoboticsBrno</h5>
+                <p class="py-2">© 2025 All rights reserved.</p>
+            </div>
+            <a href="https://github.com/RoboticsBrno" target="_blank" class="ml-3 my-auto flex flex-row ">
+
+                <svg class="w-5 my-auto dark:fill-zinc-300 fill-zinc-800" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                </svg>
+                <p
+                    class="ml-2 my-auto dark:text-zinc-300 dark:hover:text-zinc-500 text-zinc-800 hover:text-zinc-800 rounded-md font-medium">
+                    Github</p>
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

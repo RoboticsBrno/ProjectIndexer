@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head class="">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+
+<script src="/assets/js/preline.js"></script>
+<script src="/assets/js/helper.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/font-awesome-6.4.1.css">
+<link rel="stylesheet" href="/assets/css/github-markdown.css">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>platformio-core</title>
+</head>
+<body class="flex flex-col min-h-screen bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
+    <header class="px-6 md:px-8  py-4 md:py-6 fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center flex-nowrap bg-white dark:bg-zinc-900">
+    <nav class="w-full relative md:flex md:items-center md:justify-between" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="inline-flex items-center gap-x-4" href="/" >
+                <img class="size-12 md:size-14" src="/assets/logo.png" alt="Logo">
+                <div class="text-xl md:text-2xl font-semibold whitespace-nowrap">
+                    Robotics Brno
+                </div>
+            </a>
+            <!-- for smaller than md - phone -->
+            <div class="md:hidden inline-flex gap-x-2">
+                <button id="lang-toggle-1"
+                    class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-translate" viewBox="0 0 16 16">
+                        <path
+                            d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                        <path
+                            d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                    </svg>
+                </button>
+                <button id="theme-toggle-1"
+                    class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                    
+                    <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                    </svg>
+                    
+                    <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                    </svg>
+                </button>
+
+                <button type="button"
+                    class="hs-collapse-toggle size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm"
+                    data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation"
+                    aria-label="Toggle navigation">
+                    <svg class="hs-collapse-open:hidden w-4 h-4" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    <svg class="hs-collapse-open:block hidden w-4 h-4" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <div id="navbar-collapse-with-animation"
+            class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+            <div
+                class="flex mt-4 mb-2 md:my-0 md:pl-7 flex-col gap-y-4 gap-x-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7">
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/repos" >
+                    Repos
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/projects" >
+                    Projects
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                <a class="text-lg font-medium md:py-4"
+                    href="/team" >
+                    Our team
+                </a>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+
+                
+                
+
+                <!-- for md or bigger - pc -->
+                <div class="max-md:hidden inline-flex gap-2">
+                    <button id="theme-toggle-2"
+                        class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                        
+                        <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                        </svg>
+                        
+                        <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                        </svg>
+                    </button>
+                    <button id="lang-toggle-2"
+                        class="size-10 m-auto inline-flex justify-center items-center text-center rounded-full border shadow-sm">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</header>
+    
+    <div class="mx-2 mt-[6rem] md:mt-[7.5rem]">
+        
+
+
+<div class="flex flex-col md:flex-row gap-2 h-auto md:items-stretch">
+    <div class="p-4 flex flex-col w-full min-w-0 md:w-3/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        <h2 class="dark:text-white text-xl font-bold text-zinc-800 mb-1">platformio-core</h2>
+        <p class="dark:text-zinc-300 text-zinc-800 flex-grow">PlatformIO is a new generation ecosystem for embedded development :alien:</p>
+    </div>
+    <div class="p-4 flex flex-col w-full min-w-0 md:w-1/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+        <p class="mx-auto mb-1 dark:text-zinc-300 text-zinc-800 justify-center items-center">Language:</p>
+        <p class="mx-auto text-lg font-bold dark:text-zinc-300 text-zinc-800 flex-grow">None</p>
+    </div>
+    <div class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md">
+        <div class="flex flex-col h-full justify-between w-full">
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Created: </p>
+                <p class="text-left"> 15.02.2020</p>
+            </div>
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Updated: </p>
+                <p class="text-left"> 16.02.2020</p>
+            </div>
+            <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
+                <p class="pr-2 text-right">Stars: </p>
+                <p class="text-left">0</p>
+            </div>
+        </div>
+    </div>
+    <a href="https://github.com/RoboticsBrno/platformio-core" class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md"
+        target="_blank">
+        <div class="flex flex-col h-full justify-center items-center">
+            <svg class="mx-auto h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 496 512">
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                <path fill="white"
+                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+            </svg>
+            <p class="font-bold dark:text-zinc-300 text-zinc-800">Visit on GitHub</p>
+        </div>
+    </a>
+</div>
+
+
+<div class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-zinc-900 bg-white rounded-lg shadow-md">
+    
+    <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
+        <h1>PlatformIO</h1>
+<p>.. image:: https://travis-ci.org/platformio/platformio-core.svg?branch=develop
+    :target: https://travis-ci.org/platformio/platformio-core
+    :alt: Travis.CI Build Status
+.. image:: https://ci.appveyor.com/api/projects/status/unnpw0n3c5k14btn/branch/develop?svg=true
+    :target: https://ci.appveyor.com/project/ivankravets/platformio-core
+    :alt: AppVeyor.CI Build Status
+.. image:: https://img.shields.io/pypi/v/platformio.svg
+    :target: https://pypi.python.org/pypi/platformio/
+    :alt: Latest Version
+.. image:: https://img.shields.io/badge/license-Apache%202.0-blue.svg
+    :target: https://pypi.python.org/pypi/platformio/
+    :alt:  License
+.. image:: https://img.shields.io/badge/PlatformIO-Community-orange.svg
+   :alt: Community Forums
+   :target: https://community.platformio.org?utm_source=github&amp;utm_medium=core</p>
+<p><strong>Quick Links:</strong> <code>Web &lt;https://platformio.org?utm_source=github&amp;utm_medium=core&gt;</code><em> |
+<code>PlatformIO IDE &lt;https://platformio.org/platformio-ide?utm_source=github&amp;utm_medium=core&gt;</code></em> |
+<code>Project Examples &lt;https://github.com/platformio/platformio-examples/&gt;</code>__ |
+<code>Docs &lt;https://docs.platformio.org?utm_source=github&amp;utm_medium=core&gt;</code><em> |
+<code>Donate &lt;https://platformio.org/donate?utm_source=github&amp;utm_medium=core&gt;</code></em> |
+<code>Contact Us &lt;https://platformio.org/contact?utm_source=github&amp;utm_medium=core&gt;</code>_</p>
+<p><strong>Social:</strong> <code>Twitter &lt;https://twitter.com/PlatformIO_Org&gt;</code><em> |
+<code>LinkedIn &lt;https://www.linkedin.com/company/platformio/&gt;</code></em> |
+<code>Facebook &lt;https://www.facebook.com/platformio&gt;</code><em> |
+<code>Hackaday &lt;https://hackaday.io/project/7980-platformio&gt;</code></em> |
+<code>Bintray &lt;https://bintray.com/platformio&gt;</code><em> |
+<code>Community &lt;https://community.platformio.org?utm_source=github&amp;utm_medium=core&gt;</code></em></p>
+<p>.. image:: https://raw.githubusercontent.com/platformio/platformio-web/develop/app/images/platformio-ide-laptop.png
+    :target: https://platformio.org?utm_source=github&amp;utm_medium=core</p>
+<p><code>PlatformIO &lt;https://platformio.org?utm_source=github&amp;utm_medium=core&gt;</code>_ a new generation ecosystem for embedded development</p>
+<ul>
+<li>● Open source, maximum permissive Apache 2.0 license</li>
+<li>● Cross-platform IDE and Unified Debugger</li>
+<li>● Static Code Analyzer and Remote Unit Testing</li>
+<li>● Multi-platform and Multi-architecture Build System</li>
+<li>● Firmware File Explorer and Memory Inspection.</li>
+</ul>
+<h2>Get Started</h2>
+<ul>
+<li>● <code>What is PlatformIO? &lt;https://docs.platformio.org/en/latest/what-is-platformio.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+</ul>
+<h2>Instruments</h2>
+<ul>
+<li>● <code>PlatformIO IDE &lt;https://platformio.org/platformio-ide?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>PlatformIO Core (CLI) &lt;https://docs.platformio.org/en/latest/core.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Library Management &lt;https://docs.platformio.org/page/librarymanager/index.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Project Examples &lt;https://github.com/platformio/platformio-examples?utm_source=github&amp;utm_medium=core&gt;</code>__</li>
+<li>● <code>Desktop IDEs Integration &lt;https://docs.platformio.org/page/ide.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Continuous Integration &lt;https://docs.platformio.org/page/ci/index.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Advanced Scripting API &lt;https://docs.platformio.org/page/projectconf/advanced_scripting.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+</ul>
+<h2>PIO Plus</h2>
+<ul>
+<li>● <code>PIO Check &lt;https://docs.platformio.org/page/plus/pio-check.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>PIO Remote &lt;https://docs.platformio.org/page/plus/pio-remote.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>PIO Unified Debugger &lt;https://docs.platformio.org/page/plus/debugging.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>PIO Unit Testing &lt;https://docs.platformio.org/en/latest/plus/unit-testing.html?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+</ul>
+<h2>Registry</h2>
+<ul>
+<li>● <code>Libraries &lt;https://platformio.org/lib?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Development Platforms &lt;https://platformio.org/platforms?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Frameworks &lt;https://platformio.org/frameworks?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Embedded Boards &lt;https://platformio.org/boards?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+</ul>
+<h2>Development Platforms</h2>
+<ul>
+<li>● <code>Aceinna IMU &lt;https://platformio.org/platforms/aceinna_imu?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Atmel AVR &lt;https://platformio.org/platforms/atmelavr?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Atmel SAM &lt;https://platformio.org/platforms/atmelsam?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Espressif 32 &lt;https://platformio.org/platforms/espressif32?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Espressif 8266 &lt;https://platformio.org/platforms/espressif8266?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Freescale Kinetis &lt;https://platformio.org/platforms/freescalekinetis?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Infineon XMC &lt;https://platformio.org/platforms/infineonxmc?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Intel ARC32 &lt;https://platformio.org/platforms/intel_arc32?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Intel MCS-51 (8051) &lt;https://platformio.org/platforms/intel_mcs51?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Kendryte K210 &lt;https://platformio.org/platforms/kendryte210?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Lattice iCE40 &lt;https://platformio.org/platforms/lattice_ice40?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Maxim 32 &lt;https://platformio.org/platforms/maxim32?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Microchip PIC32 &lt;https://platformio.org/platforms/microchippic32?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Nordic nRF51 &lt;https://platformio.org/platforms/nordicnrf51?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Nordic nRF52 &lt;https://platformio.org/platforms/nordicnrf52?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Nuclei &lt;https://platformio.org/platforms/nuclei?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>NXP LPC &lt;https://platformio.org/platforms/nxplpc?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>RISC-V &lt;https://platformio.org/platforms/riscv?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>RISC-V GAP &lt;https://platformio.org/platforms/riscv_gap?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Shakti &lt;https://platformio.org/platforms/shakti?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Silicon Labs EFM32 &lt;https://platformio.org/platforms/siliconlabsefm32?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>ST STM32 &lt;https://platformio.org/platforms/ststm32?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>ST STM8 &lt;https://platformio.org/platforms/ststm8?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Teensy &lt;https://platformio.org/platforms/teensy?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>TI MSP430 &lt;https://platformio.org/platforms/timsp430?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>TI Tiva &lt;https://platformio.org/platforms/titiva?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>WIZNet W7500 &lt;https://platformio.org/platforms/wiznet7500?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+</ul>
+<h2>Frameworks</h2>
+<ul>
+<li>● <code>Arduino &lt;https://platformio.org/frameworks/arduino?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>CMSIS &lt;https://platformio.org/frameworks/cmsis?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>ESP-IDF &lt;https://platformio.org/frameworks/espidf?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>ESP8266 Non-OS SDK &lt;https://platformio.org/frameworks/esp8266-nonos-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>ESP8266 RTOS SDK &lt;https://platformio.org/frameworks/esp8266-rtos-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Freedom E SDK &lt;https://platformio.org/frameworks/freedom-e-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>GigaDevice GD32V SDK &lt;https://platformio.org/frameworks/gd32vf103-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Kendryte Standalone SDK &lt;https://platformio.org/frameworks/kendryte-standalone-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Kendryte FreeRTOS SDK &lt;https://platformio.org/frameworks/kendryte-freertos-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>libOpenCM3 &lt;https://platformio.org/frameworks/libopencm3?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Mbed &lt;https://platformio.org/frameworks/mbed?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Nuclei SDK &lt;https://platformio.org/frameworks/nuclei-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>PULP OS &lt;https://platformio.org/frameworks/pulp-os?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Pumbaa &lt;https://platformio.org/frameworks/pumbaa?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Shakti SDK &lt;https://platformio.org/frameworks/shakti-sdk?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Simba &lt;https://platformio.org/frameworks/simba?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>SPL &lt;https://platformio.org/frameworks/spl?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>STM32Cube &lt;https://platformio.org/frameworks/stm32cube?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>WiringPi &lt;https://platformio.org/frameworks/wiringpi?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+<li>● <code>Zephyr &lt;https://platformio.org/frameworks/zephyr?utm_source=github&amp;utm_medium=core&gt;</code>_</li>
+</ul>
+<h2>Contributing</h2>
+<p>See <code>contributing guidelines &lt;https://github.com/platformio/platformio/blob/develop/CONTRIBUTING.md&gt;</code>_.</p>
+<h2>Telemetry / Privacy Policy</h2>
+<p>Share minimal diagnostics and usage information to help us make PlatformIO better.
+It is enabled by default. For more information see:</p>
+<ul>
+<li>● <code>Telemetry Setting &lt;https://docs.platformio.org/en/latest/userguide/cmd_settings.html?utm_source=github&amp;utm_medium=core#enable-telemetry&gt;</code>_</li>
+<li>● <code>SSL Setting &lt;https://docs.platformio.org/en/latest/userguide/cmd_settings.html?utm_source=github&amp;utm_medium=core#strict-ssl&gt;</code>_</li>
+</ul>
+<h2>License</h2>
+<p>Copyright (c) 2014-present PlatformIO <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#112;&#108;&#97;&#116;&#102;&#111;&#114;&#109;&#105;&#111;&#46;&#111;&#114;&#103;" target="_blank">&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#112;&#108;&#97;&#116;&#102;&#111;&#114;&#109;&#105;&#111;&#46;&#111;&#114;&#103;</a></p>
+<p>The PlatformIO is licensed under the permissive Apache 2.0 license,
+so you can use it in both commercial and personal projects with confidence.</p>
+    </div>
+</div>
+
+
+<div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 h-auto">
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/ivankravets" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1760209?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Ivan Kravets</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">ivankravets</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                4262 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/valeros" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/886732?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Valerii Koval</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">valeros</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                315 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/ZachMassia" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1000784?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Zach Massia</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">ZachMassia</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                8 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/franciscoruiz" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/546836?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Francisco Ruiz</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">franciscoruiz</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                4 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/mplewis" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1829094?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Matt Lewis</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">mplewis</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                4 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/pfeerick" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/5500713?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Peter Feerick</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">pfeerick</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                4 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/jphollanti" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/3811354?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Juha Hollanti</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">jphollanti</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                3 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/awachtler" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/21970141?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Axel W.</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">awachtler</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/bkudria" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/860?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Benjamin Kudria</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">bkudria</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/ctag" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/6200085?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Christopher</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">ctag</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/dkuku" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/904179?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Daniel Kukula</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">dkuku</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/dhasenfratz" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/10196569?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">David Hasenfratz</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">dhasenfratz</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/dbolotin" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/3062854?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Dmitry Bolotin</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">dbolotin</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/adlerweb" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/1146482?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Florian Knodt</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">adlerweb</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/floretan" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/159229?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Florian Loretan</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">floretan</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                1 commits</p>
+        </div>
+    </a>
+    
+</div>
+
+    </div>
+
+    
+    <div class="mt-2 flex flex-grow">
+    </div>
+    
+    <!-- Footer -->
+<footer class="py-6 px-6 dark:bg-zinc-900 bg-white">
+    <div class="sm:px-6 lg:px-8 container mx-auto max-w-7xl">
+        <div class="flex justify-between items-center">
+            <div class="text-center md:text-left text-zinc-800 dark:text-zinc-300">
+                <h5 class="text-lg font-semibold">RoboticsBrno</h5>
+                <p class="py-2">© 2025 All rights reserved.</p>
+            </div>
+            <a href="https://github.com/RoboticsBrno" target="_blank" class="ml-3 my-auto flex flex-row ">
+
+                <svg class="w-5 my-auto dark:fill-zinc-300 fill-zinc-800" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                </svg>
+                <p
+                    class="ml-2 my-auto dark:text-zinc-300 dark:hover:text-zinc-500 text-zinc-800 hover:text-zinc-800 rounded-md font-medium">
+                    Github</p>
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
