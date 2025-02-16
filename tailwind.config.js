@@ -8,7 +8,7 @@ module.exports = {
       "./node_modules/preline/dist/*.js",
   ],
 
-  darkMode: "media", // or 'false' or 'class'
+  darkMode: "class", // or 'false' or 'class'
   theme: {
     extend: {},
   },

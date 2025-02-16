@@ -40,6 +40,11 @@ class FetchData:
         if int(r.status_code) == 200:
             readme = {p[0]: [v for v in p[1:]] for p in [s.split("\n") for s in r.content.decode().strip().replace(" --->", "").split("<!--- ")][1:]}
         
+        cs_r = requests.get("https://raw.githubusercontent.com/RoboticsBrno/.github/main/profile/README.cs.md")
+        if int(cs_r.status_code) == 200:
+            cs_readme = {p[0]: [v for v in p[1:]] for p in [s.split("\n") for s in cs_r.content.decode().strip().replace(" --->", "").split("<!--- ")][1:]}
+        
+        
         info = {}
 
         titles = ["Website","RoboCamp","Instagram","Facebook","YouTube","Twitter"]
@@ -52,7 +57,9 @@ class FetchData:
         info.update({"contacts":contacts})
         
         info.update({"readme_1":readme["readme_1"],
-                     "readme_2":readme["readme_2"]})
+                     "readme_2":readme["readme_2"],
+                     "readme_1_cs":cs_readme["readme_1"],
+                     "readme_2_cs":cs_readme["readme_2"]})
         
         info.update({"images":[s[s.find('src="')+5:s.find('"', s.find('src="')+5)] for s in readme["images"] if 'src="' in s]})
 

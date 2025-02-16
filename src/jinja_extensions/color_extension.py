@@ -9,14 +9,15 @@ class ColorExtension(Extension):
 
     def colorize_filter(self, value):
         # list of color classes
-        colors = ["bg-blue-100 text-blue-800",
-                  "bg-green-100 text-green-800",
-                  "bg-yellow-100 text-yellow-800",
-                  "bg-red-100 text-red-800",
-                  "bg-purple-100 text-purple-800",
-                  "bg-indigo-100 text-indigo-800",
-                  "bg-pink-100 text-pink-800",
-                  "bg-gray-100 text-gray-800"]
+        colors = ["bg-blue-100   dark:bg-blue-950   text-blue-800   dark:text-blue-300   ",
+                  "bg-green-100  dark:bg-green-950  text-green-800  dark:text-green-300  ",
+                  "bg-yellow-100 dark:bg-yellow-950 text-yellow-800 dark:text-yellow-300 ",
+                  "bg-red-100    dark:bg-red-950    text-red-800    dark:text-red-300    ",
+                  "bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 ",
+                  "bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 ",
+                  "bg-pink-100   dark:bg-pink-950   text-pink-800   dark:text-pink-300   ",
+                  #"bg-zinc-100   dark:bg-zinc-950   text-zinc-800   ",
+                  ]
 
         # choose a color based on the hash of the value
         color_class = colors[hash(value) % len(colors)]

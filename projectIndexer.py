@@ -1,5 +1,4 @@
 import os
-from os import path, chdir
 import click
 from src.fetch_data import FetchData
 from src.generate_web import GenerateWeb
@@ -97,7 +96,8 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
     
     repos = [repo for repo, t in sorted_repos]
 
-    generate_web = GenerateWeb(repos, readme, contributors, about_info, team, build_dir, path.abspath(template_dir), static_dir, project_dir, hide_private, verbose, compile_tailwind)
+    generate_web = GenerateWeb(repos, readme, contributors, about_info, team, hide_private, verbose, compile_tailwind)
+    # generate_web = GenerateWeb(repos, readme, contributors, about_info, team, build_dir, template_dir, static_dir, project_dir, hide_private, verbose, compile_tailwind)
 
     generate_web.generate()
     print(f"Generated web to {build_dir} directory in {time() - start:.2f} seconds")
@@ -109,7 +109,7 @@ def generate(github_token: str, fetch_directly: bool, input_repos: str, input_re
 @click.option('--build-dir', default='build', help='build directory (default is build)')
 @click.option('--no-livereload', default=False, is_flag=True, help='Disable live reload and serve only once')
 def serve(port: int, host: str, build_dir: str, no_livereload: bool):
-    chdir(build_dir)
+    os.chdir(build_dir)
     if no_livereload:
         import http.server
         import socketserver

@@ -1,7 +1,7 @@
-{% set title = "Repositories" %}
-{% set description = "A list of all public repositories on GitHub." %}
-{% set keywords = "github, repositories" %}
-{% set active = "Repos" %}
+{% set title = "Repozitáře" %}
+{% set description = "List veřejných repozitářů na GitHub." %}
+{% set keywords = "github, repozitáře" %}
+{% set active = "Repozitáře" %}
 {% extends "base.html" %}
 
 {% block content %}
@@ -16,7 +16,7 @@
     {% for repo in repos %}
     <!-- Repository Card - {{repo.name}} -->
     <a class="dark:bg-zinc-900 flex flex-col bg-white p-4 rounded-lg shadow-md justify-between mx-auto w-full min-w-0 h-full"
-        href="/repo/{{ repo.name }}/">
+        href="/cs/repo/{{ repo.name }}/">
         <div class="flex flex-col h-full w-full flex-grow">
             {# <div class="dark:bg-zinc-900 flex flex-col bg-white p-4 rounded-lg shadow-md max-w-sm mx-auto"> #}
                 <h2 class="dark:text-white text-xl font-bold text-zinc-800 mb-1">{{ repo.name }}</h2>
@@ -60,7 +60,7 @@
                         Last updated: {{ repo.updated_at.strftime("%d-%m-%Y") }}
                     </p> #}
                     <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-500">
-                        Last pushed: {{ repo.pushed_at.strftime("%d-%m-%Y") }}
+                        Poslední push: {{ repo.pushed_at.strftime("%d-%m-%Y") }}
                     </p>
                 </div>
                 {#

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head class="dark:bg-gray-800 bg-gray-200">
+
+<head class="">
+    {% include 'includes.html' %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% include 'includes.html' %}
+
     <title>{{ title }}</title>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
     {% include 'header.html' %}
     {# padding for floating nav#}
-    <div class="mt-20 md:mt-28">
+    <div class="mx-2 mt-[6rem] md:mt-[7.5rem]">
         {% block content %}{% endblock %}
     </div>
 
