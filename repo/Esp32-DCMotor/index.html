@@ -256,7 +256,7 @@
             </div>
             <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
                 <p class="pr-2 text-right">Updated: </p>
-                <p class="text-left"> 08.07.2024</p>
+                <p class="text-left"> 28.02.2025</p>
             </div>
             <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
                 <p class="pr-2 text-right">Stars: </p>
@@ -283,6 +283,22 @@
     <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
         <h1>Esp32-DCMotor</h1>
 <p>A simple library to control a DC motor with a DRV8833 driver and a quadrature encoder using an ESP32.</p>
+<h2>Test firmware</h2>
+<p>The directory <code>test_fw</code> contains a test firmware, which can be used as an example on the usage of the library.</p>
+<p>The firmware provides a console interface to control the motors as configured in the <code>main.cpp</code> file. The console
+is accessible via USB-JTAG serial.</p>
+<h2>Test tools</h2>
+<p>The directory <code>tools</code> contains Python scripts to test the library and to help with tuning the control parameters.</p>
+<p>The script <code>run_test.py</code> allows to run a test of the motor control and to log the test progress. The test is
+described in a text file, which is passed as an argument to the script. An example of a test file is provided in
+the <code>tools\sample_test.txt</code> file. Each line of the test file describes a test step, with the following format:</p>
+<pre><code>&lt;time-point&gt;: &lt;command&gt;
+</code></pre>
+<p>where <code>&lt;time-point&gt;</code> is the time in seconds since the start of the test, and <code>&lt;command&gt;</code> is the command to be sent
+to the motor controller. The commands are the same as the ones used in the console interface of the test firmware.
+The report from the test is saved in a text file and can be plotted using the <code>plot_report.py</code> script.</p>
+<p>If the test firmware runs out of memory while running the test, consider adding a command <code>everynth &lt;n&gt;</code> with a higher
+<code>&lt;n&gt;</code> value at the start of the test to only report every nth data point and reduce the memory usage.</p>
     </div>
 </div>
 
@@ -295,7 +311,7 @@
             <p class="dark:text-white text-xl font-bold text-zinc-800">Petr Kubica</p>
             <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">cubicap</p>
             <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                9 commits</p>
+                14 commits</p>
         </div>
     </a>
     
