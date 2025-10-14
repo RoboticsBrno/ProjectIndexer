@@ -246,7 +246,7 @@
     </div>
     <div class="p-4 flex flex-col w-full min-w-0 md:w-1/6 dark:bg-zinc-900 bg-white rounded-lg shadow-md">
         <p class="mx-auto mb-1 dark:text-zinc-300 text-zinc-800 justify-center items-center">Jazyk:</p>
-        <p class="mx-auto text-lg font-bold dark:text-zinc-300 text-zinc-800 flex-grow">Shell</p>
+        <p class="mx-auto text-lg font-bold dark:text-zinc-300 text-zinc-800 flex-grow">TypeScript</p>
     </div>
     <div class="w-full md:w-1/6 dark:bg-zinc-900 bg-white p-4 rounded-lg shadow-md">
         <div class="flex flex-col h-full justify-between w-full">
@@ -256,11 +256,11 @@
             </div>
             <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
                 <p class="pr-2 text-right">Upraveno: </p>
-                <p class="text-left"> 22.02.2025</p>
+                <p class="text-left"> 11.10.2025</p>
             </div>
             <div class="mx-auto grid grid-cols-2 dark:text-zinc-300 text-zinc-800">
                 <p class="pr-2 text-right">Stars: </p>
-                <p class="text-left">9</p>
+                <p class="text-left">10</p>
             </div>
         </div>
     </div>
@@ -281,10 +281,74 @@
 <div class="mt-2 gap-2 p-4 flex flex-col w-full min-w-0 overflow-x-auto dark:bg-zinc-900 bg-white rounded-lg shadow-md">
     
     <div class="readme dark:text-zinc-300 text-zinc-800 overflow-x-auto">
-        <h1>Robůtek</h1>
-<p><img alt="top" src="https://roboticsbrno.github.io/Robutek/top.png" />
-<img alt="bottom" src="https://roboticsbrno.github.io/Robutek/bottom.png" />
-<img alt="gif" src="https://roboticsbrno.github.io/Robutek/rotating.gif" /></p>
+        <h1>🖍️ Robůtek</h1>
+<p>Robůtek je robotická platforma založená na čipu ESP32-S3. Je velice rozšitiřelný, ale ze základu umí jezdit, kreslit fixou, jezdit po čáře, pohybovat se bludištěm. Programování je přes <a href="https://jaculus.org" target="_blank">Jaculus</a>.</p>
+<hr />
+<h2>🔧 Vlastnosti</h2>
+<ul>
+<li>● Diferenciální pohon</li>
+<li>● Enkodéry na kolech pro přesný pohyb (V2 - lepší přesnost)</li>
+<li>● Držák na <strong>fixu</strong> pro kreslení na papír</li>
+<li>● <strong>IR senzory</strong> pro sledování čáry</li>
+<li>● <strong>RGB senzor</strong> pro detekování barev na podlaze (V2)</li>
+<li>● <strong>RGB podsvícení</strong> pro hezčí vzhled Robůtka (V2)</li>
+<li>● <strong>Rozšiřující paluba</strong> s:<ul>
+<li>● Servem pro zvedání fixy</li>
+<li>● Adresovatelný RGB pásek</li>
+<li>● Laserový senzorem vzdálenosti (VL53L0X)</li>
+<li>● Přídavný RGB senzor (V2)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>📅 Historie</h2>
+<table>
+<thead>
+<tr>
+<th>Rok</th>
+<th>Verze</th>
+<th>Popis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>v1</td>
+<td>První plnohodnotný robůtek</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>v2</td>
+<td>Opravené chyby na desce, rgb senzor, větší přesnost motorů</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>🙌 Jak přispívat</h2>
+<h3>HW</h3>
+<ul>
+<li>● HW složka nechaná tak jak je beze změn</li>
+</ul>
+<h3>DEV</h3>
+<ul>
+<li>● -&gt; DEVELOPMENT.md</li>
+</ul>
+<h3>Robutek library</h3>
+<ul>
+<li>● Knihovna přesunuta do <code>robutekLibrary</code></li>
+<li>
+<p>● Funguje jako referenční projekt pro ostatní projekty v dokumentaci (kopírují se <code>@types</code> a <code>src/libs</code>)</p>
+</li>
+<li>
+<p>● TODO? - rozdělení do <code>robutek-v1.ts</code> a <code>robutek-v2.ts</code>?</p>
+</li>
+</ul>
+<h3>Další verze dokumentace</h3>
+<ul>
+<li>● Zkopírovat poslední verzi dokumentace jako reference</li>
+<li>● Zkopírovat <code>mkdocs-vx.yml</code> a upravit</li>
+<li>● Upravit <code>.github/workflows/deploy-ghpages.yml</code> a <code>.github/workflows/test-ghpages.yml</code></li>
+</ul>
 <!-- ## elektro
  - ● 1x 18650 ve slotu
  - ● nabíjení z USB-C z 5V - avšak je potřeba rozpoznávat proudové schopnosti portu 0,5/1,5/víc?
@@ -356,7 +420,47 @@
             <p class="dark:text-white text-xl font-bold text-zinc-800">Tomáš Vavrinec</p>
             <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">TVavrinec</p>
             <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                100 commits</p>
+                136 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/C2Coder" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/102322220?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">C2Coder</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">C2Coder</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                78 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/milos1616" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/40436600?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">milos1616</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">milos1616</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                49 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/JakubAndrysek" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/33494544?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Kuba Andrýsek</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">JakubAndrysek</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                44 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/cubicap" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/29575279?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Petr Kubica</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">cubicap</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                42 commits</p>
         </div>
     </a>
     
@@ -370,43 +474,23 @@
         </div>
     </a>
     
-    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/JakubAndrysek" target="_blank">
-        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/33494544?v=4">
-        <div class="ml-3 flex flex-col">
-            <p class="dark:text-white text-xl font-bold text-zinc-800">Kuba Andrýsek</p>
-            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">JakubAndrysek</p>
-            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                33 commits</p>
-        </div>
-    </a>
-    
-    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/C2Coder" target="_blank">
-        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/102322220?v=4">
-        <div class="ml-3 flex flex-col">
-            <p class="dark:text-white text-xl font-bold text-zinc-800">C2Coder</p>
-            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">C2Coder</p>
-            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                25 commits</p>
-        </div>
-    </a>
-    
-    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/cubicap" target="_blank">
-        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/29575279?v=4">
-        <div class="ml-3 flex flex-col">
-            <p class="dark:text-white text-xl font-bold text-zinc-800">Petr Kubica</p>
-            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">cubicap</p>
-            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                23 commits</p>
-        </div>
-    </a>
-    
     <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/JohnieWalkerCZ" target="_blank">
         <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/77408420?v=4">
         <div class="ml-3 flex flex-col">
             <p class="dark:text-white text-xl font-bold text-zinc-800">JohnieWalkerCZ</p>
             <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">JohnieWalkerCZ</p>
             <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                22 commits</p>
+                34 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/t3dp" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/112486601?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">tom benes</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">t3dp</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                27 commits</p>
         </div>
     </a>
     
@@ -416,7 +500,37 @@
             <p class="dark:text-white text-xl font-bold text-zinc-800">jezura777</p>
             <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">jezura777</p>
             <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                20 commits</p>
+                27 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/vighrjj" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/63225128?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">TomRi</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">vighrjj</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                19 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/Giraffe8896" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/145148824?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Giraffe8896</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">Giraffe8896</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                13 commits</p>
+        </div>
+    </a>
+    
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/Finstrle-Filip" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/116379323?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Finstrle-Filip</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">Finstrle-Filip</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                9 commits</p>
         </div>
     </a>
     
@@ -430,13 +544,23 @@
         </div>
     </a>
     
+    <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/VaclavBurda" target="_blank">
+        <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/141672566?v=4">
+        <div class="ml-3 flex flex-col">
+            <p class="dark:text-white text-xl font-bold text-zinc-800">Václav Burda</p>
+            <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">VaclavBurda</p>
+            <p class="leading-10 dark:text-zinc-300 text-zinc-800">
+                6 commits</p>
+        </div>
+    </a>
+    
     <a class="p-4 flex flex-row dark:bg-zinc-900 bg-white rounded-lg shadow-md" href="https://github.com/Robot7769" target="_blank">
         <img class="w-20 aspect-square rounded-3xl" src="https://avatars.githubusercontent.com/u/43411364?v=4">
         <div class="ml-3 flex flex-col">
             <p class="dark:text-white text-xl font-bold text-zinc-800">Honza </p>
             <p class="ml-[1px] leading-none text-sm dark:text-zinc-300 text-zinc-800">Robot7769</p>
             <p class="leading-10 dark:text-zinc-300 text-zinc-800">
-                4 commits</p>
+                6 commits</p>
         </div>
     </a>
     
