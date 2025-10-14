@@ -1,6 +1,7 @@
 name: Jaculus-esp32
 url: jaculus
-description: JavaScript runtime for esp32 devices
+description: JavaScript runtime for ESP32 chip family
+description-cs: JavaScript prostředí pro programování čipů z rodiny ESP32
 website: https://jaculus.org/
 readme: https://github.com/cubicap/Jaculus-esp32/blob/master/README.md
 

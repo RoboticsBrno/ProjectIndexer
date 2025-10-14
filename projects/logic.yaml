@@ -1,6 +1,7 @@
 name: Logic
 url: logic
-description: Logic is a universal programmable toy designed for teaching programming developed at Robotárna.
+description: Mini programmable game console based on ESP32-S3 with 10x10 Neopixel display
+description-cs: Malá programovatelná herní konzole postavená na ESP32-S3 s 10x10 Neopixel displejem
 website: https://logic.robotikabrno.cz/
 readme: https://github.com/RoboticsBrno/RB3205-Logic/blob/main/README.md
 

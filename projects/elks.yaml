@@ -1,6 +1,7 @@
 name: ELKS
 url: elks
-description: ESP Learning Kit starter
+description: ESP Learning Kit starter - development kit for teaching of basics of microcontroller programming, built around ESP32-S3
+description-cs: ESP Learning Kit starter - vývojový kit pro výuku práce s mikrokontrolery postavený okolo ESP32-S3
 website: https://elks.robotikabrno.cz/
 readme: https://github.com/RoboticsBrno/RB3206-ELKS/blob/master/README.md
 

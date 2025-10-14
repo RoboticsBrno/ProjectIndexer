@@ -58,7 +58,7 @@ class GenerateWeb:
             extensions=[ColorExtension]
         )
 
-        self.paths = {
+        self.paths: dict[str, dict[str, str | bool]] = {
             "/":            {"path": "index.html",                  "lang":"en", "showHeader": False,    "external": False},
             "Repos":        {"path": "repos/index.html",            "lang":"en", "showHeader": True,     "external": False},
             "Repo":         {"path": "repo/{}/index.html",          "lang":"en", "showHeader": False,    "external": False},
@@ -156,34 +156,60 @@ class GenerateWeb:
             self.render_page('repoDetail_cs.html', self.paths.get("Repo_cs").get("path").format(repo.name), repo=repo, readme=readme_html, repo_contrib=repo_contrib, lang="cs")
 
     def generate_project_list(self, projects: list):
-        print(projects)
+        # Helper: order projects (both -> frequently_used -> recent -> others)
+        def order_projects(items):
+            both, freq, recent, other = [], [], [], []
+            for it in items:
+                if it.get("recent") and it.get("frequently_used"):
+                    both.append(it)
+                elif it.get("frequently_used"):
+                    freq.append(it)
+                elif it.get("recent"):
+                    recent.append(it)
+                else:
+                    other.append(it)
+            return both + freq + recent + other
 
-        # Initialize the three lists
-        recent_projects = []
-        frequently_used_projects = []
-        both_projects = []
-        other_projects = []
+        def get_localized(it, key, lang):
+            if lang == "cs":
+                v_cs = it.get(f"{key}-cs")
+                if v_cs:
+                    return v_cs
+            return it.get(key)
 
-        # Iterate through the list of dictionaries
-        for item in projects:
+        # Build a flat list for the given language
+        def build_flat(lang):
+            flat = []
+            seen = set()
+            for it in order_projects(projects):
+                url = it.get("url")
+                if not url or url in seen:
+                    continue
+                seen.add(url)
+                flat.append({
+                    "name": get_localized(it, "name", lang) or url,
+                    "description": get_localized(it, "description", lang),
+                    "image": get_localized(it, "image", lang),
+                    "url": url,  # keep slugs shared between locales unless you also support url-cs
+                })
+            return flat
 
-            if item.get("recent") and item.get("frequently_used"):
-                both_projects.append(item)
-            elif item.get("recent"):
-                recent_projects.append(item)
-            elif item.get("frequently_used"):
-                frequently_used_projects.append(item)
-            else:
-                other_projects.append(item)
+        projects_en = build_flat("en")
+        projects_cs = build_flat("cs")
 
-        projects_list = [["Recent and frequently used projects:", both_projects],
-                         ["Frequently used projects:", frequently_used_projects],
-                         ["Recent projects:", recent_projects],
-                         ["Other projects", other_projects]]
-
-        self.render_page('projectList.html', self.paths.get("Projects").get("path"), projects_list=projects_list, lang="en")
-        
-        self.render_page('projectList_cs.html', self.paths.get("Projekty").get("path"), projects_list=projects_list, lang="cs")
+        # Render pages with a single flat 'projects' list (no categories)
+        self.render_page(
+            'projectList.html',
+            str(self.paths["Projects"]["path"]),
+            projects=projects_en,
+            lang="en"
+        )
+        self.render_page(
+            'projectList_cs.html',
+            str(self.paths["Projekty"]["path"]),
+            projects=projects_cs,
+            lang="cs"
+        )
 
     def generate_projects(self, projects: list):
         # pprint(projects)
@@ -219,16 +245,86 @@ class GenerateWeb:
     def generate_about(self):
         info = self.about_info
 
+        # Existing readme conversions
         info["readme_1"] = conv_markdown("\n".join(info["readme_1"]))
         info["readme_2"] = conv_markdown("\n".join(info["readme_2"]))
         info["readme_1_cs"] = conv_markdown("\n".join(info["readme_1_cs"]))
         info["readme_2_cs"] = conv_markdown("\n".join(info["readme_2_cs"]))
 
-        repos = [i[0] for i in sorted([[r, r.pushed_at] for r in self.repos], key=lambda x: x[1], reverse=True)[:6]]
+        # Latest repos (for "Latest commits" section)
+        repos = [i[0] for i in sorted([[r, r.pushed_at] for r in self.repos],
+                                      key=lambda x: x[1],
+                                      reverse=True)[:6]]
 
-        self.render_page('about.html', self.paths.get("/").get("path"), info=info, repos=repos, lang="en")
-        
-        self.render_page('about_cs.html', self.paths.get("/cs").get("path"), info=info, repos=repos, lang="cs")
+        # Load projects
+        try:
+            projects = load_projects(self.project_dir)
+        except Exception:
+            projects = []
+
+        # Helper: sort by both -> frequently_used -> recent -> others
+        def order_projects(items):
+            both, freq, recent, other = [], [], [], []
+            for it in items:
+                if it.get("recent") and it.get("frequently_used"):
+                    both.append(it)
+                elif it.get("frequently_used"):
+                    freq.append(it)
+                elif it.get("recent"):
+                    recent.append(it)
+                else:
+                    other.append(it)
+            return both + freq + recent + other
+
+        # Helper: localized getter for fields; prefers "-cs" when lang == "cs"
+        def get_localized(it, key, lang):
+            if lang == "cs":
+                v_cs = it.get(f"{key}-cs")
+                if v_cs:
+                    return v_cs
+            return it.get(key)
+
+        # Build card lists for EN and CS
+        def build_cards(lang):
+            seen = set()
+            cards = []
+            for it in order_projects(projects):
+                url = it.get("url")
+                if not url or url in seen:
+                    continue
+                seen.add(url)
+                cards.append({
+                    # Display fields localized for CS
+                    "name": get_localized(it, "name", lang) or url,
+                    "description": get_localized(it, "description", lang),
+                    "image": get_localized(it, "image", lang),
+                    # Keep URL unlocalized unless your routing supports localized slugs
+                    "url": url,
+                })
+                if len(cards) >= 9:
+                    break
+            return cards
+
+        projects_cards_en = build_cards("en")
+        projects_cards_cs = build_cards("cs")
+
+        # Render both locales
+        self.render_page(
+            'about.html',
+            self.paths.get("/").get("path"),
+            info=info,
+            repos=repos,
+            projects_cards=projects_cards_en,
+            lang="en",
+        )
+        self.render_page(
+            'about_cs.html',
+            self.paths.get("/cs").get("path"),
+            info=info,
+            repos=repos,
+            projects_cards=projects_cards_cs,
+            lang="cs",
+        )
 
     def generate_team(self):
         team = self.team
