@@ -1,0 +1,19 @@
+name: Robutek
+name-cs: Robůtek
+url: robutek
+description: Small robot equiped with range of sensors and output methods. Based on ESP32-S3, designed for ease of use by anyone, from students learning robotics to kids wanting to try basics of programming.
+description-cs: Malý robot se spoustou senzorů a výstupních metod. Postavený na ESP32-S3 a navrhovaný s jednoduchostí na mysli, a to jak pro studenty studující robotiku tak děti začínající s programováním.
+website: https://robutek.robotikabrno.cz
+readme: https://github.com/RoboticsBrno/Robutek/blob/main/README.md
+
+# you can turn on both at the same time
+frequently_used: True
+recent: True
+
+related_repos:
+  - url: https://github.com/cubicap/Jaculus-esp32
+    description: Jaculus programming interface
+
+  - url: https://github.com/RoboticsBrno/JacLy
+    description: Blockly programming interface for Jaculus devices
+
